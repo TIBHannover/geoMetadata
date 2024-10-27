@@ -485,7 +485,7 @@ class OptimetaGeoPlugin extends GenericPlugin
 				"nullable"
 			]
 		}';
-		$schema->properties->{OPTIMETA_GEO_DB_FIELD_TIME_PERIODS} = json_decode($timePeriods);
+		$schema->properties->{'optimetaGeo::timePeriods'} = json_decode($timePeriods);
 
 		$spatialProperties = '{
 			"type": "string",
@@ -521,9 +521,9 @@ class OptimetaGeoPlugin extends GenericPlugin
 		$newPublication = $params[0];
 		$params = $params[2];
 
-		$temporalProperties = $_POST[OPTIMETA_GEO_DB_FIELD_TIME_PERIODS];
-		$spatialProperties =  $_POST[OPTIMETA_GEO_DB_FIELD_SPATIAL];
-		$administrativeUnit = $_POST[OPTIMETA_GEO_DB_FIELD_ADMINUNIT];
+		$temporalProperties = $_POST[OPTIMETA_GEO_DB_FIELD_TIME_PERIODS] ?? null;
+		$spatialProperties =  $_POST[OPTIMETA_GEO_DB_FIELD_SPATIAL] ?? null;
+		$administrativeUnit = $_POST[OPTIMETA_GEO_DB_FIELD_ADMINUNIT] ?? null;
 		
 		// null if there is no possibility to input data (metadata input before Schedule for Publication)
 		if ($spatialProperties !== null) {
