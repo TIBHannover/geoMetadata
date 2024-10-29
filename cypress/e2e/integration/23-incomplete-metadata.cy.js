@@ -54,7 +54,7 @@ describe('OPTIMETA Geo Plugin Submission with incomplete Metadata', function () 
     cy.get('nav[class="pkp_site_nav_menu"] a:contains("Current")').click();
     cy.get('a:contains("Vancouver has no place")').last().click();
 
-    cy.get('.pkp_structure_main').should('contain', 'Time and location');
+    cy.get('.pkp_structure_main').should('contain', 'Time and Location');
     cy.get('.pkp_structure_main').should('contain', '2000-02-22');
     cy.get('#optimeta_article_spatial').should('not.be.visible');
     cy.get('#optimeta_article_spatial_download').should('not.be.visible');
@@ -87,7 +87,7 @@ describe('OPTIMETA Geo Plugin Submission with incomplete Metadata', function () 
     cy.get('#mapdiv').should('not.be.visible');
   });
 
-  it('Has no Time and location and no geodata download if all geospatial metadata is missing', function () {
+  it('Has no Time and Location and no geodata download if all geospatial metadata is missing', function () {
     var submission = {
       title: 'Vancouver has nothing',
       subtitle: 'No no no',

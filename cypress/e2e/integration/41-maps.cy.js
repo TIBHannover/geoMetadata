@@ -59,7 +59,7 @@ describe('OPTIMETA Geo Plugin Maps', function () {
     cy.get('a:contains("Vol. 1 No. 2 (2022)")').click();
     cy.get('a:contains("Hanover is nice")').last().click();
 
-    cy.get('.pkp_structure_main').should('contain', 'Time and location');
+    cy.get('.pkp_structure_main').should('contain', 'Time and Location');
     cy.get('#mapdiv').should('exist');
 
     cy.mapHasFeatures(1);
