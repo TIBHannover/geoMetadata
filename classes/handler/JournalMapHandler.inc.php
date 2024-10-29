@@ -45,7 +45,7 @@ class JournalMapHandler extends Handler
             $id = $publication->getData('id');
 
             if($publication->getData('status') != STATUS_PUBLISHED) {
-                break;
+                continue;
             }
 
             $issue = "";
