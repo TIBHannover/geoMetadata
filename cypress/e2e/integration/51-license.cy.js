@@ -27,8 +27,8 @@ describe('OPTIMETA Geo Plugin Licensing Information', function () {
     cy.get('a:contains("Vol. 1 No. 2 (2022)")').click();
     cy.get('a:contains("Hanover is nice")').last().click();
 
-    cy.contains('.page', /Geodata license: CC-0/);
-    cy.contains('.page', /following license: CC-0/);
+    cy.contains('.page', /Geodata License: CC-0/);
+    cy.contains('.page', /following License: CC-0/);
   });
 
   it('Shows license disclaimer during submission', function () {
@@ -58,7 +58,7 @@ describe('OPTIMETA Geo Plugin Licensing Information', function () {
     cy.get('a:contains("Vancouver has nothing")').last().click();
 
     cy.get('.optimetageo_license').should('not.be.visible');
-    //cy.get('.pkp_structure_content').should('not.contain', 'Geodata license: CC-0');
+    //cy.get('.pkp_structure_content').should('not.contain', 'Geodata License: CC-0');
     //cy.get('.pkp_structure_content').should('not.contain', 'following license: CC-0');
   });
 
