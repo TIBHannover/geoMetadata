@@ -8,71 +8,71 @@
  * @brief Show geospatial metadata and allow editing during publication phase.
  *}
 
-<link rel="stylesheet" href="{$pluginStylesheetURL}/optimetaGeo.css" type="text/css" />
+<link rel="stylesheet" href="{$pluginStylesheetURL}/geoMetadata.css" type="text/css" />
 
 {* see templates/workflow/workflow.tpl for HTML structure, CSS classes, etc., used below *}
 
 {* configuration values that are need in JS *}
-<input type="text" id="optimetageo_usernameGeonames" name="usernameGeonames" class="hiddenDataField" value="{$usernameGeonames}" />
-<input type="text" id="optimetageo_baseurlGeonames" name="baseurlGeonames" class="hiddenDataField" value="{$baseurlGeonames}" />
-<input type="text" id="optimetageo_coverageDisabledHover" name="coverageDisabledHover"
+<input type="text" id="geoMetadata_usernameGeonames" name="usernameGeonames" class="hiddenDataField" value="{$usernameGeonames}" />
+<input type="text" id="geoMetadata_baseurlGeonames" name="baseurlGeonames" class="hiddenDataField" value="{$baseurlGeonames}" />
+<input type="text" id="geoMetadata_coverageDisabledHover" name="coverageDisabledHover"
         style="height: 0px; width: 0px; visibility: hidden;"
-        value="{translate key="plugins.generic.optimetaGeo.submission.coverageDisabledHover"}">
+        value="{translate key="plugins.generic.geoMetadata.submission.coverageDisabledHover"}">
     
-<tab id="timeLocation" label="{translate key="plugins.generic.optimetaGeo.publication.label"}">
+<tab id="timeLocation" label="{translate key="plugins.generic.geoMetadata.publication.label"}">
 
     {*temporal*}
-    <div class="pkpFormGroup__locale pkpFormGroup__locale--isVisible optimetageo_formGroupMargin">
+    <div class="pkpFormGroup__locale pkpFormGroup__locale--isVisible geoMetadata_formGroupMargin">
         <div class="pkpFormField">
             <div class="pkpFormField__heading">
-                <label for="geoplugin-temporal" class="pkpFormFieldLabel">
-                    {translate key="plugins.generic.optimetaGeo.geospatialmetadata.properties.temporal"}
+                <label for="geoMetadata-temporal" class="pkpFormFieldLabel">
+                    {translate key="plugins.generic.geoMetadata.geospatialmetadata.properties.temporal"}
                 </label>
             </div>
-            <div id="geoplugin-temporal-description" class="pkpFormField__description">
-                {translate key="plugins.generic.optimetaGeo.geospatialmetadata.properties.temporal.description.submission"}
+            <div id="geoMetadata-temporal-description" class="pkpFormField__description">
+                {translate key="plugins.generic.geoMetadata.geospatialmetadata.properties.temporal.description.submission"}
             </div>
             <div class="pkpFormField__control">
                 <div class="pkpFormField__control_top">
-                    <input id="geoplugin-temporal" name="datetimes" aria-describedby="geoplugin-temporal-description" aria-invalid="0" type="text" class="pkpFormField__input pkpFormField--text__input" />
+                    <input id="geoMetadata-temporal" name="datetimes" aria-describedby="geoMetadata-temporal-description" aria-invalid="0" type="text" class="pkpFormField__input pkpFormField--text__input" />
                 </div>
             </div>
         </div>
     </div>
 
     {*spatial*}
-    <div class="pkpFormGroup__locale pkpFormGroup__locale--isVisible optimetageo_formGroupMargin">
+    <div class="pkpFormGroup__locale pkpFormGroup__locale--isVisible geoMetadata_formGroupMargin">
         <div class="pkpFormField">
             <div class="pkpFormField__heading">
                 <label for="mapdiv" class="pkpFormFieldLabel">
-                    {translate key="plugins.generic.optimetaGeo.geospatialmetadata.properties.spatial"}
+                    {translate key="plugins.generic.geoMetadata.geospatialmetadata.properties.spatial"}
                 </label>
             </div>
-            <div id="geoplugin-spatial-description" class="pkpFormField__description">
-                {translate key="plugins.generic.optimetaGeo.geospatialmetadata.properties.spatial.description.submission"}
+            <div id="geoMetadata-spatial-description" class="pkpFormField__description">
+                {translate key="plugins.generic.geoMetadata.geospatialmetadata.properties.spatial.description.submission"}
             </div>
             
-            <div id="mapdiv" aria-describedby="geoplugin-spatial-description" style="width: 100%; height: 400px; z-index: 0;"></div>
+            <div id="mapdiv" aria-describedby="geoMetadata-spatial-description" style="width: 100%; height: 400px; z-index: 0;"></div>
         </div>
     </div>
 
     {*administrativeUnit*}
-    <div class="pkpFormGroup__locale pkpFormGroup__locale--isVisible optimetageo_formGroupMargin">
+    <div class="pkpFormGroup__locale pkpFormGroup__locale--isVisible geoMetadata_formGroupMargin">
         <div class="pkpFormField">
             <div class="pkpFormField__heading">
                 <label for="administrativeUnitInput" class="pkpFormFieldLabel">
-                    {translate key="plugins.generic.optimetaGeo.geospatialmetadata.properties.spatial.administrativeUnit"}
+                    {translate key="plugins.generic.geoMetadata.geospatialmetadata.properties.spatial.administrativeUnit"}
                 </label>
             </div>
-            <div align="justify" class="pkpFormField__description optimetageo_warning" id="optimetageo_gazetteer_unavailable" style="display:none;">{translate
-                key="plugins.generic.optimetaGeo.geospatialmetadata.gazetteer_unavailable"}
+            <div align="justify" class="pkpFormField__description geoMetadata_warning" id="geoMetadata_gazetteer_unavailable" style="display:none;">{translate
+                key="plugins.generic.geoMetadata.geospatialmetadata.gazetteer_unavailable"}
             </div>
-            <div id="geoplugin-adminunit-description" class="pkpFormField__description">
-                {translate key="plugins.generic.optimetaGeo.geospatialmetadata.properties.spatial.administrativeUnit.description.submission"}
+            <div id="geoMetadata-adminunit-description" class="pkpFormField__description">
+                {translate key="plugins.generic.geoMetadata.geospatialmetadata.properties.spatial.administrativeUnit.description.submission"}
             </div>
             <div class="pkpFormField__control">
                 <div class="pkpFormField__control_top">
-                    <ul id="administrativeUnitInput" aria-describedby="geoplugin-adminunit-description" aria-invalid="0" class="pkpFormField__input pkpFormField--text__input">
+                    <ul id="administrativeUnitInput" aria-describedby="geoMetadata-adminunit-description" aria-invalid="0" class="pkpFormField__input pkpFormField--text__input">
                     </ul>
                 </div>
             </div>
@@ -88,21 +88,21 @@
         }
     </style>
 
-    <div class="pkpFormField__heading optimetageo_formGroupMargin">
+    <div class="pkpFormField__heading geoMetadata_formGroupMargin">
         <label class="pkpFormFieldLabel">
-            {translate key="plugins.generic.optimetaGeo.publication.tab.raw"}
+            {translate key="plugins.generic.geoMetadata.publication.tab.raw"}
         </label>
     </div>
     <div class="pkpFormField__description">
-        {translate key="plugins.generic.optimetaGeo.publication.tab.raw.description"}
+        {translate key="plugins.generic.geoMetadata.publication.tab.raw.description"}
     </div>
 
     <div>
-        <pkp-form v-bind="components.{$smarty.const.OPTIMETA_GEO_FORM_NAME}" @set="set"/>
+        <pkp-form v-bind="components.{$smarty.const.GEOMETADATA_FORM_NAME}" @set="set"/>
     </div>
 
     {*main js script, needs to be loaded last*}
-    <script src="{$optimetageo_submissionJS}" type="text/javascript"></script>
+    <script src="{$geoMetadata_submissionJS}" type="text/javascript"></script>
     
     {* fix Leaflet gray map issue when it is displayed later than page load *}
     <script type="text/javascript">

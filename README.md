@@ -1,6 +1,6 @@
 [![OPTIMETA Logo](https://projects.tib.eu/fileadmin/_processed_/e/8/csm_Optimeta_Logo_web_98c26141b1.png)](https://projects.tib.eu/optimeta/en/) [![KOMET Logo](https://projects.tib.eu/fileadmin/templates/komet/tib_projects_komet_1150.png)](https://projects.tib.eu/komet/en/)
 
-# OJS Geo Plugin
+# geoMetadata Plugin
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8198983.svg)](https://doi.org/10.5281/zenodo.8198983)
 
@@ -35,7 +35,7 @@ In the article view, the properties specified by the author are then displayed a
 
 See releases at <https://github.com/TIBHannover/ojsGeo/releases>.
 The release bundles contain plugin source code as well as the the required JavaScript dependencies so the plugin is ready to be used.
-Note that you need the OJGS Geo Plugin Theme for some of the frontend displays, see <https://github.com/ifgi/optimetaGeoTheme>.
+Note that you need the OJGS Geo Plugin Theme for some of the frontend displays, see <https://github.com/ifgi/geoMetadataTheme>.
 
 ## From source
 
@@ -43,7 +43,7 @@ Note that you need the OJGS Geo Plugin Theme for some of the frontend displays, 
 1. Run `composer install` to download JavaScript dependencies for the plugin using [Asset Packagist](https://asset-packagist.org/site/about)
    Go to `js/lib/leaflet-control-geocoder` and run `npm install` (see [this issue](https://github.com/perliedman/leaflet-control-geocoder/issues/310))
 1. Activate the plugin in the OJS plug-in settings
-1. Install and activate the OJS Geo Plugin Theme: <https://github.com/ifgi/optimetaGeoTheme/releases>
+1. Install and activate the OJS Geo Plugin Theme: <https://github.com/ifgi/geoMetadataTheme/releases>
 
 # Configuration
 

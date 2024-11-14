@@ -1,6 +1,6 @@
 <?php
 
-namespace Optimeta\Geo\Components\Forms;
+namespace geoMetadata\Components\Forms;
 
 import('lib.pkp.classes.form.Form');
 
@@ -11,7 +11,7 @@ use TemplateManager;
 use NotificationManager;
 
 /**
- * Form for the plugin settings of the Optimeta geo plugin. 
+ * Form for the geoMetadata settings. 
  */
 class SettingsForm extends \Form
 {
@@ -22,8 +22,8 @@ class SettingsForm extends \Form
      * @var string[]
      */
     private $settings = [
-        'optimetaGeo_geonames_username',
-        'optimetaGeo_geonames_baseurl'
+        'geoMetadata_geonames_username',
+        'geoMetadata_geonames_baseurl'
     ];
 
     public function __construct($plugin)

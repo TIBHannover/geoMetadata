@@ -7,7 +7,7 @@
  *
  */
 
-describe('OPTIMETA Geo Plugin Locales', function () {
+describe('geoMetadata Locales', function () {
 
   before(() => {
     cy.login('admin', 'admin', Cypress.env('contextPath'));
@@ -104,7 +104,7 @@ describe('OPTIMETA Geo Plugin Locales', function () {
 
 });
 
-describe('OPTIMETA Geo Plugin Locale Files', function () {
+describe('geoMetadata Locale Files', function () {
 
   it('Has the same number of entries and no erorrs in the locale files', function () {
     const reference = 'en_US';

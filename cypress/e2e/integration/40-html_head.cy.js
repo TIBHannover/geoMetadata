@@ -20,7 +20,7 @@ var metaContains = (name, content, scheme) => {
   }
 };
 
-describe('OPTIMETA Geo Plugin Geospatial Metadata in HTML Head', function () {
+describe('geoMetadata Geospatial Metadata in HTML Head', function () {
 
   beforeEach(() => {
     cy.visit('/');
@@ -61,7 +61,7 @@ describe('OPTIMETA Geo Plugin Geospatial Metadata in HTML Head', function () {
   });
 });
 
-describe('OPTIMETA Geo Plugin Temporal Metadata in HTML Head', function () {
+describe('geoMetadata Temporal Metadata in HTML Head', function () {
 
   it('has DC.temporal with correct scheme and content', function () {
     metaContains('DC.temporal', /2022-01-01\/2022-12-31/, 'ISO8601');

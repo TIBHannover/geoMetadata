@@ -39,8 +39,8 @@ var administrativeUnitsMap = new L.FeatureGroup();
 map.addLayer(administrativeUnitsMap);
 
 var overlayMaps = {
-    [optimetageo_articleLayerName]: drawnItems,
-    [optimetageo_adminLayerName]: administrativeUnitsMap
+    [geoMetadata_articleLayerName]: drawnItems,
+    [geoMetadata_adminLayerName]: administrativeUnitsMap
 };
 
 // add layerControl to the map to the map 
@@ -65,14 +65,14 @@ var geocoder = L.Control.geocoder({
 
 $(function () {
     // load spatial properties from article_details.tpl 
-    var spatialProperties = document.getElementById("optimeta_spatial").value;
+    var spatialProperties = document.getElementById("geoMetadata_spatial").value;
     let spatialPropertiesParsed = JSON.parse(spatialProperties);
 
     // load temporal properties from article_details.tpl 
-    var temporalProperties = document.getElementById("optimeta_temporal").value;
+    var temporalProperties = document.getElementById("geoMetadata_temporal").value;
 
     // load temporal properties from article_details.tpl 
-    var administrativeUnit = document.getElementById("optimeta_administrativeUnit").value;
+    var administrativeUnit = document.getElementById("geoMetadata_administrativeUnit").value;
 
     /*
     If neither temporal nor spatial properties nor administrativeUnit information are available, the corresponding elements in the article_details.tpl are deleted 
@@ -80,7 +80,7 @@ $(function () {
     Otherwise, the display of the elements is initiated. 
     */
     if (spatialPropertiesParsed.features.length === 0 && temporalProperties === "no data" && administrativeUnit === "no data") {
-        $("#optimeta_article_geospatialmetadata").hide();
+        $("#geoMetadata_article_geospatialmetadata").hide();
     }
 
     /*
@@ -89,8 +89,8 @@ $(function () {
     and no spatial metadata are displayed. Otherwise the map is created and the spatial properties are displayed. 
     */
     if (spatialPropertiesParsed.features.length === 0) {
-        $("#optimeta_article_spatial").hide();
-        $("#optimeta_article_spatial_download").hide();
+        $("#geoMetadata_article_spatial").hide();
+        $("#geoMetadata_article_spatial_download").hide();
         $("#mapdiv").hide();
     }
     else {
@@ -112,7 +112,7 @@ $(function () {
         }
 
         let layer = L.geoJSON(spatialPropertiesParsed);
-        layer.setStyle(optimetageo_mapLayerStyle);
+        layer.setStyle(geoMetadata_mapLayerStyle);
         drawnItems.addLayer(layer);
         map.fitBounds(drawnItems.getBounds());
     }
@@ -123,7 +123,7 @@ $(function () {
     The available elements are displayed. If there is a corresponding bbox available, the bbox for the lowest level is displayed in the map
     */
     if (administrativeUnit === "no data") {
-        $("#optimeta_article_administrativeUnit").hide();
+        $("#geoMetadata_article_administrativeUnit").hide();
     }
     else {
         var administrativeUnitEncoded = JSON.parse(administrativeUnit);
@@ -134,7 +134,7 @@ $(function () {
             administrativeUnitsNameList.push(administrativeUnitEncoded[i].name);
         }
 
-        $("#optimeta_span_admnistrativeUnit").html(administrativeUnitsNameList.join(', '));
+        $("#geoMetadata_span_admnistrativeUnit").html(administrativeUnitsNameList.join(', '));
 
         let spatialPropertiesParsed = JSON.parse(spatialProperties);
         displayBboxOfAdministrativeUnitWithLowestCommonDenominatorOfASetOfAdministrativeUnitsGivenInAGeojson(spatialPropertiesParsed);
@@ -146,14 +146,14 @@ $(function () {
     and no temporal metadata are displayed. Otherwise the map is created and the temporal properties are displayed. 
     */
     if (temporalProperties === "no data") {
-        $("#optimeta_article_temporal").hide();
+        $("#geoMetadata_article_temporal").hide();
     }
     else {
         let start = temporalProperties.split('{')[1].split('..')[0];
         let end = temporalProperties.split('{')[1].split('..')[1].split('}')[0];
 
-        $("#optimetageo_span_start").html(start);
-        $("#optimetageo_span_end").html(end);
+        $("#geoMetadata_span_start").html(start);
+        $("#geoMetadata_span_end").html(end);
     }
 });
 

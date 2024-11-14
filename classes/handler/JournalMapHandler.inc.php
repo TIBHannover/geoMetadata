@@ -18,11 +18,11 @@ class JournalMapHandler extends Handler
 {
     public function index($args, $request)
     {
-        $plugin = PluginRegistry::getPlugin('generic', 'optimetageoplugin');
+        $plugin = PluginRegistry::getPlugin('generic', 'geoMetadata');
 
         $templateMgr = TemplateManager::getManager($request);
 
-        $templateMgr->assign('optimetagep_journalJS', $request->getBaseUrl() . '/' . $plugin->getPluginPath() . '/js/journal.js');
+        $templateMgr->assign('geoMetadata_journalJS', $request->getBaseUrl() . '/' . $plugin->getPluginPath() . '/js/journal.js');
         $templateMgr->assign('pluginStylesheetURL', $request->getBaseUrl() . '/' . $plugin->getPluginPath() . '/css/');
         
         $context = $request->getContext();

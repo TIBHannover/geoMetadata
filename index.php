@@ -1,3 +1,3 @@
 <?php
-require_once('OptimetaGeoPlugin.inc.php');
-return new OptimetaGeoPlugin();
+require_once('geoMetadata.inc.php');
+return new geoMetadata();

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * @file OptimetaGeoPlugin.inc.php
+ * @file geoMetadata.inc.php
  *
  * Copyright (c) 2022 OPTIMETA project
  * Copyright (c) 2022 Daniel Nüst
  * Distributed under the GNU GPL v3. For full terms see the file dLICENSE.
  *
- * @class OptimetaGeoPlugin
+ * @class geoMetadata
  * @brief Plugin class for the OPTIMETA project's geo plugin.
  */
 
@@ -15,25 +15,25 @@
 const MAP_URL_PATH = 'map';
 
 // following names are also used in JavaScript files to identify fields
-const OPTIMETA_GEO_DB_FIELD_TIME_PERIODS = 'optimetaGeo::timePeriods';
-const OPTIMETA_GEO_DB_FIELD_SPATIAL =      'optimetaGeo::spatialProperties';
-const OPTIMETA_GEO_DB_FIELD_ADMINUNIT =    'optimetaGeo::administrativeUnit';
+const GEOMETADATA_DB_FIELD_TIME_PERIODS = 'geoMetadata::timePeriods';
+const GEOMETADATA_DB_FIELD_SPATIAL =      'geoMetadata::spatialProperties';
+const GEOMETADATA_DB_FIELD_ADMINUNIT =    'geoMetadata::administrativeUnit';
 
-const OPTIMETA_GEO_FORM_NAME = 'OptimetaGeo_PublicationForm';
+const GEOMETADATA_FORM_NAME = 'geoMetadata_PublicationForm';
 
-const OPTIMETA_GEO_PLUGIN_PATH = __DIR__;
+const GEOMETADATA_GEO_PLUGIN_PATH = __DIR__;
 
-require_once (OPTIMETA_GEO_PLUGIN_PATH . '/vendor/autoload.php');
+require_once (GEOMETADATA_GEO_PLUGIN_PATH . '/vendor/autoload.php');
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 
-import('plugins.generic.optimetaGeo.classes.Components.Forms.PublicationForm');
-import('plugins.generic.optimetaGeo.classes.Components.Forms.SettingsForm');
+import('plugins.generic.geoMetadata.classes.Components.Forms.PublicationForm');
+import('plugins.generic.geoMetadata.classes.Components.Forms.SettingsForm');
 
-use Optimeta\Geo\Components\Forms\PublicationForm;
-use Optimeta\Geo\Components\Forms\SettingsForm;
+use geoMetadata\Components\Forms\PublicationForm;
+use geoMetadata\Components\Forms\SettingsForm;
 
-class OptimetaGeoPlugin extends GenericPlugin
+class geoMetadata extends GenericPlugin
 {
     protected $ojsVersion = '3.3.0.0';
 
@@ -45,9 +45,9 @@ class OptimetaGeoPlugin extends GenericPlugin
 	];
 
 	public $dbFields = [
-		'spatial' => OPTIMETA_GEO_DB_FIELD_SPATIAL,
-		'temporal' => OPTIMETA_GEO_DB_FIELD_TIME_PERIODS,
-		'admin' => OPTIMETA_GEO_DB_FIELD_ADMINUNIT,
+		'spatial' => GEOMETADATA_DB_FIELD_SPATIAL,
+		'temporal' => GEOMETADATA_DB_FIELD_TIME_PERIODS,
+		'admin' => GEOMETADATA_DB_FIELD_ADMINUNIT,
 	];
 
 	public function register($category, $path, $mainContextId = NULL)
@@ -118,13 +118,13 @@ class OptimetaGeoPlugin extends GenericPlugin
 			$templateMgr->addStyleSheet("leafletControlGeocodeCSS", $urlLeafletControlGeocodeCSS, array('contexts' => array('frontend', 'backend')));
 
 			// plugins JS scripts and CSS
-			$templateMgr->assign('optimetageo_submissionJS',      $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/submission.js');
-			$templateMgr->assign('optimetageo_article_detailsJS', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/article_details.js');
-			$templateMgr->assign('optimetageo_issueJS',           $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/issue.js');
-			$templateMgr->assign('optimetageo_markerBaseUrl',     $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/leaflet-color-markers/img/');
+			$templateMgr->assign('geoMetadata_submissionJS',      $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/submission.js');
+			$templateMgr->assign('geoMetadata_article_detailsJS', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/article_details.js');
+			$templateMgr->assign('geoMetadata_issueJS',           $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/issue.js');
+			$templateMgr->assign('geoMetadata_markerBaseUrl',     $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/leaflet-color-markers/img/');
 
-			$templateMgr->assign('optimetageo_mapUrlPath', MAP_URL_PATH);
-			$templateMgr->assign('optimetageo_metadataLicense', '<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC-0</a>');
+			$templateMgr->assign('geoMetadata_mapUrlPath', MAP_URL_PATH);
+			$templateMgr->assign('geoMetadata_metadataLicense', '<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC-0</a>');
 		}
 
 		return $success;
@@ -163,11 +163,11 @@ class OptimetaGeoPlugin extends GenericPlugin
 		$templateMgr->addHeader('dublinCoreTemporal', '<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />');
 
 		// https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/spatial/
-		if ($spatial = $publication->getData(OPTIMETA_GEO_DB_FIELD_SPATIAL)) {
+		if ($spatial = $publication->getData(GEOMETADATA_DB_FIELD_SPATIAL)) {
 			$templateMgr->addHeader('dublinCoreSpatialCoverage', '<meta name="DC.SpatialCoverage" scheme="GeoJSON" content="' . htmlspecialchars(strip_tags($spatial)) . '" />');
 		}
 
-		if ($administrativeUnit = $publication->getData(OPTIMETA_GEO_DB_FIELD_ADMINUNIT)) {
+		if ($administrativeUnit = $publication->getData(GEOMETADATA_DB_FIELD_ADMINUNIT)) {
 			$administrativeUnitNames = array_map(function ($unit) {
 				return $unit->name;
 			}, json_decode($administrativeUnit));
@@ -207,7 +207,7 @@ class OptimetaGeoPlugin extends GenericPlugin
 			}
 		}
 
-		if ($timePeriods = $publication->getData(OPTIMETA_GEO_DB_FIELD_TIME_PERIODS)) {
+		if ($timePeriods = $publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS)) {
 			// FIXME crazy use of explode makes more sense when we support multiple periods
 			$begin = explode('..', explode('{', $timePeriods)[1])[0];
 			$end = explode('}', explode('..', explode('{', $timePeriods)[1])[1])[0];
@@ -256,9 +256,9 @@ class OptimetaGeoPlugin extends GenericPlugin
 		Check if the user has entered an username in the plugin settings for the GeoNames API (https://www.geonames.org/login). 
 		The result is passed on accordingly to submission.js as template variable. 
 		*/
-		$usernameGeonames = $this->getSetting($context->getId(), 'optimetaGeo_geonames_username');
+		$usernameGeonames = $this->getSetting($context->getId(), 'geoMetadata_geonames_username');
 		$templateMgr->assign('usernameGeonames', $usernameGeonames);
-		$baseurlGeonames = $this->getSetting($context->getId(), 'optimetaGeo_geonames_baseurl');
+		$baseurlGeonames = $this->getSetting($context->getId(), 'geoMetadata_geonames_baseurl');
 		$templateMgr->assign('baseurlGeonames', $baseurlGeonames);
 
 		/*
@@ -271,9 +271,9 @@ class OptimetaGeoPlugin extends GenericPlugin
 		$submissionId = $request->getUserVar('submissionId');
 		$publication = $publicationDao->getById($submissionId);
 
-		$timePeriods = $publication->getData(OPTIMETA_GEO_DB_FIELD_TIME_PERIODS);
-		$spatialProperties = $publication->getData(OPTIMETA_GEO_DB_FIELD_SPATIAL);
-		$administrativeUnit = $publication->getData(OPTIMETA_GEO_DB_FIELD_ADMINUNIT);
+		$timePeriods = $publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS);
+		$spatialProperties = $publication->getData(GEOMETADATA_DB_FIELD_SPATIAL);
+		$administrativeUnit = $publication->getData(GEOMETADATA_DB_FIELD_ADMINUNIT);
 
 		// for the case that no data is available 
 		if ($timePeriods === null) {
@@ -289,9 +289,9 @@ class OptimetaGeoPlugin extends GenericPlugin
 		}
 
 		//assign data as variables to the template 
-		$templateMgr->assign(OPTIMETA_GEO_DB_FIELD_TIME_PERIODS, $timePeriods);
-		$templateMgr->assign(OPTIMETA_GEO_DB_FIELD_SPATIAL, $spatialProperties);
-		$templateMgr->assign(OPTIMETA_GEO_DB_FIELD_ADMINUNIT, $administrativeUnit);
+		$templateMgr->assign(GEOMETADATA_DB_FIELD_TIME_PERIODS, $timePeriods);
+		$templateMgr->assign(GEOMETADATA_DB_FIELD_SPATIAL, $spatialProperties);
+		$templateMgr->assign(GEOMETADATA_DB_FIELD_ADMINUNIT, $administrativeUnit);
 
 		$templateMgr->assign($this->templateParameters);
 
@@ -316,9 +316,9 @@ class OptimetaGeoPlugin extends GenericPlugin
 		//$journal = Application::get()->getRequest()->getJournal();
 
 		// get data from database 
-		$temporalProperties = $publication->getData(OPTIMETA_GEO_DB_FIELD_TIME_PERIODS);
-		$spatialProperties =  $publication->getData(OPTIMETA_GEO_DB_FIELD_SPATIAL);
-		$administrativeUnit = $publication->getData(OPTIMETA_GEO_DB_FIELD_ADMINUNIT);
+		$temporalProperties = $publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS);
+		$spatialProperties =  $publication->getData(GEOMETADATA_DB_FIELD_SPATIAL);
+		$administrativeUnit = $publication->getData(GEOMETADATA_DB_FIELD_ADMINUNIT);
 		//$publication->getLocalizedData('coverage', $journal->getPrimaryLocale());
 
 		// for the case that no data is available 
@@ -335,9 +335,9 @@ class OptimetaGeoPlugin extends GenericPlugin
 		}
 
 		//assign data as variables to the template 
-		$templateMgr->assign(OPTIMETA_GEO_DB_FIELD_TIME_PERIODS, $temporalProperties);
-		$templateMgr->assign(OPTIMETA_GEO_DB_FIELD_SPATIAL, $spatialProperties);
-		$templateMgr->assign(OPTIMETA_GEO_DB_FIELD_ADMINUNIT, $administrativeUnit);
+		$templateMgr->assign(GEOMETADATA_DB_FIELD_TIME_PERIODS, $temporalProperties);
+		$templateMgr->assign(GEOMETADATA_DB_FIELD_SPATIAL, $spatialProperties);
+		$templateMgr->assign(GEOMETADATA_DB_FIELD_ADMINUNIT, $administrativeUnit);
 
 		$templateMgr->assign($this->templateParameters);
 
@@ -363,7 +363,7 @@ class OptimetaGeoPlugin extends GenericPlugin
 	}
 
 	/**
-	 * Function which extends the issue TOC with a timeline and map view - needs the optimetaGeoTheme plugin!
+	 * Function which extends the issue TOC with a timeline and map view - needs the geoMetadataTheme plugin!
 	 * @param hook Templates::Issue::TOC::Main
 	 */
 	public function extendIssueTocTemplate($hookName, $params)
@@ -402,25 +402,25 @@ class OptimetaGeoPlugin extends GenericPlugin
 			}
 		}
 
-		$spatialProperties = $publication->getData(OPTIMETA_GEO_DB_FIELD_SPATIAL);
+		$spatialProperties = $publication->getData(GEOMETADATA_DB_FIELD_SPATIAL);
 		if (($spatialProperties === null || $spatialProperties === '{"type":"FeatureCollection","features":[],"administrativeUnits":{},"temporalProperties":{"timePeriods":[],"provenance":"not available"}}')) {
 			$spatialProperties = 'no data';
 		}
-		$templateMgr->assign(OPTIMETA_GEO_DB_FIELD_SPATIAL, $spatialProperties);
+		$templateMgr->assign(GEOMETADATA_DB_FIELD_SPATIAL, $spatialProperties);
 
 		$templateMgr->assign('journal', Application::get()->getRequest()->getJournal()); // access primary locale
 
-		//$temporalProperties = $publication->getData(OPTIMETA_GEO_DB_FIELD_TIME_PERIODS);
+		//$temporalProperties = $publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS);
 		//if ($temporalProperties === null || $temporalProperties === '') {
 		//	$temporalProperties = 'no data';
 		//}
-		//$templateMgr->assign(OPTIMETA_GEO_DB_FIELD_TIME_PERIODS, $temporalProperties);
+		//$templateMgr->assign(GEOMETADATA_DB_FIELD_TIME_PERIODS, $temporalProperties);
 
 		//$administrativeUnit = $publication->getLocalizedData('coverage', $journal->getPrimaryLocale());
 		//if ($administrativeUnit === null || $administrativeUnit === '') {
 		//	$administrativeUnit = 'no data';
 		//}
-		//$templateMgr->assign(OPTIMETA_GEO_DB_FIELD_ADMINUNIT, $administrativeUnit);
+		//$templateMgr->assign(GEOMETADATA_DB_FIELD_ADMINUNIT, $administrativeUnit);
 
 		$output .= $templateMgr->fetch($this->getTemplateResource('frontend/objects/issue_details.tpl'));
 
@@ -445,18 +445,18 @@ class OptimetaGeoPlugin extends GenericPlugin
 		$dispatcher = $request->getDispatcher();
 		$apiBaseUrl = $dispatcher->url($request, ROUTE_API, $context->getData('urlPath'), '');
 		
-		$usernameGeonames = $this->getSetting($context->getId(), 'optimetaGeo_geonames_username');
+		$usernameGeonames = $this->getSetting($context->getId(), 'geoMetadata_geonames_username');
 		$templateMgr->assign('usernameGeonames', $usernameGeonames);
-		$baseurlGeonames = $this->getSetting($context->getId(), 'optimetaGeo_geonames_baseurl');
+		$baseurlGeonames = $this->getSetting($context->getId(), 'geoMetadata_geonames_baseurl');
 		$templateMgr->assign('baseurlGeonames', $baseurlGeonames);
 
 		$form = new PublicationForm(
             $apiBaseUrl . 'submissions/' . $submissionId . '/publications/' . $latestPublication->getId(),
             $latestPublication,
-            __('plugins.generic.optimetaGeo.publication.success'));
+            __('plugins.generic.geoMetadata.publication.success'));
 
 		$state = $templateMgr->getTemplateVars($this->versionSpecificNameState);
-		$state['components'][OPTIMETA_GEO_FORM_NAME] = $form->getConfig();
+		$state['components'][GEOMETADATA_FORM_NAME] = $form->getConfig();
 		$templateMgr->assign($this->versionSpecificNameState, $state);
 		
 		$templateMgr->assign('submissionId', $submissionId);
@@ -485,7 +485,7 @@ class OptimetaGeoPlugin extends GenericPlugin
 				"nullable"
 			]
 		}';
-		$schema->properties->{'optimetaGeo::timePeriods'} = json_decode($timePeriods);
+		$schema->properties->{'geoMetadata::timePeriods'} = json_decode($timePeriods);
 
 		$spatialProperties = '{
 			"type": "string",
@@ -495,7 +495,7 @@ class OptimetaGeoPlugin extends GenericPlugin
 				"nullable"
 			]
 		}';
-		$schema->properties->{OPTIMETA_GEO_DB_FIELD_SPATIAL} = json_decode($spatialProperties);
+		$schema->properties->{GEOMETADATA_DB_FIELD_SPATIAL} = json_decode($spatialProperties);
 
 		$administrativeUnits = '{
 			"type": "string",
@@ -505,7 +505,7 @@ class OptimetaGeoPlugin extends GenericPlugin
 				"nullable"
 			]
 		}';
-		$schema->properties->{OPTIMETA_GEO_DB_FIELD_ADMINUNIT} = json_decode($administrativeUnits);
+		$schema->properties->{GEOMETADATA_DB_FIELD_ADMINUNIT} = json_decode($administrativeUnits);
 
 		return false;
 	}
@@ -521,21 +521,21 @@ class OptimetaGeoPlugin extends GenericPlugin
 		$newPublication = $params[0];
 		$params = $params[2];
 
-		$temporalProperties = $_POST[OPTIMETA_GEO_DB_FIELD_TIME_PERIODS] ?? null;
-		$spatialProperties =  $_POST[OPTIMETA_GEO_DB_FIELD_SPATIAL] ?? null;
-		$administrativeUnit = $_POST[OPTIMETA_GEO_DB_FIELD_ADMINUNIT] ?? null;
+		$temporalProperties = $_POST[GEOMETADATA_DB_FIELD_TIME_PERIODS] ?? null;
+		$spatialProperties =  $_POST[GEOMETADATA_DB_FIELD_SPATIAL] ?? null;
+		$administrativeUnit = $_POST[GEOMETADATA_DB_FIELD_ADMINUNIT] ?? null;
 		
 		// null if there is no possibility to input data (metadata input before Schedule for Publication)
 		if ($spatialProperties !== null) {
-			$newPublication->setData(OPTIMETA_GEO_DB_FIELD_SPATIAL, $spatialProperties);
+			$newPublication->setData(GEOMETADATA_DB_FIELD_SPATIAL, $spatialProperties);
 		}
 
 		if ($temporalProperties !== null && $temporalProperties !== "") {
-			$newPublication->setData(OPTIMETA_GEO_DB_FIELD_TIME_PERIODS, $temporalProperties);
+			$newPublication->setData(GEOMETADATA_DB_FIELD_TIME_PERIODS, $temporalProperties);
 		}
 
 		if ($administrativeUnit !== null) {
-			$newPublication->setData(OPTIMETA_GEO_DB_FIELD_ADMINUNIT, $administrativeUnit);
+			$newPublication->setData(GEOMETADATA_DB_FIELD_ADMINUNIT, $administrativeUnit);
 
 			// turn admin units into string then save in Coverage field
 			$administrativeUnitNames = array_map(function ($unit) {
@@ -630,7 +630,7 @@ class OptimetaGeoPlugin extends GenericPlugin
 	 */
 	public function getDisplayName()
 	{
-		return __('plugins.generic.optimetaGeo.name');
+		return __('plugins.generic.geoMetadata.name');
 	}
 
 	/**
@@ -641,7 +641,7 @@ class OptimetaGeoPlugin extends GenericPlugin
 	 */
 	public function getDescription()
 	{
-		return __('plugins.generic.optimetaGeo.description');
+		return __('plugins.generic.geoMetadata.description');
 	}
 
 	/**

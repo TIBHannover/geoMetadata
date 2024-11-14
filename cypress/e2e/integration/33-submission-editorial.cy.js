@@ -7,7 +7,7 @@
  *
  */
 
-describe('OPTIMETA Geo Plugin Production Editing', function () {
+describe('geoMetadata Production Editing', function () {
 
   var submission;
   var sub1start = '2022-01-01';
@@ -52,11 +52,11 @@ describe('OPTIMETA Geo Plugin Production Editing', function () {
     cy.get('textarea').should('have.length', 3); // three text areas for raw input
 
     // check metadata is loaded correctly
-    cy.get('textarea[name="optimetaGeo::timePeriods"]').invoke('val') // .should('contain') does not work
+    cy.get('textarea[name="geoMetadata::timePeriods"]').invoke('val') // .should('contain') does not work
       .then($value => {
         expect($value).to.equal('{' + sub1start + '..' + sub1end + '}');
       });
-    cy.get('textarea[name="optimetaGeo::administrativeUnit"]').invoke('val')
+    cy.get('textarea[name="geoMetadata::administrativeUnit"]').invoke('val')
       .then($value => {
         expect($value).to.include('["Earth","Europe","Federal Republic of Germany"]');
       });
@@ -68,7 +68,7 @@ describe('OPTIMETA Geo Plugin Production Editing', function () {
     cy.get('input[name=datetimes]').clear().type('2022-09-02 - 2022-10-03');
     cy.wait(500);
     cy.get('.applyBtn').click();
-    cy.get('textarea[name="optimetaGeo::timePeriods"]').invoke('val')
+    cy.get('textarea[name="geoMetadata::timePeriods"]').invoke('val')
       .then($value => {
         expect($value).to.equal('{2022-09-02..2022-10-03}');
       });
@@ -78,11 +78,11 @@ describe('OPTIMETA Geo Plugin Production Editing', function () {
     cy.toolbarButton('marker').click();
     cy.get('#mapdiv').dblclick(220, 200);
     cy.wait(2000); // needs to query GeoNames etc.
-    cy.get('textarea[name="optimetaGeo::spatialProperties"]').invoke('val')
+    cy.get('textarea[name="geoMetadata::spatialProperties"]').invoke('val')
       .then($value => {
         expect($value).to.include('{"type":"Point","coordinates":['); // before there was only type:LineString
       });
-    cy.get('textarea[name="optimetaGeo::administrativeUnit"]').invoke('val')
+    cy.get('textarea[name="geoMetadata::administrativeUnit"]').invoke('val')
       .then($value => {
         expect($value).to.not.include('Federal Republic of Germany');
       });
@@ -92,7 +92,7 @@ describe('OPTIMETA Geo Plugin Production Editing', function () {
 
   it('Updates raw data and coverage field in Metadata tab when interacting with administrative regions tags', function () {
     cy.get('[title="Earth, Europe"] > .tagit-close').click();
-    cy.get('textarea[name="optimetaGeo::administrativeUnit"]').invoke('val')
+    cy.get('textarea[name="geoMetadata::administrativeUnit"]').invoke('val')
       .then($value => {
         expect($value).to.not.include('Europe');
       });
@@ -112,11 +112,11 @@ describe('OPTIMETA Geo Plugin Production Editing', function () {
     cy.get('textarea').should('have.length', 3); // three text areas for raw input
 
     // check metadata is loaded correctly
-    cy.get('textarea[name="optimetaGeo::timePeriods"]').invoke('val') // .should('contain') does not work
+    cy.get('textarea[name="geoMetadata::timePeriods"]').invoke('val') // .should('contain') does not work
       .then($value => {
         expect($value).to.equal('{' + sub1start + '..' + sub1end + '}');
       });
-    cy.get('textarea[name="optimetaGeo::administrativeUnit"]').invoke('val')
+    cy.get('textarea[name="geoMetadata::administrativeUnit"]').invoke('val')
       .then($value => {
         expect($value).to.include('["Earth","Europe","Federal Republic of Germany"]');
       });
@@ -169,8 +169,8 @@ describe('OPTIMETA Geo Plugin Production Editing', function () {
     cy.wait(5000);
 
     cy.get('a:contains("Preview"):visible').click();
-    cy.get('#optimetageo_span_start').should('contain', '2022-10-10');
-    cy.get('#optimetageo_span_end').should('contain', '2022-11-11');
+    cy.get('#geoMetadata_span_start').should('contain', '2022-10-10');
+    cy.get('#geoMetadata_span_end').should('contain', '2022-11-11');
     cy.get('meta[name="DC.Coverage"]').should('have.attr', 'content').and('equal', 'Earth, Europe');
     cy.get('meta[name="DC.SpatialCoverage"]').should('have.attr', 'content').and('contain', '{"type":"Point","coordinates":[');
 
@@ -236,8 +236,8 @@ describe('OPTIMETA Geo Plugin Production Editing', function () {
       cy.wait(500);
 
       // check correct data is on the publication page
-      cy.get('#optimetageo_span_start').should('contain', '2022-09-08');
-      cy.get('#optimetageo_span_end').should('contain', '2022-09-08');
+      cy.get('#geoMetadata_span_start').should('contain', '2022-09-08');
+      cy.get('#geoMetadata_span_end').should('contain', '2022-09-08');
       cy.get('meta[name="DC.Coverage"]').should('have.attr', 'content').and('equal', 'Earth, Europe');
       cy.get('meta[name="DC.SpatialCoverage"]').should('have.attr', 'content').and('contain', '{"type":"Point","coordinates":['); // cypress takes are of decoding
     });

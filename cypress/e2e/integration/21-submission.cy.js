@@ -7,7 +7,7 @@
  *
  */
 
-describe('OPTIMETA Geo Plugin Submission without Geonames', function () {
+describe('geoMetadata Submission without Geonames', function () {
 
   var submission;
   var sub1start = '2021-01-01';

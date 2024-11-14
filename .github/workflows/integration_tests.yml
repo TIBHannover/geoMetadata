@@ -7,7 +7,7 @@
 #
 # Based on https://github.com/o2r-project/ojs-erc-plugin/blob/master/.github/workflows/cypress_test.yml
 #
-name: OPTIMETA Geo Plugin CI Test
+name: geoMetadata CI Test
 
 on:
   push:
@@ -18,7 +18,7 @@ on:
       - main
 
 jobs:
-  geoplugin:
+  geoMetadata:
     name: ${{ matrix.pkp-application }} version ${{ matrix.pkp-version }} with ${{ matrix.dbs }}
     runs-on: ubuntu-20.04
     strategy:
@@ -78,7 +78,7 @@ jobs:
       - name: Checkout theme plugin
         run: |
           cd ${{ github.workspace }}/..
-          git clone https://github.com/ifgi/optimetaGeoTheme
+          git clone https://github.com/ifgi/geoMetadataTheme
 
       - name: Start OJS and database
         run: |

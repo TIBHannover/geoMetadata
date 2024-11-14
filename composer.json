@@ -1,5 +1,5 @@
 {
-    "name": "optimeta/geo",
+    "name": "ojs/geometadata",
     "description": "Create and display spatio-temporal metadata for publications",
     "license": "GPL-3.0-or-later",
     "keywords": [
@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Optimeta\\Geo\\":"classes"
+            "ojs\\geometadata\\":"classes"
         }
     },
     "extra": {

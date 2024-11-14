@@ -33,7 +33,7 @@ var articleLocations = new L.FeatureGroup();
 map.addLayer(articleLocations);
 
 var overlayMaps = {
-    [optimetageo_layerName]: articleLocations,
+    [geoMetadata_layerName]: articleLocations,
 };
 
 // add layerControl to the map to the map 
@@ -42,7 +42,7 @@ L.control.layers(baseLayers, overlayMaps).addTo(map);
 // load spatial data
 $(function () {
     // load properties for each article from issue_map.tpl
-    var data = JSON.parse($('.optimeta_data.publications')[0].value);
+    var data = JSON.parse($('.geoMetadata_data.publications')[0].value);
 
     data.forEach((publication, index) => {
         let articleId = publication['id'];
@@ -54,7 +54,7 @@ $(function () {
         let articleCoverage = publication['coverage'];
         // popup content roughly based on issue_details.tpl
         const popupTemplate = `<h2 class="title">
-            <a id="article-${articleId}" class="optimetageo_journal_maplink" href="${optimetageo_articleBaseUrl}/${articleId}">${articleTitle}</a>
+            <a id="article-${articleId}" class="geoMetadata_journal_maplink" href="${geoMetadata_articleBaseUrl}/${articleId}">${articleTitle}</a>
             </h2>
             <br/>
             <div class="authors">
@@ -71,7 +71,7 @@ $(function () {
             onEachFeature: (feature, layer) => {
                 layer.bindPopup(`${popupTemplate}`);
             },
-            style: optimetageo_mapLayerStyle,
+            style: geoMetadata_mapLayerStyle,
             articleId: articleId
         });
         articleLocations.addLayer(layer);

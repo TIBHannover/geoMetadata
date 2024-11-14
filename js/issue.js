@@ -34,19 +34,19 @@ var articleLocations = new L.FeatureGroup();
 map.addLayer(articleLocations);
 
 var overlayMaps = {
-    [optimetageo_layerName]: articleLocations,
+    [geoMetadata_layerName]: articleLocations,
 };
 
 // add layerControl to the map to the map 
 L.control.layers(baseLayers, overlayMaps).addTo(map);
 
 const iconStyle = L.icon({
-    iconUrl: optimetageo_markerBaseUrl + 'marker-icon-2x-blue.png',
-    shadowUrl: optimetageo_markerBaseUrl + 'marker-shadow.png'
+    iconUrl: geoMetadata_markerBaseUrl + 'marker-icon-2x-blue.png',
+    shadowUrl: geoMetadata_markerBaseUrl + 'marker-shadow.png'
 });
 const iconStyleHighlight = L.icon({
-    iconUrl: optimetageo_markerBaseUrl + 'marker-icon-2x-red.png',
-    shadowUrl: optimetageo_markerBaseUrl + 'marker-shadow.png'
+    iconUrl: geoMetadata_markerBaseUrl + 'marker-icon-2x-red.png',
+    shadowUrl: geoMetadata_markerBaseUrl + 'marker-shadow.png'
 });
 
 // highlighting features based on https://leafletjs.com/examples/choropleth/
@@ -54,7 +54,7 @@ function highlightFeature(layer, feature) {
     if (feature && feature.geometry.type === "Point" && layer.options.icon) { // only setIcon on a layer that already has one
         layer.setIcon(iconStyleHighlight);
     } else {
-        layer.setStyle(optimetageo_mapLayerStyleHighlight);
+        layer.setStyle(geoMetadata_mapLayerStyleHighlight);
         if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
             layer.bringToFront();
         }
@@ -62,39 +62,42 @@ function highlightFeature(layer, feature) {
 }
 
 function highlightArticle(id) {
-    $('#' + id).parent().closest('div').addClass('optimetageo_title_hover');
+    $('#' + id).parent().closest('div').addClass('geoMetadata_title_hover');
 }
 
 function resetHighlightFeature(layer, feature) {
     if (feature && feature.geometry.type === "Point" && layer.options.icon) {
         layer.setIcon(iconStyle);
     } else {
-        layer.setStyle(optimetageo_mapLayerStyleHighlight);
+        layer.setStyle(geoMetadata_mapLayerStyleHighlight);
         // layer.resetStyle(); // e's layers is a geoJSON layer, so maybe access that function here somehow?
-        layer.setStyle(optimetageo_mapLayerStyle);
+        layer.setStyle(geoMetadata_mapLayerStyle);
     }
 }
 
 function resetHighlightArticle(id) {
-    $('#' + id).parent().closest('div').removeClass('optimetageo_title_hover');
+    $('#' + id).parent().closest('div').removeClass('geoMetadata_title_hover');
 }
 
 var articleFeaturesMap = new Map();
 
 // load spatial data
 $(function () {
+    console.log("Hello");
+    console.log($('.geoMetadata_data.spatial').toArray());
+
     // load properties for each article from issue_map.tpl
-    var spatialInputs = $('.optimeta_data.spatial').toArray().map(input => {
+    var spatialInputs = $('.geoMetadata_data.spatial').toArray().map(input => {
         let geojson = JSON.parse(input.value);
         return (geojson);
     });
-    var articleIdInputs = $('.optimeta_data.articleId').toArray().map(input => {
+    var articleIdInputs = $('.geoMetadata_data.articleId').toArray().map(input => {
         return (input.value);
     });
-    var popupInputs = $('.optimeta_data.popup').toArray().map(input => {
+    var popupInputs = $('.geoMetadata_data.popup').toArray().map(input => {
         return (input.value);
     });
-    //var tooltipInputs = $('.optimeta_data.tooltip').toArray().map(input => {
+    //var tooltipInputs = $('.geoMetadata_data.tooltip').toArray().map(input => {
     //    return(input.value);
     //});
 
@@ -118,7 +121,7 @@ $(function () {
                 feature.properties['articleId'] = articleId;
                 features.push(feature);
             },
-            style: optimetageo_mapLayerStyle
+            style: geoMetadata_mapLayerStyle
         });
 
         articleLocations.addLayer(layer);
@@ -146,7 +149,7 @@ $(function () {
 /*
 $(function () {
     // load time periods from article_details.tpl 
-    var temporalPropertiesDecoded = document.getElementById("optimeta_temporal").value;
+    var temporalPropertiesDecoded = document.getElementById("geoMetadata_temporal").value;
 
 });
 */
