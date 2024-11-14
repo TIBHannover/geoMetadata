@@ -1,15 +1,15 @@
 {**
  * templates/frontend/objects/article_details.tpl
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
- * @brief View of a map for all articles of an issue
+ * @brief View of a map for all articles of an issue. 
  *
  * @uses $issue Issue The issue
  * @uses $heading string HTML heading element, default: h2
  *}
+ 
  {if !$heading}
 	{assign var="heading" value="h2"}
 {/if}

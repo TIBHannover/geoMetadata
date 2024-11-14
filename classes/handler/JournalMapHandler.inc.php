@@ -1,14 +1,12 @@
 <?php
-
 /**
  * @file classes/handler/JournalMapHandler.inc.php
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class JournalMapHandler
- * @brief Show all articles of a journal on one map
+ * @brief Show all articles of a journal on one map.
  */
 
 import('classes.handler.Handler');

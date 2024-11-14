@@ -1,16 +1,15 @@
 <?php
 /**
- * @file plugins/generic/optimetaGeo/classes/components/forms/PublicationForm.php
- *
- * Copyright (c) 2021+ OPTIMETA project
+ * @file classes/components/forms/PublicationForm.php
  * 
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
- *
+ *  
  * @class PublicationForm
- * @ingroup plugins_generic_optimetageo
  *
- * @brief A preset form for setting a publication's spatio-temporal metadata
+ * @brief A preset form for setting a publication's spatio-temporal metadata.
  */
+
 namespace geoMetadata\Components\Forms;
 
 use \PKP\components\forms\FormComponent;

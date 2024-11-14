@@ -1,14 +1,12 @@
 {**
  * templates/submission/formsubmissionMetadataFormFields.tpl
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
- * Copyright (c) 2021 Tom Niers
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @brief Add forms to enter geospatial metadata during the submission.
  * 
- * The main template is here extended using the hook 'Templates::Submission::SubmissionMetadataForm::AdditionalMetadata'
+ * The main template is here extended using the hook 'Templates::Submission::SubmissionMetadataForm::AdditionalMetadata'.
  *}
 
 <link rel="stylesheet" href="{$pluginStylesheetURL}/geoMetadata.css" type="text/css" />

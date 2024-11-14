@@ -1,9 +1,7 @@
 /**
- * 
  * js/issue.js
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  * 
  * @brief Display spatio-temporal metadata in the issue view. 

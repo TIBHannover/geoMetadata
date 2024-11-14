@@ -1,12 +1,11 @@
 /**
  * @file cypress/tests/support/commands.js
+ *
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  * 
  * Based on https://github.com/pkp/pkp-lib/blob/main/cypress/support/commands.js
- *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
- * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
- *
+ * 
  * Examples for custom commands and overwrite existing commands:
  * -- This is a parent command --
  * Cypress.Commands.add('login', (email, password) => { ... })
@@ -16,7 +15,7 @@
  * Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
  * -- This will overwrite an existing command --
  * Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
- * For more comprehensive examples of custom commands please read more here: https://on.cypress.io/custom-commands
+ * For more comprehensive examples of custom commands please read more here: https://on.cypress.io/custom-commands.
  */
 
 import 'cypress-file-upload';

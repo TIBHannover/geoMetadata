@@ -1,8 +1,7 @@
 {**
  * templates/frontend/pages/journal_map.tpl
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @brief Display the page to view geospatial metadata for a journal.
@@ -10,6 +9,7 @@
  * @uses $journal The name of the journal currently being viewed
  * @uses $publications JSON-encoded array with all data for the map
  *}
+
 {include file="frontend/components/header.tpl" pageTitle="plugins.generic.geoMetadata.journal.pageTitle"}
 
 <script type="text/javascript">

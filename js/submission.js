@@ -1,9 +1,7 @@
 /**
- * 
  * js/submission.js
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  * 
  * @brief Enable input of geospatial metadata during article submission and editing during review/before publication.

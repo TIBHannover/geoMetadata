@@ -1,9 +1,7 @@
 /**
- * 
  * js/article_details.js
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  * 
  * @brief Display spatio-temporal metadata in the article view.
@@ -205,7 +203,7 @@ function displayBboxOfAdministrativeUnitWithLowestCommonDenominatorOfASetOfAdmin
         // the map is fitted to the given layer 
         map.fitBounds(administrativeUnitsMap.getBounds());
 
-        if (geojson.administrativeUnits === {}) {
+        if (geojson.administrativeUnits == {}) {
             administrativeUnitsMap.clearLayers();
         }
     }
