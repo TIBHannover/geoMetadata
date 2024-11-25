@@ -204,8 +204,9 @@ class geoMetadata extends GenericPlugin
 			}
 		}
 
-		if ($timePeriods = $publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS)) {
-			// FIXME crazy use of explode makes more sense when we support multiple periods
+		$timePeriods = $publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS); 
+		if ($timePeriods != 'no data') {
+			// FIXME crazy use of explode makes more sense when we support multiple periods			
 			$begin = explode('..', explode('{', $timePeriods)[1])[0];
 			$end = explode('}', explode('..', explode('{', $timePeriods)[1])[1])[0];
 
@@ -482,7 +483,7 @@ class geoMetadata extends GenericPlugin
 				"nullable"
 			]
 		}';
-		$schema->properties->{'geoMetadata::timePeriods'} = json_decode($timePeriods);
+		$schema->properties->{GEOMETADATA_DB_FIELD_TIME_PERIODS} = json_decode($timePeriods);
 
 		$spatialProperties = '{
 			"type": "string",
