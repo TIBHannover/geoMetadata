@@ -78,10 +78,10 @@ msgid "plugins.generic.geoMetadata.settings.usernameGeonames.description"
 msgstr "You have to specify your username for the GeoNames API, so that an alignment for the administrative units is possible. Create an account on <a href=\"https://www.geonames.org/login\">https://www.geonames.org/login</a> and insert the username here."
 
 msgid "plugins.generic.geoMetadata.settings.baseurlGeonames"
-msgstr "Base URL of Geonames, use to switch between 'http' and 'https'."
+msgstr "Base URL of GeoNames, use to switch between 'http' and 'https'."
 
 msgid "plugins.generic.geoMetadata.settings.baseurlGeonames.description"
-msgstr "Use one of <code>https://www.geonames.org</code> or <code>http://api.geonames.org</code> depending whether your OJS server is published on http or https."
+msgstr "Use one of <code>https://www.geonames.org</code> or <code>http://api.geonames.org</code> depending whether your OJS server is published on http or https. If you run the plugin locally you should use <code>http://api.geonames.org</code>."
 
 msgid "plugins.generic.geoMetadata.name"
 msgstr "geoMetadata"
