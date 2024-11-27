@@ -81,8 +81,6 @@ var articleFeaturesMap = new Map();
 
 // load spatial data
 $(function () {
-    console.log("Hello");
-    console.log($('.geoMetadata_data.spatial').toArray());
 
     // load properties for each article from issue_map.tpl
     var spatialInputs = $('.geoMetadata_data.spatial').toArray().map(input => {

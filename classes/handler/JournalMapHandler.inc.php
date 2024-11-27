@@ -16,7 +16,7 @@ class JournalMapHandler extends Handler
 {
     public function index($args, $request)
     {
-        $plugin = PluginRegistry::getPlugin('generic', 'geoMetadata');
+        $plugin = PluginRegistry::getPlugin('generic', 'geometadata');
 
         $templateMgr = TemplateManager::getManager($request);
 
