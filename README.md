@@ -1,4 +1,11 @@
-[![OPTIMETA Logo](https://projects.tib.eu/fileadmin/_processed_/e/8/csm_Optimeta_Logo_web_98c26141b1.png)](https://projects.tib.eu/optimeta/en/) [![KOMET Logo](https://projects.tib.eu/fileadmin/data/komet/img/Logo_Komet_RZ.png)](https://projects.tib.eu/komet/en/)
+<div>
+<a href="https://projects.tib.eu/optimeta/en/">
+<img src="https://projects.tib.eu/fileadmin/_processed_/e/8/csm_Optimeta_Logo_web_98c26141b1.png" alt="Alt-Text" title="OPTIMETA Logo" width="40%" align="middle"/>
+</a>
+<a href="https://projects.tib.eu/komet/en/">
+<img src="https://projects.tib.eu/fileadmin/data/komet/img/Logo_Komet_RZ.png" alt="Alt-Text" title="KOMET Logo" width="20%" align="middle">
+</a>
+</div>
 
 # geoMetadata Plugin
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8198983.svg)](https://doi.org/10.5281/zenodo.8198983)
