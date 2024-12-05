@@ -41,14 +41,13 @@ In addition, the information is also added to the HTML source code of article’
 - A first prototype of the geoMetadata Plugin was developed under the name *geoOJS* by Tom Niers for the BSc. thesis [Geospatial Metadata for Discovery in Scholarly Publishing](http://nbn-resolving.de/urn:nbn:de:hbz:6-69029469735); the work was [presented at The Munin Conference on Scholarly Publishing, 2020](https://doi.org/10.7557/5.5590), see [recording](https://youtu.be/-Lc9AjHq_AY).
 
 ## Download & Installation
-
-This version of the plugin is compatible with OJS Version `3.3 LTS`, especially `OJS 3.3.0-19`. 
-You can find the corresponding OJS version in the [PKP Software Download Section](https://pkp.sfu.ca/software/ojs/download/) and download it by using the following link: <https://pkp.sfu.ca/ojs/download/ojs-3.3.0-19.tar.gz>. 
-
-Once OJS has been installed, the plugin must be downloaded and installed.
+You can download OJS via the [PKP Software Download Section](https://pkp.sfu.ca/software/ojs/download/). 
+A detailed [GetStarted Guide](GetStarted.md) for installing OJS is available. 
 
 ### From Source
-1. Checkout the desired version from [the code repository](https://github.com/TIBHannover/geoMetadata/) and save the contents into `ojs/plugins/generic/geoMetadata` in your OJS installation.
+Once OJS has been installed, the plugin must be downloaded and installed.
+
+1. Checkout the desired OJS version from [the code repository](https://github.com/TIBHannover/geoMetadata/) and save the contents into `ojs/plugins/generic/geoMetadata` in your OJS installation.
 1. Run `composer install` to download JavaScript dependencies for the plugin using [Asset Packagist](https://asset-packagist.org/site/about).
    Go to `js/lib/leaflet-control-geocoder` and run `npm install` (see [this issue](https://github.com/perliedman/leaflet-control-geocoder/issues/310)).
 1. Activate the plugin in the OJS plug-in settings.
