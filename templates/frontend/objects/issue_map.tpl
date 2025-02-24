@@ -25,7 +25,7 @@
  <div class="section">
 
 {if $section.articles}
-	<link rel="stylesheet" href="{$pluginStylesheetURL}/geoMetadata.css" type="text/css" />
+	<link rel="stylesheet" href="{$pluginStylesheetURL}/styles.css" type="text/css" />
 	
 	<script type="text/javascript">
 		const geoMetadata_mapLayerStyle = {

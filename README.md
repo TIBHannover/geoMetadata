@@ -26,13 +26,13 @@ In the article view, the properties specified by the author are then displayed a
 In addition, the information is also added to the HTML source code of article’s landing pages in a semantically meaningful way.
 
 <div style="text-align:center">
-<img src="screenshots/SubmissionView.png" alt="Alt-Text" title="Screenshot of entering geospatial properties in the OJS submission process" width="50%" align="middle"/>
+<img src="docs/screenshots/SubmissionView.png" alt="Alt-Text" title="Screenshot of entering geospatial properties in the OJS submission process" width="50%" align="middle"/>
 <br/>
 <em>Screenshot of entering geospatial properties in the OJS submission process</em>
 </div>
 
 <div style="text-align:center">
-<img src="screenshots/ArticleView.png" alt="screenshot of geo plugin" title="Screenshot of geospatial properties in the OJS article view" width="50%" align="middle"/>
+<img src="docs/screenshots/ArticleView.png" alt="screenshot of geo plugin" title="Screenshot of geospatial properties in the OJS article view" width="50%" align="middle"/>
 <br/>
 <em>Screenshot of geospatial properties in the OJS article view</em>
 </div>

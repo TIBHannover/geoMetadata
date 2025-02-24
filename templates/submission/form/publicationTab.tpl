@@ -7,7 +7,7 @@
  * @brief Show geospatial metadata and allow editing during publication phase.
  *}
 
-<link rel="stylesheet" href="{$pluginStylesheetURL}/geoMetadata.css" type="text/css" />
+<link rel="stylesheet" href="{$pluginStylesheetURL}/styles.css" type="text/css" />
 
 {* see templates/workflow/workflow.tpl for HTML structure, CSS classes, etc., used below *}
 

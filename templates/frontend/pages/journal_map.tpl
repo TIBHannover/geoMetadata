@@ -24,7 +24,7 @@ const geoMetadata_layerName = '{translate key="plugins.generic.geoMetadata.map.a
 const geoMetadata_articleBaseUrl = '{if $journal}{url journal=$journal->getPath() page="article" op="view" path=""}{else}{url page="article" op="view" path=""}{/if}';
 </script>
 
-<link rel="stylesheet" href="{$pluginStylesheetURL}geoMetadata.css" type="text/css" />
+<link rel="stylesheet" href="{$pluginStylesheetURL}styles.css" type="text/css" />
 
 <input type="text" class="geoMetadata_data publications" name="publications"
     style="height: 0px; width: 0px; visibility: hidden;" value='{$publications}'>

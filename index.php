@@ -6,5 +6,5 @@
  * Distributed under the GNU GPL v3. For full terms see the file dLICENSE.
  */
 
-require_once('geoMetadata.inc.php');
-return new geoMetadata();
+require_once('GeoMetadataPlugin.inc.php');
+return new GeoMetadataPlugin();

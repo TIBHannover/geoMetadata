@@ -1,11 +1,11 @@
 <?php
 /**
- * @file geoMetadata.inc.php
+ * @file GeoMetadataPlugin.inc.php
  *
  * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file dLICENSE.
  *
- * @class geoMetadata
+ * @class GeoMetadataPlugin
  * @brief Plugin class for the OPTIMETA project's geo plugin.
  */
 
@@ -18,9 +18,9 @@ const GEOMETADATA_DB_FIELD_ADMINUNIT =    'geoMetadata::administrativeUnit';
 
 const GEOMETADATA_FORM_NAME = 'geoMetadata_PublicationForm';
 
-const GEOMETADATA_GEO_PLUGIN_PATH = __DIR__;
+const GEOMETADATA_PLUGIN_PATH = __DIR__;
 
-require_once (GEOMETADATA_GEO_PLUGIN_PATH . '/vendor/autoload.php');
+require_once (GEOMETADATA_PLUGIN_PATH . '/vendor/autoload.php');
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 
@@ -30,7 +30,7 @@ import('plugins.generic.geoMetadata.classes.Components.Forms.SettingsForm');
 use geoMetadata\Components\Forms\PublicationForm;
 use geoMetadata\Components\Forms\SettingsForm;
 
-class geoMetadata extends GenericPlugin
+class GeoMetadataPlugin extends GenericPlugin
 {
     protected $ojsVersion = '3.3.0.0';
 
