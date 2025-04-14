@@ -4,247 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91ab07b29311c2162794e432f42f3bba",
+    "content-hash": "cea02a8d5036924626d70c50a32c8882",
     "packages": [
-        {
-            "name": "bower-asset/leaflet",
-            "version": "v1.6.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:Leaflet/Leaflet.git",
-                "reference": "0c81bdf904d864fd12a286e3d1979f47aba17991"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Leaflet/Leaflet/zipball/0c81bdf904d864fd12a286e3d1979f47aba17991",
-                "reference": "0c81bdf904d864fd12a286e3d1979f47aba17991"
-            },
-            "type": "bower-asset"
-        },
-        {
-            "name": "bower-asset/leaflet-color-markers",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:pointhi/leaflet-color-markers.git",
-                "reference": "575461f7806e2d147a82fbc159aba5e659fbeb4e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pointhi/leaflet-color-markers/zipball/575461f7806e2d147a82fbc159aba5e659fbeb4e",
-                "reference": "575461f7806e2d147a82fbc159aba5e659fbeb4e"
-            },
-            "require": {
-                "bower-asset/leaflet": ">=0.7.0"
-            },
-            "type": "bower-asset",
-            "license": [
-                "BSD-2-Clause"
-            ]
-        },
-        {
-            "name": "bower-asset/leaflet-control-geocoder",
-            "version": "2.4.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:perliedman/leaflet-control-geocoder.git",
-                "reference": "04e71a6d76fa8673a7b9c20c287d8241e53305bb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/perliedman/leaflet-control-geocoder/zipball/04e71a6d76fa8673a7b9c20c287d8241e53305bb",
-                "reference": "04e71a6d76fa8673a7b9c20c287d8241e53305bb"
-            },
-            "type": "bower-asset",
-            "license": [
-                "BSD-2-Clause"
-            ]
-        },
-        {
-            "name": "bower-asset/leaflet-draw",
-            "version": "v1.0.4",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:Leaflet/Leaflet.draw.git",
-                "reference": "65d7866b14e926b72465d0077809683a77344019"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Leaflet/Leaflet.draw/zipball/65d7866b14e926b72465d0077809683a77344019",
-                "reference": "65d7866b14e926b72465d0077809683a77344019"
-            },
-            "require": {
-                "bower-asset/leaflet": ">=0.7.0"
-            },
-            "type": "bower-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "bower-asset/moment",
-            "version": "2.18.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/moment/moment.git",
-                "reference": "b8a7fc310eb3625e83fc0c8f1ea2840fa83c7378"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/moment/moment/zipball/b8a7fc310eb3625e83fc0c8f1ea2840fa83c7378",
-                "reference": "b8a7fc310eb3625e83fc0c8f1ea2840fa83c7378"
-            },
-            "type": "bower-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "composer/installers",
-            "version": "v2.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/composer/installers.git",
-                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/12fb2dfe5e16183de69e784a7b84046c43d97e8e",
-                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0 || ^2.0",
-                "php": "^7.2 || ^8.0"
-            },
-            "require-dev": {
-                "composer/composer": "^1.10.27 || ^2.7",
-                "composer/semver": "^1.7.2 || ^3.4.0",
-                "phpstan/phpstan": "^1.11",
-                "phpstan/phpstan-phpunit": "^1",
-                "symfony/phpunit-bridge": "^7.1.1",
-                "symfony/process": "^5 || ^6 || ^7"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "Composer\\Installers\\Plugin",
-                "branch-alias": {
-                    "dev-main": "2.x-dev"
-                },
-                "plugin-modifies-install-path": true
-            },
-            "autoload": {
-                "psr-4": {
-                    "Composer\\Installers\\": "src/Composer/Installers"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kyle Robinson Young",
-                    "email": "kyle@dontkry.com",
-                    "homepage": "https://github.com/shama"
-                }
-            ],
-            "description": "A multi-framework Composer library installer",
-            "homepage": "https://composer.github.io/installers/",
-            "keywords": [
-                "Dolibarr",
-                "Eliasis",
-                "Hurad",
-                "ImageCMS",
-                "Kanboard",
-                "Lan Management System",
-                "MODX Evo",
-                "MantisBT",
-                "Mautic",
-                "Maya",
-                "OXID",
-                "Plentymarkets",
-                "Porto",
-                "RadPHP",
-                "SMF",
-                "Starbug",
-                "Thelia",
-                "Whmcs",
-                "WolfCMS",
-                "agl",
-                "annotatecms",
-                "attogram",
-                "bitrix",
-                "cakephp",
-                "chef",
-                "cockpit",
-                "codeigniter",
-                "concrete5",
-                "concreteCMS",
-                "croogo",
-                "dokuwiki",
-                "drupal",
-                "eZ Platform",
-                "elgg",
-                "expressionengine",
-                "fuelphp",
-                "grav",
-                "installer",
-                "itop",
-                "known",
-                "kohana",
-                "laravel",
-                "lavalite",
-                "lithium",
-                "magento",
-                "majima",
-                "mako",
-                "matomo",
-                "mediawiki",
-                "miaoxing",
-                "modulework",
-                "modx",
-                "moodle",
-                "osclass",
-                "pantheon",
-                "phpbb",
-                "piwik",
-                "ppi",
-                "processwire",
-                "puppet",
-                "pxcms",
-                "reindex",
-                "roundcube",
-                "shopware",
-                "silverstripe",
-                "sydes",
-                "sylius",
-                "tastyigniter",
-                "wordpress",
-                "yawik",
-                "zend",
-                "zikula"
-            ],
-            "support": {
-                "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/v2.3.0"
-            },
-            "funding": [
-                {
-                    "url": "https://packagist.com",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/composer",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-06-24T20:46:46+00:00"
-        },
         {
             "name": "npm-asset/daterangepicker",
             "version": "3.1.0",
@@ -274,6 +35,57 @@
             ]
         },
         {
+            "name": "npm-asset/leaflet",
+            "version": "1.9.4",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/leaflet/-/leaflet-1.9.4.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "BSD-2-Clause"
+            ]
+        },
+        {
+            "name": "npm-asset/leaflet-color-markers",
+            "version": "0.1.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/leaflet-color-markers/-/leaflet-color-markers-0.1.0.tgz"
+            },
+            "require": {
+                "npm-asset/leaflet": ">=1.7.1,<2.0.0"
+            },
+            "type": "npm-asset",
+            "license": [
+                "BSD-2-Clause"
+            ]
+        },
+        {
+            "name": "npm-asset/leaflet-control-geocoder",
+            "version": "3.1.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/leaflet-control-geocoder/-/leaflet-control-geocoder-3.1.0.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "BSD-2-Clause"
+            ]
+        },
+        {
+            "name": "npm-asset/leaflet-draw",
+            "version": "1.0.4",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/leaflet-draw/-/leaflet-draw-1.0.4.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "npm-asset/moment",
             "version": "2.30.1",
             "dist": {
@@ -284,63 +96,6 @@
             "license": [
                 "MIT"
             ]
-        },
-        {
-            "name": "oomphinc/composer-installers-extender",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/oomphinc/composer-installers-extender.git",
-                "reference": "cbf4b6f9a24153b785d09eee755b995ba87bd5f9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/oomphinc/composer-installers-extender/zipball/cbf4b6f9a24153b785d09eee755b995ba87bd5f9",
-                "reference": "cbf4b6f9a24153b785d09eee755b995ba87bd5f9",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.1 || ^2.0",
-                "composer/installers": "^1.0 || ^2.0",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "composer/composer": "^2.0",
-                "phpunit/phpunit": "^7.2",
-                "squizlabs/php_codesniffer": "^3.3"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "OomphInc\\ComposerInstallersExtender\\Plugin"
-            },
-            "autoload": {
-                "psr-4": {
-                    "OomphInc\\ComposerInstallersExtender\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Stephen Beemsterboer",
-                    "email": "stephen@oomphinc.com",
-                    "homepage": "https://github.com/balbuf"
-                },
-                {
-                    "name": "Nathan Dentzau",
-                    "email": "nate@oomphinc.com",
-                    "homepage": "http://oomph.is/ndentzau"
-                }
-            ],
-            "description": "Extend the composer/installers plugin to accept any arbitrary package type.",
-            "homepage": "http://www.oomphinc.com/",
-            "support": {
-                "issues": "https://github.com/oomphinc/composer-installers-extender/issues",
-                "source": "https://github.com/oomphinc/composer-installers-extender/tree/2.0.1"
-            },
-            "time": "2021-12-15T12:32:42+00:00"
         }
     ],
     "packages-dev": [],

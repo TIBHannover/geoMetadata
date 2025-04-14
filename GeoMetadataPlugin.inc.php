@@ -94,7 +94,7 @@ class GeoMetadataPlugin extends GenericPlugin
 			$urlMomentJS =                 $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/moment/moment.js';
 			$urlDaterangepickerJS =        $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/daterangepicker/daterangepicker.js';
 			$urlDaterangepickerCSS =       $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/daterangepicker/daterangepicker.css';
-			$urlLeafletControlGeocodeJS =  $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/leaflet-control-geocoder/dist/Control.Geocoder.min.js';
+			$urlLeafletControlGeocodeJS =  $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/leaflet-control-geocoder/dist/Control.Geocoder.js';
 			$urlLeafletControlGeocodeCSS = $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/leaflet-control-geocoder/dist/Control.Geocoder.css';
 
 			// loading the leaflet scripts, source: https://leafletjs.com/examples/quick-start/

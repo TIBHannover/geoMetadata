@@ -3,20 +3,18 @@
     "description": "Create and display spatio-temporal metadata for publications",
     "license": "GPL-3.0-or-later",
     "keywords": [
-        "Optimeta",
         "spatial",
         "temporal",
         "geo"
     ],
     "require": {
         "php": ">=7.3",
-        "bower-asset/leaflet": "1.6.0",
-        "bower-asset/leaflet-draw": "1.0.4",
-        "bower-asset/leaflet-control-geocoder": "2.4.0",
-        "bower-asset/leaflet-color-markers": "v1.0.0",
         "npm-asset/daterangepicker": "3.1",
-        "bower-asset/moment": "2.18.1",
-        "oomphinc/composer-installers-extender": "^2.0"
+        "npm-asset/leaflet-control-geocoder": "3.1.0",
+        "npm-asset/leaflet": "1.9.4",
+        "npm-asset/leaflet-draw": "1.0.4",
+        "npm-asset/leaflet-color-markers": "^0.1.0",
+        "npm-asset/moment": "2.30.1"
     },
     "autoload": {
         "psr-4": {
@@ -43,14 +41,7 @@
     ],
     "config": {
         "allow-plugins": {
-            "composer/installers": true,
-            "oomphinc/composer-installers-extender": true
+            "composer/installers": true
         }
-    },
-    "scripts": {
-        "post-update-cmd": [
-            "if [ ! -f 'js/lib/leaflet-control-geocoder/dist/Control.Geocoder.min.js' ]; then cd js/lib/leaflet-control-geocoder/ && npm install; fi",
-            "php -f js/lib/cleanup-js-lib.php"
-        ]
     }
 }
