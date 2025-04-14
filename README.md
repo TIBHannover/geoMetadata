@@ -48,8 +48,8 @@ A detailed [GetStarted Guide](GetStarted.md) for installing OJS is available.
 Once OJS has been installed, the plugin must be downloaded and installed.
 
 1. Clone [the code repository](https://github.com/TIBHannover/geoMetadata/) and save the contents into `ojs/plugins/generic/geoMetadata` in your OJS installation.
-1. Checkout the desired OJS version by selecting the corresponding branch e.g. `stable-3_3_0`.
-1. Run `composer install` to download JavaScript dependencies for the plugin using [Asset Packagist](https://asset-packagist.org/site/about).
+1. Checkout the desired OJS version of the geoMetadata code repository by selecting the corresponding branch e.g. `stable-3_3_0`.
+1. Run `composer install` in `ojs/plugins/generic/geoMetadata` to download JavaScript dependencies for the plugin using [Asset Packagist](https://asset-packagist.org/site/about).
 1. Activate the plugin in the OJS plug-in settings.
 
 
