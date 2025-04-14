@@ -60,7 +60,6 @@ var geocoder = L.Control.geocoder({
     })
     .addTo(map);
 
-
 $(function () {
     // load spatial properties from article_details.tpl 
     var spatialProperties = document.getElementById("geoMetadata_spatial").value;
@@ -201,7 +200,9 @@ function displayBboxOfAdministrativeUnitWithLowestCommonDenominatorOfASetOfAdmin
         administrativeUnitsMap.addLayer(layer);
 
         // the map is fitted to the given layer 
-        map.fitBounds(administrativeUnitsMap.getBounds());
+        map.fitBounds(administrativeUnitsMap.getBounds(), {
+            padding: [20, 20] 
+        });
 
         if (geojson.administrativeUnits == {}) {
             administrativeUnitsMap.clearLayers();
