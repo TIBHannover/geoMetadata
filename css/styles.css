@@ -60,6 +60,7 @@
 
 	color: #777;
 	font-size: 13px;
+	font-family: Noto Sans, sans-serif;
 }
 
 .tooltip:hover .tooltiptext {
