@@ -468,9 +468,10 @@ function initAdminunits() {
 
             displayBboxOfAdministrativeUnitWithLowestCommonDenominatorOfASetOfAdministrativeUnitsGivenInAGeojson(geojson);
 
-            notValidTag();
-
             return input;
+        },
+        afterTagAdded: function () {
+            notValidTag(); 
         }
     });
 
