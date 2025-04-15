@@ -110,7 +110,9 @@
                 setTimeout(function () {
                     //window.dispatchEvent(new Event('resize'));
                     map.invalidateSize();
-                    map.fitBounds(administrativeUnitsMap.getBounds());
+                    if (!jQuery.isEmptyObject(administrativeUnitsMap._layers)) {
+                        map.fitBounds(administrativeUnitsMap.getBounds());
+                    }
                 }, 100);
             });
             var target = document.querySelector('#timeLocation');
