@@ -1149,6 +1149,18 @@ function storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms(drawnItems) {
                 };
             }
 
+            /*
+            For some polygons (can be all types of geometric shapes) the administrative units bounding box suggested by geonames does not fit the polygon (i.e. the polygon is not within the administrative unit polygon). 
+            If the polygon is outside the administrative units bounding box, the administrative unit is deleted.
+            */ 
+            for (var i = 0; i < administrativeUnitForAllFeatures.length; i++) {
+                console.log(administrativeUnitForAllFeatures); 
+                if (proofIfAllFeaturesAreInPolygon(geojson, administrativeUnitForAllFeatures[i].bbox) === false) { 
+                    administrativeUnitForAllFeatures.splice(i, 1);
+                    i--;
+                }
+            }
+
             // add administrative units to the geojson
             geojson.administrativeUnits = administrativeUnitForAllFeatures;
 
