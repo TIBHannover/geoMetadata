@@ -419,26 +419,26 @@ function initAdminunits() {
                         }
 
                         if (inputTagIsValid === false && proofIfAllFeaturesAreInPolygon(geojson, administrativeUnitAuthorInput.bbox) === false) {
-                            alert('Your Input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
-                                ' is not valid! On the one hand you need to delete one or more of the tags which are already displayed, so that your input tag fits in the current hierarchy of administrative units, or adapt your input tag! On the other side you need to change the tag you want to add, so that it fits the geometric shape(s) in the map, or edit the geometric shape(s) in the map!');
+                            alert('Your input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
+                                ' is not valid! Your input tag does not match the hierarchy of administrative units already selected nor the geometries displayed on the map. Change input tag and/or already selected administrative units and/or geometries shown on map.');
                             return 'notValidTag';
                         }
                         if (inputTagIsValid === false) {
-                            alert('Your Input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
-                                ' is not valid! You need to delete one or more of the other tags which are already displayed, so that your input tag fits in the current hierarchy of administrative units, or adapt your input tag!');
+                            alert('Your input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
+                                ' is not valid! Your input tag does not match the hierarchy of administrative units already selected. Change input tag and/or already selected administrative units.');
                             return 'notValidTag';
                         }
                         if (proofIfAllFeaturesAreInPolygon(geojson, administrativeUnitAuthorInput.bbox) === false) {
-                            alert('Your Input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
-                                ' is not valid! You need to change the tag you want to add, so that it fits the geometric shape(s) in the map, or edit the geometric shape(s) in the map!');
+                            alert('Your input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
+                                ' is not valid! Your input tag does not match the geometries displayed on the map. Change input tag and/or geometries shown on map.');
                             return 'notValidTag';
                         }
                     }
                     else {
                         // In case no administrative unit is currently available, it must still be checked if the new input matches the geometric shapes in the map
                         if (proofIfAllFeaturesAreInPolygon(geojson, administrativeUnitAuthorInput.bbox) === false) {
-                            alert('Your Input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
-                                ' is not valid! You need to change the tag you want to add, so that it fits the geometric shape(s) in the map, or edit the geometric shape(s) in the map!');
+                            alert('Your input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
+                                ' is not valid! Your input tag does not match the geometries displayed on the map. Change input tag and/or geometries shown on map.');
                             return 'notValidTag';
                         }
                     }
