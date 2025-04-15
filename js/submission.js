@@ -1120,7 +1120,6 @@ function storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms(drawnItems) {
 
         // if an administrative unit exists, the lowest matching hierarchical level is proposed to the author in the div element
         if (administrativeUnitForAllFeatures[administrativeUnitForAllFeatures.length - 1] !== undefined) {
-
             /*
             The array with the administrative units added via the API geonames must be available before the tags are created,
             so that the preprocessTag function can find out whether the tag is created by a direct geonames query based on the input of a geometric shape,
@@ -1152,18 +1151,22 @@ function storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms(drawnItems) {
             // add administrative units to the geojson
             geojson.administrativeUnits = administrativeUnitForAllFeatures;
 
+            /*
+            The both functions updateAdministrativeUnits(administrativeUnitForAllFeatures); and updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson)); need to be called before the tags are created, 
+            otherwise the preprocessTag proofment whether the tag is created by a direct geonames query based on the input of a geometric shape, or by the direct textual input of a user wont work. 
+            */
+            // update administrative unit form field 
+            updateAdministrativeUnits(administrativeUnitForAllFeatures);
+
+            // update spatial properties form field
+            updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
+
             for (var i = 0; i < administrativeUnitForAllFeatures.length; i++) {
                 // create a tag for each administrativeUnit
                 $("#administrativeUnitInput").tagit("createTag", administrativeUnitForAllFeatures[i].name);
             }
-
-            updateAdministrativeUnits(administrativeUnitForAllFeatures);
-            
             highlightHTMLElement("administrativeUnitInput");
         }
-
-        // update spatial properties form field
-        updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
     }
     else {
         geojson.administrativeUnits = {};
