@@ -101,16 +101,18 @@ Once OJS has been installed, the plugin must be downloaded and installed.
 
    1. Add Navigation Menu Item _Map_ to _Primary Navigation Menu_. 
 
-      0. If the _Primary Navigation Menu_ is not available you have to create it. 
+      - If the _Primary Navigation Menu_ is available. 
+
+         1. _Blue Arrow_ next to _Primary Navigation Menu_ 
+         1. _Edit_ 
+         1. Place the Menu Item _Map_ at the place where the user should find it. You can move the item _Map_ from the _Unassigned Menu Items_ to the _Assigned Menu Items_. 
+         
+      - If the _Primary Navigation Menu_ is not available you have to create it. 
 
          1. _Add Menu_ 
          1. Title: _Primary Navigation Menu_ 
          1. Active Theme Navigation Areas: _primary_
-         1. Continue with step 3 of the following list and add any additional items you want to make available to the user. 
-
-      1. _Blue Arrow_ next to _Primary Navigation Menu_ 
-      1. _Edit_ 
-      1. Place the Menu Item _Map_ at the place where the user should find it. You can move the item _Map_ from the _Unassigned Menu Items_ to the _Assigned Menu Items_. 
+         1. Place all items the user should find in the menu including the item _Map_. You can move the items from the _Unassigned Menu Items_ to the _Assigned Menu Items_.  
 
 Further information on the geoJSON specification is available via a [wiki](https://github.com/tomniers/geoOJS/wiki/geoJSON-Specification). 
 

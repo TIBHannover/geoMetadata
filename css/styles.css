@@ -94,12 +94,12 @@
 	background-color: rgba(255, 0, 0, 0.15);
 }
 
+/*
 .geoMetadata_license, .geoMetadata_license a {
 	text-decoration: none;
 	color: #777;
-	/* based on OJS @text-light */
 	font-size: 13px;
-}
+}*/
 
 .geoMetadata_warning {
 	border-left: 3px solid #ffa500;

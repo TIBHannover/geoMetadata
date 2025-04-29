@@ -6,7 +6,7 @@
  * Distributed under the GNU GPL v3. For full terms see the file dLICENSE.
  *
  * @class GeoMetadataPlugin
- * @brief Plugin class for the OPTIMETA project's geo plugin.
+ * @brief Plugin class for the geoMetadata Plugin.
  */
 
 const MAP_URL_PATH = 'map';
