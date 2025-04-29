@@ -7,7 +7,8 @@
  * @brief Display spatio-temporal metadata in the issue view. 
  */
 
-var map = L.map('mapdiv');
+var mapView = "0, 0, 1".split(",");
+var map = L.map('mapdiv').setView([mapView[0], mapView[1]], mapView[2]);
 
 var osmlayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data: &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
@@ -100,45 +101,49 @@ $(function () {
     spatialInputs.forEach((spatialProperty, index) => {
         let articleId = articleIdInputs[index];
         var features = [];
-        let layer = L.geoJSON(spatialProperty, {
-            onEachFeature: (feature, layer) => {
-                layer.bindPopup(popupInputs[index]);
-                //layer.bindTooltip(tooltipInputs[index]);
-                layer.on({
-                    mouseover: (e) => {
-                        highlightFeature(e.target, feature);
-                        highlightArticle(feature.properties.articleId);
-                    },
-                    mouseout: (e) => {
-                        resetHighlightFeature(e.target, feature);
-                        resetHighlightArticle(feature.properties.articleId);
-                    }
-                });
-                feature.properties['articleId'] = articleId;
-                features.push(feature);
-            },
-            style: geoMetadata_mapLayerStyle
-        });
 
-        articleLocations.addLayer(layer);
-        map.fitBounds(articleLocations.getBounds());
-
-        // add event listener to article div for highlighting the related layer
-        articleFeaturesMap.set(articleId, features);
-        let articleDiv = $('#' + articleId).parent().closest('div');
-        articleDiv.hover(
-            (e) => {
-                let features = articleFeaturesMap.get(articleId);
-                features.forEach(f => {
-                    highlightFeature(layer, f);
-                })
-            },
-            (e) => {
-                let features = articleFeaturesMap.get(articleId);
-                features.forEach(f => {
-                    resetHighlightFeature(layer, f);
-                })
+        if(spatialProperty.features.length !== 0) {
+            let layer = L.geoJSON(spatialProperty, {
+                onEachFeature: (feature, layer) => {
+                    layer.bindPopup(popupInputs[index]);
+                    //layer.bindTooltip(tooltipInputs[index]);
+                    layer.on({
+                        mouseover: (e) => {
+                            highlightFeature(e.target, feature);
+                            highlightArticle(feature.properties.articleId);
+                        },
+                        mouseout: (e) => {
+                            resetHighlightFeature(e.target, feature);
+                            resetHighlightArticle(feature.properties.articleId);
+                        }
+                    });
+                    feature.properties['articleId'] = articleId;
+                    features.push(feature);
+                },
+                style: geoMetadata_mapLayerStyle
             });
+    
+            articleLocations.addLayer(layer);
+            map.fitBounds(articleLocations.getBounds());
+    
+            // add event listener to article div for highlighting the related layer
+            articleFeaturesMap.set(articleId, features);
+            let articleDiv = $('#' + articleId).parent().closest('div');
+            articleDiv.hover(
+                (e) => {
+                    let features = articleFeaturesMap.get(articleId);
+                    features.forEach(f => {
+                        highlightFeature(layer, f);
+                    })
+                },
+                (e) => {
+                    let features = articleFeaturesMap.get(articleId);
+                    features.forEach(f => {
+                        resetHighlightFeature(layer, f);
+                    })
+                }
+            );
+        }
     });
 });
 

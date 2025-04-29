@@ -7,7 +7,8 @@
  * @brief Display spatio-temporal metadata for a whole journal on a separate page.
  */
 
-var map = L.map('mapdiv');
+var mapView = "0, 0, 1".split(",");
+var map = L.map('mapdiv').setView([mapView[0], mapView[1]], mapView[2]);
 
 var osmlayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data: &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
@@ -46,35 +47,36 @@ $(function () {
         let articleId = publication['id'];
         let spatialParsed = JSON.parse(publication['spatial']);
 
-        let articleTitle = publication['title'];
-        let articleAuthors = publication['authors'];
-        let articleIssue = publication['issue'];
-        let articleCoverage = publication['coverage'];
-        // popup content roughly based on issue_details.tpl
-        const popupTemplate = `<h2 class="title">
-            <a id="article-${articleId}" class="geoMetadata_journal_maplink" href="${geoMetadata_articleBaseUrl}/${articleId}">${articleTitle}</a>
-            </h2>
-            <br/>
-            <div class="authors">
-                ${articleAuthors}
-            </div>
-            <div class="authors">
-                ${articleIssue}
-            </div>
-            <div class="authors">
-                ${articleCoverage}
-            </div>`
+        if(spatialParsed.features.length !== 0) {
+            let articleTitle = publication['title'];
+            let articleAuthors = publication['authors'];
+            let articleIssue = publication['issue'];
+            let articleCoverage = publication['coverage'];
+            // popup content roughly based on issue_details.tpl
+            const popupTemplate = `<h2 class="title">
+                <a id="article-${articleId}" class="geoMetadata_journal_maplink" href="${geoMetadata_articleBaseUrl}/${articleId}">${articleTitle}</a>
+                </h2>
+                <br/>
+                <div class="authors">
+                    ${articleAuthors}
+                </div>
+                <div class="authors">
+                    ${articleIssue}
+                </div>
+                <div class="authors">
+                    ${articleCoverage}
+                </div>`
 
-        let layer = L.geoJSON(spatialParsed, {
-            onEachFeature: (feature, layer) => {
-                layer.bindPopup(`${popupTemplate}`);
-            },
-            style: geoMetadata_mapLayerStyle,
-            articleId: articleId
-        });
-        articleLocations.addLayer(layer);
-        map.fitBounds(articleLocations.getBounds());
-
+            let layer = L.geoJSON(spatialParsed, {
+                onEachFeature: (feature, layer) => {
+                    layer.bindPopup(`${popupTemplate}`);
+                },
+                style: geoMetadata_mapLayerStyle,
+                articleId: articleId
+            });
+            articleLocations.addLayer(layer);
+            map.fitBounds(articleLocations.getBounds());
+        }
         // TODO load temporal properties and add them to a timeline
     });
 });
