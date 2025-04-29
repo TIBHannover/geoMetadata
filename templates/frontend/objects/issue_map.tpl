@@ -22,8 +22,7 @@
 	{assign var="articleHeading" value="h6"}
 {/if}
 
- <div class="section">
-
+<div id="geoMetadata_issueMap" class="section">  
 {if $section.articles}
 	<link rel="stylesheet" href="{$pluginStylesheetURL}/styles.css" type="text/css" />
 	

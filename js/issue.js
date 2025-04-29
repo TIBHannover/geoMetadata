@@ -97,12 +97,16 @@ $(function () {
     //var tooltipInputs = $('.geoMetadata_data.tooltip').toArray().map(input => {
     //    return(input.value);
     //});
+    
+    // in case no article of the issue includes spatialInput, the map is hidden
+    var spatialInputsAvailable = false; 
 
     spatialInputs.forEach((spatialProperty, index) => {
         let articleId = articleIdInputs[index];
         var features = [];
 
         if(spatialProperty.features.length !== 0) {
+            spatialInputsAvailable = true;
             let layer = L.geoJSON(spatialProperty, {
                 onEachFeature: (feature, layer) => {
                     layer.bindPopup(popupInputs[index]);
@@ -145,6 +149,11 @@ $(function () {
             );
         }
     });
+
+    // in case no article of the issue includes spatialInput, the map is hidden
+    if (spatialInputsAvailable != true) {
+        $("#geoMetadata_issueMap").hide();
+    } 
 });
 
 /*
