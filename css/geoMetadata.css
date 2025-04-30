@@ -1,17 +1,13 @@
 /**
- * @file plugins/generic/optimetaGeo/css/optimetaCitations.css
+ * @file css/optimetaCitations.css
  *
- * Copyright (c) 2021-2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
- * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
- *
- * @style optimetaGeo
- * @ingroup plugins_generic_optimetageo
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
  * @brief Main stylesheet for the plugin.
  */
 
-.optimetageo_download_about a {
+.geoMetadata_download_about a {
 	text-decoration: none;
 	color: #777;
 	/* based on OJS @text-light */
@@ -19,11 +15,11 @@
 	margin-left: 13px;
 }
 
-.optimetageo_timestamp {
+.geoMetadata_timestamp {
 	font-weight: bold;
 }
 
-.optimetageo_coverage {
+.geoMetadata_coverage {
 	font-style: italic;
 }
 
@@ -35,7 +31,7 @@
 	display: none;
 }
 
-.optimetageo_formGroupMargin {
+.geoMetadata_formGroupMargin {
 	margin-top: 1.5rem;
 }
 
@@ -82,29 +78,29 @@
 	border-color: transparent transparent black transparent;
 }
 
-.optimetageo_issue_maplink {
+.geoMetadata_issue_maplink {
 	text-decoration: none;
 }
 
-.optimetageo_journal_maplink {
+.geoMetadata_journal_maplink {
 	text-decoration: none;
 }
 
-.optimetageo_title_hover {
+.geoMetadata_title_hover {
 	border-left: 5px solid red;
 	padding-left: 5px;
 	margin-left: -10px;
 	background-color: rgba(255, 0, 0, 0.15);
 }
 
-.optimetageo_license, .optimetageo_license a {
+.geoMetadata_license, .geoMetadata_license a {
 	text-decoration: none;
 	color: #777;
 	/* based on OJS @text-light */
 	font-size: 13px;
 }
 
-.optimetageo_warning {
+.geoMetadata_warning {
 	border-left: 3px solid #ffa500;
 	padding-left: 5px;
 	background-color: rgba(255, 165, 0, 0.15);

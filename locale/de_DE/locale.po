@@ -11,125 +11,125 @@ msgstr ""
 "PO-Revision-Date: 2020-09-02T07:48:21+00:00\n"
 "Language: German\n"
 
-msgid "plugins.generic.optimetaGeo.article.metadata.short"
+msgid "plugins.generic.geoMetadata.article.metadata.short"
 msgstr "Zeit & Ort"
 
-msgid "plugins.generic.optimetaGeo.article.metadata.long"
+msgid "plugins.generic.geoMetadata.article.metadata.long"
 msgstr "Zeit und Ort"
 
-msgid "plugins.generic.optimetaGeo.publication.label"
+msgid "plugins.generic.geoMetadata.publication.label"
 msgstr "Zeit & Ort"
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.description.article"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.description.article"
 msgstr "Hier werden die Eigenschaften des Artikelinhalts in Bezug auf Zeit und Ort dargestellt."
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.temporal"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.temporal"
 msgstr "Zeitliche Eigenschaften"
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.temporal.description.submission"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.temporal.description.submission"
 msgstr "Definieren Sie die zeitlichen Eigenschaften des Artikelinhalts durch Angabe von Anfangs- und Enddatum. Die Eingabe ist sowohl über das Textfeld als auch über die Kalenderansicht möglich. Klicken Sie auf das Eingabefeld unter diesem Text, um die Kalenderansicht zu öffnen. Drücken Sie \"Übernehmen\", um die Kalendereinstellung zu speichern. Drücken Sie \"Löschen\", um die aktuellen Daten zu entfernen. Texteingaben müssen dem folgenden Format entsprechen und durch Klicken auf \"Anwenden\" bestätigt werden. Nutzen Sie bitte nicht die Enter-Taste. Bei manuellen Eingaben werden Anfang und Ende durch einen Bindestrich getrennt, der von Leerzeichen umgeben ist; Datumsangaben sind im Format \"JJJJ-MM-TT\" einzugeben, wobei \"JJJJ\" für Jahre, \"MM\" für Monate (mit einer führenden Null) und \"DD\" für Tage (mit einer führenden Null) steht."
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.temporal.description.article"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.temporal.description.article"
 msgstr "Zeitliche Eigenschaften des Artikelinhalts, angegeben in Tagen."
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.temporal.from"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.temporal.from"
 msgstr "Dieser Artikel umfasst einen Zeitraum von"
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.temporal.to"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.temporal.to"
 msgstr "bis"
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.spatial"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.spatial"
 msgstr "Ort(e) oder Gebiet(e)"
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.administrativeUnit"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.administrativeUnit"
 msgstr "Die Verwaltungseinheiten, welche die zum Artikel zugehörigen Orte umschließen, sind:"
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.spatial.description.submission"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.spatial.description.submission"
 msgstr "Definieren Sie die Orte und Gebiete, die den Artikelinhalt beschreiben, durch eine oder mehrere geometrische Form(en). Sie können im <strong>Menü zur Erstellung verschiedener Geometrietypen</strong> auf der linken Seite zwischen Polylinie, Polygon, Rechteck und Punkt-Geometrie wählen. Über die Icons darunter können Sie die erstellte(n) geometrische(n) Form(en) <strong>bearbeiten oder löschen</strong> (\"Mülleimer\"). Mit den Symbolen \"-\" und \"+\" in der oberen linken Ecke können Sie die Ansicht vergrößern und verkleinern. In der oberen rechten Ecke können Sie die <strong>Hintergrundkarten</strong> wechseln. Sie können zwischen einer Straßenkarte (\"OpenStreetMap\"-Ebene) und Luftbildern (\"Esri World Imagery\"-Ebene) wählen. Sie können auch einstellen, ob die geometrische(n) Form(en) und die Verwaltungseinheit angezeigt werden sollen oder nicht. Für die Verwaltungseinheiten finden Sie eine genauere Beschreibung im nächsten Abschnitt dieses Formulars. Unterhalb der Ebenensteuerung auf der rechten Seite finden Sie eine <strong>Suchfunktion</strong> für die Karte. Nach Drücken von \"Enter\" werden Ihnen verschiedene Orte angeboten und wenn Sie auf einen Vorschlag klicken, wird er akzeptiert und ein passendes Rechteck, das die Grenzen des Ortes beschreibt, wird auf der Karte erstellt. Dieses Rechteck kann bearbeitet oder gelöscht indem Sie auf das Lösch-/Bearbeitungssymbol in der Menüleiste auf der linken Seite der Karte klicken. Zum <strong>Schützen sensibler Orte</strong> können sie einen gröberen Detaillierungsgrad für die Geometrien nutzen."
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.spatial.description.article"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.spatial.description.article"
 msgstr "Die blaue(n) geometrische(n) Form(en) stellen die Orte oder Gebiete des Artikelinhalts dar, wie sie von den Nutzer*innen angegeben wurden. Die in einem schwarzen Rechteck dargestellte Verwaltungseinheit stellt die kleinste Verwaltungseinheit dar, welche alle Orte und Gebiete umschließt, mit denen sich der Artikel befasst."
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.spatial.administrativeUnit"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.spatial.administrativeUnit"
 msgstr "Administrative Region"
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.gazetteer_unavailable"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.gazetteer_unavailable"
 msgstr "Der Gazetteer-Dienst ist nicht verfügbar. Bitte geben sie die Verwaltungseinheiten manuell ein, z.B., <code>\"Earth Europe Germany\"</code>, und bestätigen sie jede Einheit mit \"Enter\"."
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.spatial.administrativeUnit.description.submission"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.spatial.administrativeUnit.description.submission"
 msgstr "Auf Basis Ihrer Eingaben in der Karte werden Verwaltungseinheiten vorgeschlagen, die entsprechend Ihrer Eingaben in der Karte ausgewählt wurden, sofern ein Gazetter-Dienst verfügbar ist. Jedes Mal, wenn Sie die Eingaben aktualisieren, werden die Erfassungsinformationen neu berechnet und entsprechend aktualisiert. Mit dem roten \"x\" können Sie die Verwaltungseinheit(en) löschen. Wenn Sie den Mauszeiger über die Verwaltungseinheit(en) bewegen, wird die übergeordnete Hierarchie der Verwaltungseinheit(en) angezeigt, sofern vorhanden. Außerdem können Sie weitere Verwaltungseinheiten hinzufügen. Sie können nur dann eine weitere Verwaltungseinheit einfügen, wenn diese zu der bereits vorgegebenen Hierarchie der Verwaltungseinheiten und der vorgegebenen geometrischen Form in der Karte passt. Wenn Sie mit dem Einfügen beginnen, gibt es einige Vorschläge, die Sie durch Anklicken akzeptieren können, aber Sie können trotzdem Ihre eigene Verwaltungseinheit eingeben, indem Sie \"Enter\" drücken. Die Verwaltungseinheit (in Schwarz), die den kleinsten gemeinsamen Nenner für alle geometrischen Formen darstellt, wird in der Karte angezeigt. Die Verwaltungseinheit ist nicht direkt in der Karte, sondern über das Eingabefeld editierbar oder löschbar."
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.administrativeUnit.description.article"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.administrativeUnit.description.article"
 msgstr "Hier werden die administrativen Einheiten aufgelistet, die dem Ort bzw. den Orten übergeordnet sind, um die es in dem Artikel geht, wobei die höchste Ebene links und die niedrigste rechts steht."
 
-msgid "plugins.generic.optimetaGeo.geospatialmetadata.properties.spatial.administrativeUnit.ArticleView"
+msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.spatial.administrativeUnit.ArticleView"
 msgstr "Verwaltungseinheiten"
 
-msgid "plugins.generic.optimetaGeo.article.details.download"
+msgid "plugins.generic.geoMetadata.article.details.download"
 msgstr "Räumliche Metadaten herunterladen"
 
-msgid "plugins.generic.optimetaGeo.article.details.geoJSON.about"
+msgid "plugins.generic.geoMetadata.article.details.geoJSON.about"
 msgstr "Über GeoJSON"
 
-msgid "plugins.generic.optimetaGeo.settings.usernameGeonames"
+msgid "plugins.generic.geoMetadata.settings.usernameGeonames"
 msgstr "Erstellen Sie einen Benutzernamen unter https://www.geonames.org/login; der Benutzername muss einmalig aktiviert werden, um den kostenlosen Webservice zu nutzen ('free web services'), siehe https://www.geonames.org/manageaccount."
 
-msgid "plugins.generic.optimetaGeo.settings.usernameGeonames.description"
+msgid "plugins.generic.geoMetadata.settings.usernameGeonames.description"
 msgstr "Sie müssen Ihren Benutzernamen für die GeoNames API angeben, damit ein Abruf der Verwaltungseinheiten möglich ist: <a href=\"https://www.geonames.org/login\">https://www.geonames.org/login</a>."
 
-msgid "plugins.generic.optimetaGeo.settings.baseurlGeonames"
+msgid "plugins.generic.geoMetadata.settings.baseurlGeonames"
 msgstr "Basis-URL von Geonames, um zwischen 'http' und 'https' zu wechseln."
 
-msgid "plugins.generic.optimetaGeo.settings.baseurlGeonames.description"
+msgid "plugins.generic.geoMetadata.settings.baseurlGeonames.description"
 msgstr "Geben Sie hier entweder <code>https://www.geonames.org</code> oder <code>http://api.geonames.org</code> ein in Abhängigkeit davon, ob Ihr OJS-Server unter HTTP oder HTTPS veröffentlicht ist."
 
-msgid "plugins.generic.optimetaGeo.name"
-msgstr "OPTIMETA Geo Plugin"
+msgid "plugins.generic.geoMetadata.name"
+msgstr "geoMetadata"
 
-msgid "plugins.generic.optimetaGeo.description"
+msgid "plugins.generic.geoMetadata.description"
 msgstr "Sammeln und Bereitstellen von räumlichen Metadaten für verbesserte Artikelsuche."
 
-msgid "plugins.generic.optimetaGeo.issue.title"
+msgid "plugins.generic.geoMetadata.issue.title"
 msgstr "Zeiten & Orte"
 
-msgid "plugins.generic.optimetaGeo.journal.pageTitle"
+msgid "plugins.generic.geoMetadata.journal.pageTitle"
 msgstr "Zeiten & Orte aller Artikel"
 
-msgid "plugins.generic.optimetaGeo.journal.title"
+msgid "plugins.generic.geoMetadata.journal.title"
 msgstr "Zeiten & Orte aller Artikel in"
 
-msgid "plugins.generic.optimetaGeo.journal.breadcrump"
+msgid "plugins.generic.geoMetadata.journal.breadcrump"
 msgstr "Karte"
 
-msgid "plugins.generic.optimetaGeo.journal.mapMenu"
+msgid "plugins.generic.geoMetadata.journal.mapMenu"
 msgstr "Karte"
 
-msgid "plugins.generic.optimetaGeo.journal.text"
+msgid "plugins.generic.geoMetadata.journal.text"
 msgstr "Klicken Sie auf eine beliebige Geometrie, um Informationen über den Artikel zu sehen und dem Link zur Artikelseite zu folgen."
 
-msgid "plugins.generic.optimetaGeo.map.articleLayerName"
+msgid "plugins.generic.geoMetadata.map.articleLayerName"
 msgstr "Artikel"
 
-msgid "plugins.generic.optimetaGeo.map.administrativeLayerName"
+msgid "plugins.generic.geoMetadata.map.administrativeLayerName"
 msgstr "Verwaltungseinheiten"
 
-msgid "plugins.generic.optimetaGeo.submission.coverageDisabledHover"
+msgid "plugins.generic.geoMetadata.submission.coverageDisabledHover"
 msgstr "Dieses Feld wurde deaktiviert. Die Informationen werden automatisch auf der Grundlage der unten eingegebenen Geodaten ausgefüllt."
 
-msgid "plugins.generic.optimetaGeo.license.submission"
+msgid "plugins.generic.geoMetadata.license.submission"
 msgstr "Die zeitlichen und räumlichen Metadaten werden unter der folgenden Lizenz veröffentlicht:"
 
-msgid "plugins.generic.optimetaGeo.license.download"
+msgid "plugins.generic.geoMetadata.license.download"
 msgstr "Geodaten-Lizenz:"
 
-msgid "plugins.generic.optimetaGeo.license.frontend"
+msgid "plugins.generic.geoMetadata.license.frontend"
 msgstr "Die zeitlichen und räumlichen Metadaten sind unter der folgenden Lizenz veröffentlicht:"
 
-msgid "plugins.generic.optimetaGeo.publication.tab.raw"
+msgid "plugins.generic.geoMetadata.publication.tab.raw"
 msgstr "Rohdaten"
 
-msgid "plugins.generic.optimetaGeo.publication.tab.raw.description"
+msgid "plugins.generic.geoMetadata.publication.tab.raw.description"
 msgstr "Bearbeitung der Rohdaten hat mit Vorsicht zu erfolgen! Änderungen in den Rohdaten verursachen <strong>kein</strong> update der obigen Formularfelder und Karte."
 
-msgid "plugins.generic.optimetaGeo.publication.success"
+msgid "plugins.generic.geoMetadata.publication.success"
 msgstr "Die Metadaten wurden aktualisiert."

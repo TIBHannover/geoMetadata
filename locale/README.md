@@ -12,7 +12,7 @@ Automated translations (unchecked) were added for
 ## Installation (once)
 
 ```bash
-mkvirtualenv optimetageo-translate
+mkvirtualenv geoMetadata-translate
 git clone https://github.com/confdnt/python-auto-translate-gettext
 cd python-auto-translate-gettext
 pip install -r requirements.txt

@@ -1,14 +1,12 @@
 <?php
-
 /**
  * @file classes/handler/JournalMapHandler.inc.php
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class JournalMapHandler
- * @brief Show all articles of a journal on one map
+ * @brief Show all articles of a journal on one map.
  */
 
 import('classes.handler.Handler');
@@ -18,11 +16,11 @@ class JournalMapHandler extends Handler
 {
     public function index($args, $request)
     {
-        $plugin = PluginRegistry::getPlugin('generic', 'optimetageoplugin');
+        $plugin = PluginRegistry::getPlugin('generic', 'geometadata');
 
         $templateMgr = TemplateManager::getManager($request);
 
-        $templateMgr->assign('optimetagep_journalJS', $request->getBaseUrl() . '/' . $plugin->getPluginPath() . '/js/journal.js');
+        $templateMgr->assign('geoMetadata_journalJS', $request->getBaseUrl() . '/' . $plugin->getPluginPath() . '/js/journal.js');
         $templateMgr->assign('pluginStylesheetURL', $request->getBaseUrl() . '/' . $plugin->getPluginPath() . '/css/');
         
         $context = $request->getContext();
@@ -45,7 +43,7 @@ class JournalMapHandler extends Handler
             $id = $publication->getData('id');
 
             if($publication->getData('status') != STATUS_PUBLISHED) {
-                break;
+                continue;
             }
 
             $issue = "";

@@ -1,6 +1,16 @@
 <?php
+/**
+ * @file classes/components/forms/PublicationForm.php
+ *
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @class PublicationForm
+ *
+ * @brief A preset form for setting a publication's spatio-temporal metadata.
+ */
 
-namespace Optimeta\Geo\Components\Forms;
+namespace geoMetadata\Components\Forms;
 
 import('lib.pkp.classes.form.Form');
 
@@ -11,7 +21,7 @@ use TemplateManager;
 use NotificationManager;
 
 /**
- * Form for the plugin settings of the Optimeta geo plugin. 
+ * Form for the geoMetadata settings. 
  */
 class SettingsForm extends \Form
 {
@@ -22,8 +32,8 @@ class SettingsForm extends \Form
      * @var string[]
      */
     private $settings = [
-        'optimetaGeo_geonames_username',
-        'optimetaGeo_geonames_baseurl'
+        'geoMetadata_geonames_username',
+        'geoMetadata_geonames_baseurl'
     ];
 
     public function __construct($plugin)

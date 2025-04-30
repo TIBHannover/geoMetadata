@@ -1,19 +1,17 @@
 /**
- * 
  * js/submission.js
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  * 
  * @brief Enable input of geospatial metadata during article submission and editing during review/before publication.
  */
 
-logPrefix = "[OPTIMETA Geo Plugin] ";
+logPrefix = "[geoMetadata] ";
 
 // Check if a corresponding username for the geonames API has been entered in the plugin settings, otherwise trigger an alert with corresponding information.
-var usernameGeonames = document.getElementById("optimetageo_usernameGeonames").value;
-var baseurlGeonames = document.getElementById("optimetageo_baseurlGeonames").value;
+var usernameGeonames = document.getElementById("geoMetadata_usernameGeonames").value;
+var baseurlGeonames = document.getElementById("geoMetadata_baseurlGeonames").value;
 
 var map = null;
 var drawnItems = null;
@@ -30,13 +28,13 @@ $(function () {
     let coverageInput = $('input[id^=coverage], input[id^=metadata-coverage]');
     if (coverageInput.length > 0) {
         coverageInput.attr('disabled', 'disabled');
-        coverageInput.attr('title', document.getElementById("optimetageo_coverageDisabledHover").value);
+        coverageInput.attr('title', document.getElementById("geoMetadata_coverageDisabledHover").value);
     }
 });
 
 function disableGazzetter() {
     baseurlGeonames = null;
-    $("#optimetageo_gazetteer_unavailable").show();
+    $("#geoMetadata_gazetteer_unavailable").show();
 }
 
 function checkGeonames() {
@@ -65,7 +63,7 @@ function checkGeonames() {
 }
 
 function initMap() {
-    //var mapView =  document.getElementById("optimeta_mapView").value; // TODO make configurable
+    //var mapView =  document.getElementById("geoMetadata_mapView").value; // TODO make configurable
     var mapView = "0, 0, 1".split(",");
     map = L.map('mapdiv').setView([mapView[0], mapView[1]], mapView[2]);
 
@@ -229,7 +227,7 @@ function initMap() {
  */
 function createInitialGeojson() {
     //load spatial properties which got already stored in database from submissionMetadataFormFields.tpl
-    let spatialProperties = $('textarea[name="optimetaGeo::spatialProperties"]').val();
+    let spatialProperties = $('textarea[name="geoMetadata::spatialProperties"]').val();
 
     var geojson;
     if (spatialProperties === 'no data' || spatialProperties === null || spatialProperties === undefined) {
@@ -245,7 +243,7 @@ function createInitialGeojson() {
                 }
             }
         };
-        updateVueElement('textarea[name="optimetaGeo::spatialProperties"]', JSON.stringify(geojson));
+        updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
     }
     else {
         var spatialPropertiesParsed = JSON.parse(spatialProperties);
@@ -310,7 +308,7 @@ function initAdminunits() {
      */
     $("#administrativeUnitInput").tagit({
         beforeTagAdded: function (event, ui) {
-            let spatialProperties = $('textarea[name="optimetaGeo::spatialProperties"]').val();
+            let spatialProperties = $('textarea[name="geoMetadata::spatialProperties"]').val();
 
             if (spatialProperties !== 'undefined') {
 
@@ -346,7 +344,7 @@ function initAdminunits() {
                 return input;
             }
 
-            let spatialProperties = $('textarea[name="optimetaGeo::spatialProperties"]').val();
+            let spatialProperties = $('textarea[name="geoMetadata::spatialProperties"]').val();
 
             if (spatialProperties === 'undefined') {
                 return input;
@@ -354,7 +352,7 @@ function initAdminunits() {
 
             var geojson = JSON.parse(spatialProperties);
 
-            var administrativeUnitRaw = $('textarea[name="optimetaGeo::administrativeUnit"]').val();
+            var administrativeUnitRaw = $('textarea[name="geoMetadata::administrativeUnit"]').val();
             var isThereAuthorInput = true;
             var administrativeUnit = [];
 
@@ -445,7 +443,7 @@ function initAdminunits() {
                         }
                     }
 
-                    updateVueElement('textarea[name="optimetaGeo::administrativeUnit"]', JSON.stringify(administrativeUnit));
+                    updateVueElement('textarea[name="geoMetadata::administrativeUnit"]', JSON.stringify(administrativeUnit));
                     input = administrativeUnitAuthorInput.name;
                 }
                 else {
@@ -465,7 +463,7 @@ function initAdminunits() {
                 }
 
                 geojson.administrativeUnits = administrativeUnit;
-                updateVueElement('textarea[name="optimetaGeo::spatialProperties"]', JSON.stringify(geojson));
+                updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
             }
 
             displayBboxOfAdministrativeUnitWithLowestCommonDenominatorOfASetOfAdministrativeUnitsGivenInAGeojson(geojson);
@@ -485,9 +483,9 @@ function initAdminunits() {
         // beforeTagRemoved is always triggered before a tag is deleted
         beforeTagRemoved: function (event, ui) {
             var currentTag = ui.tagLabel;
-            var administrativeUnitRaw = $('textarea[name="optimetaGeo::administrativeUnit"]').val();
+            var administrativeUnitRaw = $('textarea[name="geoMetadata::administrativeUnit"]').val();
             var administrativeUnitGeoJSON;
-            var geojson = JSON.parse($('textarea[name="optimetaGeo::spatialProperties"]').val());
+            var geojson = JSON.parse($('textarea[name="geoMetadata::spatialProperties"]').val());
 
             if (administrativeUnitRaw === 'no data') {
                 administrativeUnitGeoJSON = {};
@@ -508,7 +506,7 @@ function initAdminunits() {
 
                 // If there is no more element this is indicated by 'no data', otherwise the geoJSON gets updated, if available
                 if (administrativeUnit.length === 0) {
-                    updateVueElement('textarea[name="optimetaGeo::administrativeUnit"]', 'no data');
+                    updateVueElement('textarea[name="geoMetadata::administrativeUnit"]', 'no data');
                     administrativeUnitGeoJSON = {};
                 }
                 else {
@@ -518,7 +516,7 @@ function initAdminunits() {
 
             // the geojson is updated accordingly
             geojson.administrativeUnits = administrativeUnitGeoJSON;
-            updateVueElement('textarea[name="optimetaGeo::spatialProperties"]', JSON.stringify(geojson));
+            updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
 
             displayBboxOfAdministrativeUnitWithLowestCommonDenominatorOfASetOfAdministrativeUnitsGivenInAGeojson(geojson);
         }
@@ -528,7 +526,7 @@ function initAdminunits() {
      * In case the user repeats the step "3. Enter Metadata" in the process "Submit to article" and comes back to this step to make changes again,
      * the already entered data is read from the database, added to the template and loaded here from the template and gets displayed accordingly.
      */
-    let administrativeUnit = $('textarea[name="optimetaGeo::administrativeUnit"]').val();
+    let administrativeUnit = $('textarea[name="geoMetadata::administrativeUnit"]').val();
     if (administrativeUnit !== 'no data' && administrativeUnit !== '') {
         var administrativeUnitParsed = JSON.parse(administrativeUnit);
 
@@ -591,7 +589,7 @@ function displayBboxOfAdministrativeUnitWithLowestCommonDenominatorOfASetOfAdmin
 
         highlightHTMLElement("mapdiv");
 
-        if (geojson.administrativeUnits === {}) {
+        if (geojson.administrativeUnits == {}) {
             administrativeUnitsMap.clearLayers();
         }
     }
@@ -698,7 +696,7 @@ which is called on map change (draw:created, draw:edited, draw:deleted, search)
 function createFeaturesForGeoJSON(allLayers) {
 
     var geojsonFeatures = [];
-    var geojson = JSON.parse($('textarea[name="optimetaGeo::spatialProperties"]').val());
+    var geojson = JSON.parse($('textarea[name="geoMetadata::spatialProperties"]').val());
 
     for (var i = 0; i < allLayers.length; i++) {
         // there is a if-case because for Polygons in geojson there is a further "[...]" needed concerning the coordinates
@@ -802,7 +800,7 @@ function updateGeojsonWithLeafletOutput(drawnItems) {
     if there is a geojson object with features, the time periods are stored in the geojson,
     if it is available either from the current edit or from the database.
     */
-    let timePeriods = $('textarea[name="optimetaGeo::timePeriods"]').val();
+    let timePeriods = $('textarea[name="geoMetadata::timePeriods"]').val();
 
     if (timePeriods === 'no data') {
         geojson.temporalProperties.timePeriods = [];
@@ -1086,7 +1084,7 @@ function highlightHTMLElement(htmlElement) {
 
 function updateAdministrativeUnits(adminUnits) {
     // update admnistrative unit form field
-    updateVueElement('textarea[name="optimetaGeo::administrativeUnit"]', JSON.stringify(adminUnits));
+    updateVueElement('textarea[name="geoMetadata::administrativeUnit"]', JSON.stringify(adminUnits));
     // update the disabled coverage field
     $('input[id^=coverage], input[id^=metadata-coverage]').val(adminUnits.map(unit => unit.name).join(', '));
 }
@@ -1106,7 +1104,7 @@ function storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms(drawnItems) {
     var geojson = updateGeojsonWithLeafletOutput(drawnItems);
 
     $("#administrativeUnitInput").tagit("removeAll");
-    updateVueElement('textarea[name="optimetaGeo::administrativeUnit"]', 'no data');
+    updateVueElement('textarea[name="geoMetadata::administrativeUnit"]', 'no data');
 
     if (geojson.features.length !== 0) {
         var administrativeUnitsForAllFeatures = [];
@@ -1165,11 +1163,11 @@ function storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms(drawnItems) {
         }
 
         // update spatial properties form field
-        updateVueElement('textarea[name="optimetaGeo::spatialProperties"]', JSON.stringify(geojson));
+        updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
     }
     else {
         geojson.administrativeUnits = {};
-        updateVueElement('textarea[name="optimetaGeo::spatialProperties"]', JSON.stringify(geojson));
+        updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
     }
 }
 
@@ -1179,7 +1177,7 @@ function storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms(drawnItems) {
  */
 function initDaterangepicker() {
     // load temporal properties which got already stored in database from submissionMetadataFormFields.tpl
-    let timePeriods = $('textarea[name="optimetaGeo::timePeriods"]').val();
+    let timePeriods = $('textarea[name="geoMetadata::timePeriods"]').val();
 
     /*
     In case the user repeats the step "3. Enter Metadata" in the process "Submit to article" and comes back to this step to make changes again,
@@ -1212,28 +1210,28 @@ function initDaterangepicker() {
 
         // https://www.loc.gov/standards/datetime/ defines inclusive list of datest as {1800..1880,2000..2020}
         var timePeriods = '{' + picker.startDate.format('YYYY-MM-DD') + '..' + picker.endDate.format('YYYY-MM-DD') + '}';
-        updateVueElement('textarea[name="optimetaGeo::timePeriods"]', timePeriods);
+        updateVueElement('textarea[name="geoMetadata::timePeriods"]', timePeriods);
 
         // the geojson is updated accordingly
-        var geojson = JSON.parse($('textarea[name="optimetaGeo::spatialProperties"]').val());
+        var geojson = JSON.parse($('textarea[name="geoMetadata::spatialProperties"]').val());
         geojson.temporalProperties.timePeriods = [
             picker.startDate.format('YYYY-MM-DD') + '..' + picker.endDate.format('YYYY-MM-DD')
         ];
         geojson.temporalProperties.provenance.description = "temporal properties created by user";
         geojson.temporalProperties.provenance.id = 31;
-        updateVueElement('textarea[name="optimetaGeo::spatialProperties"]', JSON.stringify(geojson));
+        updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
     });
 
     $('input[name="datetimes"]').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
-        updateVueElement('textarea[name="optimetaGeo::timePeriods"]', 'no data');
+        updateVueElement('textarea[name="geoMetadata::timePeriods"]', 'no data');
 
         // the geojson is updated accordingly
-        var geojson = JSON.parse($('textarea[name="optimetaGeo::spatialProperties"]').val());
+        var geojson = JSON.parse($('textarea[name="geoMetadata::spatialProperties"]').val());
         geojson.temporalProperties.timePeriods = [];
         geojson.temporalProperties.provenance.description = 'not available';
         geojson.temporalProperties.provenance.id = 'not available';
-        updateVueElement('textarea[name="optimetaGeo::spatialProperties"]', JSON.stringify(geojson));
+        updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
     });
 };
 

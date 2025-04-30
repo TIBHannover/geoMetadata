@@ -1,15 +1,13 @@
 /**
  * @file cypress/tests/integration/10-installation.cy.js
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
  * Based on file cypress/tests/data/10-Installation.spec.js
- *
  */
 
-describe('OPTIMETA Geo Plugin Installation', function () {
+describe('geoMetadata Installation', function () {
 
   it('Installs the software', function () {
     cy.install();

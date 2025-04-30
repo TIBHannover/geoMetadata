@@ -1,3 +1,10 @@
+/**
+ * @file cypress.config.js
+ *
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ */
+
 const { defineConfig } = require("cypress");
 const { dotenv } = require("dotenv").config({
   path: 'cypress/.env'

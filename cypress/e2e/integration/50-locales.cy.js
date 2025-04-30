@@ -1,13 +1,11 @@
 /**
  * @file cypress/tests/integration/html_head.cy.js
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
- *
  */
 
-describe('OPTIMETA Geo Plugin Locales', function () {
+describe('geoMetadata Locales', function () {
 
   before(() => {
     cy.login('admin', 'admin', Cypress.env('contextPath'));
@@ -104,7 +102,7 @@ describe('OPTIMETA Geo Plugin Locales', function () {
 
 });
 
-describe('OPTIMETA Geo Plugin Locale Files', function () {
+describe('geoMetadata Locale Files', function () {
 
   it('Has the same number of entries and no erorrs in the locale files', function () {
     const reference = 'en_US';

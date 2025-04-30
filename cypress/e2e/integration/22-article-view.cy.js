@@ -1,13 +1,11 @@
 /**
  * @file cypress/tests/integration/html_head.cy.js
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
- *
  */
 
-describe('OPTIMETA Geo Plugin Article View', function () {
+describe('geoMetadata Article View', function () {
 
   it('The article page has the paper\'s geometry and no administrative unit on the map', function () {
     cy.visit('/');
@@ -15,7 +13,7 @@ describe('OPTIMETA Geo Plugin Article View', function () {
     cy.get('a:contains("Vol. 1 No. 2 (2022)")').click();
     cy.get('a:contains("Vancouver")').first().click();
 
-    cy.get('.pkp_structure_main').should('contain', 'Time and location');
+    cy.get('.pkp_structure_main').should('contain', 'Time and Location');
     cy.get('#mapdiv').should('exist');
 
     cy.mapHasFeatures(1);
@@ -37,8 +35,8 @@ describe('OPTIMETA Geo Plugin Article View', function () {
     cy.get('a:contains("Vol. 1 No. 2 (2022)")').click();
     cy.get('a:contains("Vancouver")').first().click();
 
-    cy.get('#optimeta_article_temporal').contains('from 2021-01-01');
-    cy.get('#optimeta_article_temporal').contains('to 2021-12-31');
+    cy.get('#geoMetadata_article_temporal').contains('from 2021-01-01');
+    cy.get('#geoMetadata_article_temporal').contains('to 2021-12-31');
   });
 
   it('The article page has the administrative unit in a text when added manually during submission', function () {
@@ -65,7 +63,7 @@ describe('OPTIMETA Geo Plugin Article View', function () {
     cy.get('a:contains("Vol. 1 No. 2 (2022)")').click();
     cy.get('a:contains("Vancouver is hot")').last().click();
 
-    cy.get('#optimeta_article_administrativeUnit').should('contain', 'Earth, Canada, BC');
+    cy.get('#geoMetadata_article_administrativeUnit').should('contain', 'Earth, Canada, BC');
   });
 
 });

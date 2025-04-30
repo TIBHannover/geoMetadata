@@ -1,15 +1,13 @@
 <?php
-
 /**
+ * @file js/lib/cleanup-js-lib.php
+ * 
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
- * Download JavaScript dependencies for OJS plugin OPTIMETA Geo Plugin
+ * @brief Download JavaScript dependencies for OJS plugin geoMetadata. 
  * 
- * Usage:
- * 
- * This script is run with composer update or composer install
- * 
- * @author Daniel Nüst (OPTIMETA)
+ * Usage: This script is run with composer update or composer install 
  */
 
 $cwd = getcwd() . '/js/lib'; // IMPORTANT!

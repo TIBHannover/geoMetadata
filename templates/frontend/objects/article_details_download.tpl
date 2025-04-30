@@ -1,9 +1,7 @@
  {**
  * templates/frontend/objects/article_details_download.tpl
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
- * Copyright (c) 2021 Tom Niers
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @brief Add download link for geospatial metadata to article page sidebar.
@@ -11,25 +9,25 @@
  * The main template is here extended using the hook 'Templates::Article::Details'.
  *}
 
-<link rel="stylesheet" href="{$pluginStylesheetURL}/optimetaGeo.css" type="text/css" />
+<link rel="stylesheet" href="{$pluginStylesheetURL}/geoMetadata.css" type="text/css" />
 
 <div style="clear:both;">
-    <section id="optimeta_article_spatial_download" class="item geospatialmetadatadownload">
+    <section id="geoMetadata_article_spatial_download" class="item geospatialmetadatadownload">
         <section class="sub_item">
             <h2 class="label">
-                {translate key="plugins.generic.optimetaGeo.article.details.download"}
+                {translate key="plugins.generic.geoMetadata.article.details.download"}
             </h2>
             <div class="value">
                 <p>
                     <a class="obj_galley_link geoJSON" onclick="downloadGeospatialMetadataAsGeoJSON()">GeoJSON</a>
-                    <span class="optimetageo_download_about">
+                    <span class="geoMetadata_download_about">
                         <a href="https://geojson.org/">
-                        {translate key="plugins.generic.optimetaGeo.article.details.geoJSON.about"}
+                        {translate key="plugins.generic.geoMetadata.article.details.geoJSON.about"}
                         </a>
                     </span>
                 </p>
-                <p class="optimetageo_license">
-                    {translate key="plugins.generic.optimetaGeo.license.download"} {$optimetageo_metadataLicense}
+                <p class="geoMetadata_license">
+                    {translate key="plugins.generic.geoMetadata.license.download"} {$geoMetadata_metadataLicense}
                 </p>
             </div>
         </section>

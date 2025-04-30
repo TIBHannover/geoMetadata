@@ -1,13 +1,11 @@
 /**
  * @file cypress/tests/integration/html_head.cy.js
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
- *
  */
 
-describe('OPTIMETA Geo Plugin Maps', function () {
+describe('geoMetadata Maps', function () {
 
   const checkFeatures = (features => {
     expect(features[0].geometry.type).to.equal('LineString');
@@ -59,7 +57,7 @@ describe('OPTIMETA Geo Plugin Maps', function () {
     cy.get('a:contains("Vol. 1 No. 2 (2022)")').click();
     cy.get('a:contains("Hanover is nice")').last().click();
 
-    cy.get('.pkp_structure_main').should('contain', 'Time and location');
+    cy.get('.pkp_structure_main').should('contain', 'Time and Location');
     cy.get('#mapdiv').should('exist');
 
     cy.mapHasFeatures(1);

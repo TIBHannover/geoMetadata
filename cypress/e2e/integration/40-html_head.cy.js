@@ -1,10 +1,8 @@
 /**
  * @file cypress/tests/integration/html_head.cy.js
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
- *
  */
 
 var metaContains = (name, content, scheme) => {
@@ -20,7 +18,7 @@ var metaContains = (name, content, scheme) => {
   }
 };
 
-describe('OPTIMETA Geo Plugin Geospatial Metadata in HTML Head', function () {
+describe('geoMetadata Geospatial Metadata in HTML Head', function () {
 
   beforeEach(() => {
     cy.visit('/');
@@ -61,7 +59,7 @@ describe('OPTIMETA Geo Plugin Geospatial Metadata in HTML Head', function () {
   });
 });
 
-describe('OPTIMETA Geo Plugin Temporal Metadata in HTML Head', function () {
+describe('geoMetadata Temporal Metadata in HTML Head', function () {
 
   it('has DC.temporal with correct scheme and content', function () {
     metaContains('DC.temporal', /2022-01-01\/2022-12-31/, 'ISO8601');

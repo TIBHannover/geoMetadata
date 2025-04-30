@@ -1,36 +1,34 @@
 /**
  * @file cypress/tests/integration/configuration.cy.js
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
- *
  */
 
-describe('OPTIMETA Geo Plugin Configuration', function () {
+describe('geoMetadata Configuration', function () {
 
-  it('Disable OPTIMETA Geo Plugin', function () {
+  it('Disable geoMetadata', function () {
     cy.login('admin', 'admin', Cypress.env('contextPath'));
     cy.get('nav[class="app__nav"] a:contains("Website")').click();
     cy.get('button[id="plugins-button"]').click();
     // disable plugin if enabled
-    cy.get('input[id^="select-cell-optimetageoplugin-enabled"]')
+    cy.get('input[id^="select-cell-geoMetadata-enabled"]')
       .then($btn => {
         if ($btn.attr('checked') === 'checked') {
-          cy.get('input[id^="select-cell-optimetageoplugin-enabled"]').click();
+          cy.get('input[id^="select-cell-geoMetadata-enabled"]').click();
           cy.get('div[class*="pkp_modal_panel"] button[class*="pkpModalConfirmButton"]').click();
-          cy.get('div:contains(\'The plugin "OPTIMETA Geo Plugin" has been disabled.\')');
+          cy.get('div:contains(\'The plugin "geoMetadata" has been disabled.\')');
         }
       });
   });
 
-  it('Enable OPTIMETA Geo Plugin', function () {
+  it('Enable geoMetadata', function () {
     cy.login('admin', 'admin', Cypress.env('contextPath'));
     cy.get('nav[class="app__nav"] a:contains("Website")').click();
     cy.get('button[id="plugins-button"]').click();
     // Find and enable the plugin
-    cy.get('input[id^="select-cell-optimetageoplugin-enabled"]').click();
-    cy.get('div:contains(\'The plugin "OPTIMETA Geo Plugin" has been enabled.\')');
+    cy.get('input[id^="select-cell-geoMetadata-enabled"]').click();
+    cy.get('div:contains(\'The plugin "geoMetadata" has been enabled.\')');
   });
 
   it('Has a map in the third submissions step', function () {
@@ -73,13 +71,13 @@ describe('OPTIMETA Geo Plugin Configuration', function () {
     cy.logout();
   });
 
-  it('Configure OPTIMETA Geo Plugin - Map colors', function () {
+  it('Configure geoMetadata - Map colors', function () {
     this.skip(); // TODO implement
 
-    //cy.get('form[id="optimetaGeoSettings"] input[name="optimetaGeo_mapLayerStyle_color"]')
+    //cy.get('form[id="geoMetadataSettings"] input[name="geoMetadata_mapLayerStyle_color"]')
     //  .clear()
     //  .type('#00ff00');
-    //cy.get('form[id="optimetaGeoSettings"] input[name="optimetaGeo_mapLayerStyle_colorHighlight"]')
+    //cy.get('form[id="geoMetadataSettings"] input[name="geoMetadata_mapLayerStyle_colorHighlight"]')
     //  .clear()
     //  .type('#01ff01');
   });

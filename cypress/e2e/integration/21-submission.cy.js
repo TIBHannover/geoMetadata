@@ -1,13 +1,11 @@
 /**
  * @file cypress/tests/integration/configuration.cy.js
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
- *
  */
 
-describe('OPTIMETA Geo Plugin Submission without Geonames', function () {
+describe('geoMetadata Submission without Geonames', function () {
 
   var submission;
   var sub1start = '2021-01-01';

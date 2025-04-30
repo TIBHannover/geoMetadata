@@ -1,15 +1,15 @@
 {**
  * templates/frontend/objects/article_details.tpl
  *
- * Copyright (c) 2022 OPTIMETA project
- * Copyright (c) 2022 Daniel Nüst
+ * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
- * @brief View of a map for all articles of an issue
+ * @brief View of a map for all articles of an issue. 
  *
  * @uses $issue Issue The issue
  * @uses $heading string HTML heading element, default: h2
  *}
+ 
  {if !$heading}
 	{assign var="heading" value="h2"}
 {/if}
@@ -25,36 +25,36 @@
  <div class="section">
 
 {if $section.articles}
-	<link rel="stylesheet" href="{$pluginStylesheetURL}/optimetaGeo.css" type="text/css" />
+	<link rel="stylesheet" href="{$pluginStylesheetURL}/geoMetadata.css" type="text/css" />
 	
 	<script type="text/javascript">
-		const optimetageo_mapLayerStyle = {
+		const geoMetadata_mapLayerStyle = {
 			weight: 5,
 			color: '#1E6292',
 			dashArray: '',
 			fillOpacity: 0.6
 		};
 
-		const optimetageo_mapLayerStyleHighlight = {
+		const geoMetadata_mapLayerStyleHighlight = {
 			weight: 5,
 			color: 'red',
 			dashArray: '',
 			fillOpacity: 0.6
 		};
 
-		const optimetageo_layerName = '{translate key="plugins.generic.optimetaGeo.map.articleLayerName"}';
-		const optimetageo_markerBaseUrl = '{$optimetageo_markerBaseUrl}';
+		const geoMetadata_layerName = '{translate key="plugins.generic.geoMetadata.map.articleLayerName"}';
+		const geoMetadata_markerBaseUrl = '{$geoMetadata_markerBaseUrl}';
 	</script>
 
-    <{$heading}>{translate key="plugins.generic.optimetaGeo.issue.title"}</{$heading}>
+    <{$heading}>{translate key="plugins.generic.geoMetadata.issue.title"}</{$heading}>
 
 	<div id="mapdiv" style="width: 100%; height: 360px; z-index: 1;"></div>
 	
-	<p class="optimetageo_license">
-		{translate key="plugins.generic.optimetaGeo.license.frontend"} {$optimetageo_metadataLicense}
+	<p class="geoMetadata_license">
+		{translate key="plugins.generic.geoMetadata.license.frontend"} {$geoMetadata_metadataLicense}
 	</p>
 {/if}
 </div>
 
 {*main js script, needs to be loaded last*}
-<script src="{$optimetageo_issueJS}" type="text/javascript" defer></script>
+<script src="{$geoMetadata_issueJS}" type="text/javascript" defer></script>
