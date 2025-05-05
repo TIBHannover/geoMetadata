@@ -10,7 +10,7 @@
  * @brief A preset form for setting a publication's spatio-temporal metadata.
  */
 
-namespace geoMetadata\Components\Forms;
+namespace geoMetadata\classes\Components\Forms;
 
 import('lib.pkp.classes.form.Form');
 
