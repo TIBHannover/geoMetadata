@@ -27,8 +27,8 @@ import('lib.pkp.classes.plugins.GenericPlugin');
 import('plugins.generic.geoMetadata.classes.Components.Forms.PublicationForm');
 import('plugins.generic.geoMetadata.classes.Components.Forms.SettingsForm');
 
-use geoMetadata\Components\Forms\PublicationForm;
-use geoMetadata\Components\Forms\SettingsForm;
+use geoMetadata\classes\Components\Forms\PublicationForm;
+use geoMetadata\classes\Components\Forms\SettingsForm;
 
 class GeoMetadataPlugin extends GenericPlugin
 {
