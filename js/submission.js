@@ -657,7 +657,6 @@ function proofIfAllFeaturesAreInPolygon(geojson, givenPolygon) {
             for (var k = 0; k < geojson.features[i].geometry.coordinates.length; k++) {
                 array.push([geojson.features[i].geometry.coordinates[k][1], geojson.features[i].geometry.coordinates[k][0]]);
             }
-            console.log(array);
             allFeaturesInPolygon.push(polygon.getBounds().contains(L.polyline(array).getBounds()));
         }
     }
@@ -1154,7 +1153,6 @@ function storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms(drawnItems) {
             If the polygon is outside the administrative units bounding box, the administrative unit is deleted.
             */ 
             for (var i = 0; i < administrativeUnitForAllFeatures.length; i++) {
-                console.log(administrativeUnitForAllFeatures); 
                 if (proofIfAllFeaturesAreInPolygon(geojson, administrativeUnitForAllFeatures[i].bbox) === false) { 
                     administrativeUnitForAllFeatures.splice(i, 1);
                     i--;

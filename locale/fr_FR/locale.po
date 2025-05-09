@@ -81,7 +81,7 @@ msgid "plugins.generic.geoMetadata.settings.baseurlGeonames.description"
 msgstr "Utilisez l'un des <code>https://www.geonames.org</code> ou <code>http://api.geonames.org</code> selon que votre serveur OJS est publié sur http ou https."
 
 msgid "plugins.generic.geoMetadata.name"
-msgstr "geoMetadataPlugin"
+msgstr "geoMetadata Plugin"
 
 msgid "plugins.generic.geoMetadata.description"
 msgstr "Collectez et fournissez des métadonnées géospatiales pour une meilleure découverte des articles."
