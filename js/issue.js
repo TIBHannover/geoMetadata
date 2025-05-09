@@ -83,7 +83,7 @@ var articleFeaturesMap = new Map();
 // load spatial data
 $(function () {
 
-    // load properties for each article from issue_map.tpl
+    // load properties for each article from issue_details.tpl
     var spatialInputs = $('.geoMetadata_data.spatial').toArray().map(input => {
         let geojson = JSON.parse(input.value);
         return (geojson);
@@ -93,10 +93,7 @@ $(function () {
     });
     var popupInputs = $('.geoMetadata_data.popup').toArray().map(input => {
         return (input.value);
-    });
-    //var tooltipInputs = $('.geoMetadata_data.tooltip').toArray().map(input => {
-    //    return(input.value);
-    //});
+    }); 
     
     // in case no article of the issue includes spatialInput, the map is hidden
     var spatialInputsAvailable = false; 
@@ -110,7 +107,6 @@ $(function () {
             let layer = L.geoJSON(spatialProperty, {
                 onEachFeature: (feature, layer) => {
                     layer.bindPopup(popupInputs[index]);
-                    //layer.bindTooltip(tooltipInputs[index]);
                     layer.on({
                         mouseover: (e) => {
                             highlightFeature(e.target, feature);
