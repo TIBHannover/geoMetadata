@@ -9,8 +9,6 @@
  * @brief Show all articles of a journal on one map.
  */
 
-namespace geoMetadata\classes\handler;
-
 import('classes.handler.Handler');
 import('lib.pkp.classes.submission.PKPSubmission'); // imports STATUS_PUBLISHED
 
