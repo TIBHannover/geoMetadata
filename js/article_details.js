@@ -218,6 +218,8 @@ function displayBboxOfAdministrativeUnitWithLowestCommonDenominatorOfASetOfAdmin
  * If pressed, the geojson with the geospatial metadata gets downloaded, as long the geojson is available. 
  */
 function downloadGeospatialMetadataAsGeoJSON() {
+    let spatialProperties = document.getElementById("geoMetadata_spatial").value;
+
     downloadObjectAsJson(JSON.parse(spatialProperties), "geospatialMetadata");
 }
 
