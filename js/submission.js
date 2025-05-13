@@ -1210,12 +1210,14 @@ function initDaterangepicker() {
         $('input[name="datetimes"]').daterangepicker({
             startDate: start,
             endDate: end,
-            locale: locale
+            locale: locale, 
+            showDropdowns: true
         });
     } else {
         $('input[name="datetimes"]').daterangepicker({
             autoUpdateInput: false,
-            locale: locale
+            locale: locale,
+            showDropdowns: true
         });
     }
 
