@@ -51,7 +51,11 @@ $(function () {
             let articleTitle = publication['title'];
             let articleAuthors = publication['authors'];
             let articleIssue = publication['issue'];
-            let articleCoverage = publication['coverage'];
+            let articleAdministrativeUnit = publication['coverage'];
+            let articleTemporal = publication ['temporal'];
+            let articleTemporalStart = articleTemporal.split('{')[1].split('..')[0];
+            let articleTemporalEnd = articleTemporal.split('{')[1].split('..')[1].split('}')[0];
+
             // popup content roughly based on issue_details.tpl
             const popupTemplate = `<h2 class="title">
                 <a id="article-${articleId}" class="geoMetadata_journal_maplink" href="${geoMetadata_articleBaseUrl}/${articleId}">${articleTitle}</a>
@@ -63,8 +67,13 @@ $(function () {
                 <div class="authors">
                     ${articleIssue}
                 </div>
+                <br/>
                 <div class="authors">
-                    ${articleCoverage}
+                    <i>${articleTemporalStart} – ${articleTemporalEnd}</i>
+                </div>
+                <br/>
+                <div class="authors">
+                    <i>${articleAdministrativeUnit}</i>
                 </div>`
 
             let layer = L.geoJSON(spatialParsed, {

@@ -90,7 +90,7 @@ msgid "plugins.generic.geoMetadata.description"
 msgstr "Collect and provide geospatial metadata for enhanced discovery of articles."
 
 msgid "plugins.generic.geoMetadata.issue.title"
-msgstr "Times & locations"
+msgstr "Times & Locations"
 
 msgid "plugins.generic.geoMetadata.journal.pageTitle"
 msgstr "Times & Locations of all articles"

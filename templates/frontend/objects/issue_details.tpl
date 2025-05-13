@@ -28,8 +28,11 @@
 			<div class="authors">
 				{$article->getAuthorString()|escape}
 			</div>
-		{/if}
-		<p class="metadata">{$article->getCoverage($journal->getPrimaryLocale())|escape}</p>
+		{/if} 
+		<p></p>
+		<i>{$publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS)|escape|replace:'..':' – '|replace:'{':''|replace:'}':''}</i>
+		<p></p>
+		<i>{$article->getCoverage($journal->getPrimaryLocale())|escape}</i>
 	'>
 
 {* <input type="text" class="geoMetadata_data temporal" name="{$smarty.const.GEOMETADATA_DB_FIELD_TIME_PERIODS}"

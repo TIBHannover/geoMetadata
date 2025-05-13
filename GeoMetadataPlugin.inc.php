@@ -361,7 +361,7 @@ class GeoMetadataPlugin extends GenericPlugin
 	}
 
 	/**
-	 * Function which extends the issue TOC with a timeline and map view - needs the geoMetadataTheme plugin!
+	 * Function which extends the issue TOC with a timeline and map view 
 	 * @param hook Templates::Issue::TOC::Main
 	 */
 	public function extendIssueTocTemplate($hookName, $params)
