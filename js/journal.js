@@ -69,10 +69,12 @@ $(function () {
                 </div>
                 <br/>
                 <div class="authors">
+                    <i class="fa-solid fa-calendar-days"></i>
                     <i>${articleTemporalStart} – ${articleTemporalEnd}</i>
                 </div>
                 <br/>
-                <div class="authors">
+                <div class="authors"> 
+                    <i class="fa-solid fa-location-dot"></i>
                     <i>${articleAdministrativeUnit}</i>
                 </div>`
 

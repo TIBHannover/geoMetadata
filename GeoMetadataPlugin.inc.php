@@ -96,6 +96,7 @@ class GeoMetadataPlugin extends GenericPlugin
 			$urlDaterangepickerCSS =       $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/daterangepicker/daterangepicker.css';
 			$urlLeafletControlGeocodeJS =  $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/leaflet-control-geocoder/dist/Control.Geocoder.js';
 			$urlLeafletControlGeocodeCSS = $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/leaflet-control-geocoder/dist/Control.Geocoder.css';
+			$urlFontAwesomeCSS =           $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/font-awesome/css/all.css';
 
 			// loading the leaflet scripts, source: https://leafletjs.com/examples/quick-start/
 			$templateMgr->addStyleSheet('leafletCSS', $urlLeafletCSS, array('contexts' => array('frontend', 'backend')));
@@ -113,6 +114,9 @@ class GeoMetadataPlugin extends GenericPlugin
 			// loading leaflet control geocoder (search), source: https://github.com/perliedman/leaflet-control-geocoder 
 			$templateMgr->addJavaScript("leafletControlGeocodeJS", $urlLeafletControlGeocodeJS, array('contexts' => array('frontend', 'backend')));
 			$templateMgr->addStyleSheet("leafletControlGeocodeCSS", $urlLeafletControlGeocodeCSS, array('contexts' => array('frontend', 'backend')));
+
+			//loading font-awesome css, source: https://fontawesome.com/
+			$templateMgr->addStyleSheet("leafletFontAwesomeCSS", $urlFontAwesomeCSS, array('contexts' => array('frontend', 'backend')));
 
 			// plugins JS scripts and CSS
 			$templateMgr->assign('geoMetadata_submissionJS',      $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/submission.js');

@@ -30,8 +30,10 @@
 			</div>
 		{/if} 
 		<p></p>
+		<i class="fa-solid fa-calendar-days"></i>
 		<i>{$publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS)|escape|replace:'..':' – '|replace:'{':''|replace:'}':''}</i>
 		<p></p>
+		<i class="fa-solid fa-location-dot"></i>
 		<i>{$article->getCoverage($journal->getPrimaryLocale())|escape}</i>
 	'>
 

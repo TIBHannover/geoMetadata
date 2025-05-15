@@ -15,7 +15,8 @@
         "npm-asset/leaflet-draw": "1.0.4",
         "npm-asset/leaflet-color-markers": "^0.1.0",
         "npm-asset/moment": "2.30.1",
-        "oomphinc/composer-installers-extender": "^2.0"
+        "oomphinc/composer-installers-extender": "^2.0",
+        "npm-asset/font-awesome": "6.7.2"
     },
     "autoload": {
         "psr-4": {

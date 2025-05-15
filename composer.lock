@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09a191a176f82f2ca87256afe2960bc5",
+    "content-hash": "aa7d5d542b7b19e76160ba2ccadcc87c",
     "packages": [
         {
             "name": "composer/installers",
@@ -167,6 +167,21 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "npm-asset/font-awesome",
+            "version": "6.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "af620534bfc3c2d4cbefcfeec29603bbe7809e64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/af620534bfc3c2d4cbefcfeec29603bbe7809e64",
+                "reference": "af620534bfc3c2d4cbefcfeec29603bbe7809e64"
+            },
+            "type": "npm-asset"
         },
         {
             "name": "npm-asset/jquery",
