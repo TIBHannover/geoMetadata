@@ -10,7 +10,7 @@
     <!-- Always add the csrf token to secure your form -->
     {csrf}
 
-    {fbvFormArea}
+    {fbvFormArea id="geoMetadataSettingsArea"}
     {fbvFormSection list=true}
     <p align="justify" class="description" style="color: rgba(0,0,0,0.54)">
         {translate key="plugins.generic.geoMetadata.settings.usernameGeonames.description"}
