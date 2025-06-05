@@ -1,7 +1,7 @@
 {**
  * templates/frontend/objects/issue_details.tpl
  *
- * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
+ * Copyright (c) 2025 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * @brief Embed geospatial metadata in hidden fields for use on the issue map.
  *
  * The main template is here extended using the hook 'Templates::Issue::Issue::Article'.

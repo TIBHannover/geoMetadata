@@ -2,7 +2,7 @@
 /**
  * @file classes/components/forms/PublicationForm.php
  * 
- * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
+ * Copyright (c) 2025 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *  
  * @class PublicationForm

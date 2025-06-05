@@ -1,7 +1,7 @@
 /**
  * @file cypress/tests/support/commands.js
  *
- * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
+ * Copyright (c) 2025 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  * 
  * Based on https://github.com/pkp/pkp-lib/blob/main/cypress/support/commands.js

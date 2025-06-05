@@ -1,7 +1,7 @@
 {**
  * templates/frontend/pages/journal_map.tpl
  *
- * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
+ * Copyright (c) 2025 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @brief Display the page to view geospatial metadata for a journal.
