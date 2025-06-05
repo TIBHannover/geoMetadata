@@ -16,6 +16,7 @@ var baseurlGeonames = document.getElementById("geoMetadata_baseurlGeonames").val
 var map = null;
 var drawnItems = null;
 var administrativeUnitsMap = null;
+var gazetterDisabled = false; 
 
 $(function () {
     checkGeonames();
@@ -34,6 +35,7 @@ $(function () {
 
 function disableGazzetter() {
     baseurlGeonames = null;
+    gazetterDisabled = true; 
     $("#geoMetadata_gazetteer_unavailable").show();
 }
 
@@ -949,8 +951,8 @@ function ajaxRequestGeonamesGeonamesIdBbox(id) {
  * @param {*} arr
  */
 function isSameAnswer(el, index, arr) {
-    // Do not test the first array element, as you have nothing to compare to
-    if (index === 0) {
+    // Do not test the first array element. Either if you have nothing to compare to, or the gazetter is disabled.
+    if (index === 0 || gazetterDisabled === true) {
         return true;
     }
     else {
