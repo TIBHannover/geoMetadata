@@ -52,7 +52,7 @@ function checkGeonames() {
     else {
         var testRequest = ajaxRequestGeonamesPlaceName("Münster");
         if (testRequest === null) {
-            console.log(logPrefix + "Your GeoNames username is not valid. Please check if it is correct in the OJS plugin settings or visit https://www.geonames.org/login, register and enter the username in the OJS plugin settings.");
+            console.log(logPrefix + "The configured GeoNames username or Base URL is not valid. Please check that both is set up correctly in the OJS plugin settings.");
             disableGazzetter();
         }
         else if (testRequest.status !== undefined) {
