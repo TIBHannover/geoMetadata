@@ -1,5 +1,5 @@
 {**
- * templates/frontend/objects/article_details.tpl
+ * templates/frontend/objects/issue_details.tpl
  *
  * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * @brief Embed geospatial metadata in hidden fields for use on the issue map.
@@ -11,9 +11,6 @@
     style="height: 0px; width: 0px; visibility: hidden;" value='article-{$article->getId()}'>
 <input type="text" class="geoMetadata_data spatial" name="{$smarty.const.GEOMETADATA_DB_FIELD_SPATIAL}"
     style="height: 0px; width: 0px; visibility: hidden;" value='{${$smarty.const.GEOMETADATA_DB_FIELD_SPATIAL}}'>
-
-{if $activeTheme->getOption('parentName') == 'defaultthemeplugin'}
-
 <input type="text" class="geoMetadata_data popup" name="mapPopup"
     style="height: 0px; width: 0px; visibility: hidden;" value='
 		<{$heading} class="title">
@@ -31,29 +28,14 @@
 			<div class="authors">
 				{$article->getAuthorString()|escape}
 			</div>
-		{/if}
-		<p class="metadata">{$article->getCoverage($journal->getPrimaryLocale())|escape}</p>
+		{/if} 
+		<p></p>
+		<i class="fa-solid fa-calendar-days"></i>
+		<i>{$publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS)|escape|replace:'..':' – '|replace:'{':''|replace:'}':''}</i>
+		<p></p>
+		<i class="fa-solid fa-location-dot"></i>
+		<i>{$article->getCoverage($journal->getPrimaryLocale())|escape}</i>
 	'>
-
-{/if} {* defaultthemeplugin *}
-
-{* Based on https://github.com/pkp/pragma/blob/main/templates/frontend/objects/article_summary.tpl *}
-{if $activeTheme->getOption('parentName') == 'pragmathemeplugin'}
-
-<input type="text" class="geoMetadata_data popup" name="mapPopup"
-    style="height: 0px; width: 0px; visibility: hidden;" value='
-		<h4 class="article__title">
-			<a {if $journal}href="{url journal=$journal->getPath() page="article" op="view" path=$articlePath}"{else}href="{url page="article" op="view" path=$articlePath}"{/if}>
-				{$article->getLocalizedFullTitle()|escape}
-			</a>
-		</h4>
-		{if $showAuthor}
-			<p class="metadata">{$article->getAuthorString()|escape}</p>
-		{/if}
-		<p class="metadata">{$article->getCoverage($journal->getPrimaryLocale())|escape}</p>
-	'>
-
-{/if} {* pragmathemeplugin *}
 
 {* <input type="text" class="geoMetadata_data temporal" name="{$smarty.const.GEOMETADATA_DB_FIELD_TIME_PERIODS}"
     style="height: 0px; width: 0px; visibility: hidden;" value='{${$smarty.const.GEOMETADATA_DB_FIELD_TIME_PERIODS}}' /> *}

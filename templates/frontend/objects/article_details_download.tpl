@@ -9,7 +9,7 @@
  * The main template is here extended using the hook 'Templates::Article::Details'.
  *}
 
-<link rel="stylesheet" href="{$pluginStylesheetURL}/geoMetadata.css" type="text/css" />
+<link rel="stylesheet" href="{$pluginStylesheetURL}/styles.css" type="text/css" />
 
 <div style="clear:both;">
     <section id="geoMetadata_article_spatial_download" class="item geospatialmetadatadownload">

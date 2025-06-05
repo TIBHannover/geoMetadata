@@ -34,6 +34,7 @@
             - create `CREATE USER 'ojs'@'localhost' IDENTIFIED BY 'ojs';`
             - grant access `GRANT ALL PRIVILEGES ON ojs.* TO 'ojs'@'localhost';`
             - apply privileges `FLUSH PRIVILEGES;`
+            - delete user `DROP USER 'ojs'@'localhost';`
 
 ### on macOS 
 - [Homebrew](https://brew.sh/) needs to be installed 
@@ -73,6 +74,7 @@
                 - create `CREATE USER 'ojs'@'localhost' IDENTIFIED BY 'ojs';`
                 - grant access `GRANT ALL PRIVILEGES ON ojs.* TO 'ojs'@'localhost';`
                 - apply privileges `FLUSH PRIVILEGES;`
+                - delete user `DROP USER 'ojs'@'localhost';`
 
 ## OJS
 - There are two options to install OJS, either you install the latest version via GitHub or a recent Release.
@@ -80,7 +82,10 @@
         - Follow instructions: https://docs.pkp.sfu.ca/dev/documentation/en/getting-started
     - Release 
         - Download the desired version via: https://pkp.sfu.ca/software/ojs/download/ 
-- Note that different versions of OJS require different versions of PHP, e.g. we recommend PHP 7.4 for OJS 3.3. 
+- Note that different versions of OJS require different versions of PHP, e.g. we recommend PHP 7.4 for OJS 3.3.
+- Start
+    - `cd /ojs`
+    - `php -S localhost:8000` 
 - Follow instructions: http://localhost:8000/index.php/index/install 
     - Create folder for ojs files 
         - `mkdir ojs-files` 
@@ -108,7 +113,7 @@
 
 ### geoMetadata Plugin Installation 
 - Create a journal in OJS.  
-- Follow [Donwload & Installation](https://github.com/TIBHannover/geoMetadata?tab=readme-ov-file#download--installation) instructions.  
+- Follow [Download & Installation](https://github.com/TIBHannover/geoMetadata?tab=readme-ov-file#download--installation) instructions.  
 
 
 ## Debugging  

@@ -1,5 +1,5 @@
 {**
- * templates/frontend/objects/article_details.tpl
+ * templates/frontend/objects/issue_map.tpl
  *
  * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
@@ -22,10 +22,9 @@
 	{assign var="articleHeading" value="h6"}
 {/if}
 
- <div class="section">
-
+<div id="geoMetadata_issueMap" class="section">  
 {if $section.articles}
-	<link rel="stylesheet" href="{$pluginStylesheetURL}/geoMetadata.css" type="text/css" />
+	<link rel="stylesheet" href="{$pluginStylesheetURL}/styles.css" type="text/css" />
 	
 	<script type="text/javascript">
 		const geoMetadata_mapLayerStyle = {

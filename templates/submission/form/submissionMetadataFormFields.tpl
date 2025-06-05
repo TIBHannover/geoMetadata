@@ -9,7 +9,7 @@
  * The main template is here extended using the hook 'Templates::Submission::SubmissionMetadataForm::AdditionalMetadata'.
  *}
 
-<link rel="stylesheet" href="{$pluginStylesheetURL}/geoMetadata.css" type="text/css" />
+<link rel="stylesheet" href="{$pluginStylesheetURL}/styles.css" type="text/css" />
 
 <input type="text" id="geoMetadata_usernameGeonames" name="usernameGeonames" class="hiddenDataField" value="{$usernameGeonames}" />
 <input type="text" id="geoMetadata_baseurlGeonames" name="baseurlGeonames" class="hiddenDataField" value="{$baseurlGeonames}" />

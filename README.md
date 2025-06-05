@@ -11,7 +11,7 @@
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8198983.svg)](https://doi.org/10.5281/zenodo.8198983)
 
 The geoMetadata Plugin (formerly known as OJS Geo Plugin or OPTIMETA Geo Plugin) offers a novel way to capture and provide geospatial properties of research articles in [Open Journal Systems (OJS)](https://pkp.sfu.ca/ojs/).
-It is developed as part of the BMBF-funded projects [OPTIMETA](https://projects.tib.eu/optimeta/en/) and [KOMET](https://projects.tib.eu/komet/en/).
+It is developed as part of the BMFTR-funded projects [OPTIMETA](https://projects.tib.eu/optimeta/en/) and [KOMET](https://projects.tib.eu/komet/en/).
 
 The KOMET team develops further plugins like the [citationManager](https://github.com/TIBHannover/citationManager) and [pidManager](https://github.com/TIBHannover/pidManager). 
 Visit the [KOMET project website](https://projects.tib.eu/komet/output/) for a full overview of the project output.
@@ -26,13 +26,13 @@ In the article view, the properties specified by the author are then displayed a
 In addition, the information is also added to the HTML source code of article’s landing pages in a semantically meaningful way.
 
 <div style="text-align:center">
-<img src="screenshots/SubmissionView.png" alt="Alt-Text" title="Screenshot of entering geospatial properties in the OJS submission process" width="50%" align="middle"/>
+<img src="docs/screenshots/SubmissionView.png" alt="Alt-Text" title="Screenshot of entering geospatial properties in the OJS submission process" width="50%" align="middle"/>
 <br/>
 <em>Screenshot of entering geospatial properties in the OJS submission process</em>
 </div>
 
 <div style="text-align:center">
-<img src="screenshots/ArticleView.png" alt="screenshot of geo plugin" title="Screenshot of geospatial properties in the OJS article view" width="50%" align="middle"/>
+<img src="docs/screenshots/ArticleView.png" alt="screenshot of geo plugin" title="Screenshot of geospatial properties in the OJS article view" width="50%" align="middle"/>
 <br/>
 <em>Screenshot of geospatial properties in the OJS article view</em>
 </div>
@@ -47,16 +47,17 @@ A detailed [GetStarted Guide](GetStarted.md) for installing OJS is available.
 ### From Source
 Once OJS has been installed, the plugin must be downloaded and installed.
 
-1. Checkout the desired OJS version from [the code repository](https://github.com/TIBHannover/geoMetadata/) and save the contents into `ojs/plugins/generic/geoMetadata` in your OJS installation.
-1. Run `composer install` to download JavaScript dependencies for the plugin using [Asset Packagist](https://asset-packagist.org/site/about).
-   Go to `js/lib/leaflet-control-geocoder` and run `npm install` (see [this issue](https://github.com/perliedman/leaflet-control-geocoder/issues/310)).
-1. Activate the plugin in the OJS plug-in settings.
+1. Clone [the code repository](https://github.com/TIBHannover/geoMetadata/) and save the contents into the directory `ojs/plugins/generic/geoMetadata` in your OJS installation.
+1. Checkout the desired OJS version of the geoMetadata code repository by selecting the corresponding branch e.g. `stable-3_3_0`.
+1. Run `composer install` in `ojs/plugins/generic/geoMetadata` to download JavaScript dependencies for the plugin using [Asset Packagist](https://asset-packagist.org/site/about).
+1. Activate the plugin in the OJS plug-in settings and continue with [Configuration](#configuration).
 
 
 ### Via Release
-*Currently not available*
+See releases at <https://github.com/TIBHannover/geoMetadata/releases>. The release bundles contain plugin source code as well as the required JavaScript.
 
-~~See releases at <https://github.com/TIBHannover/geoMetadata/releases>. The release bundles contain plugin source code as well as the the required JavaScript dependencies so the plugin is ready to be used.~~
+1. Download the Source code (tar.gz) and save the contents into the directory `ojs/plugins/generic/geoMetadata` in your OJS installation. It is important to store the content in the directory `ojs/plugins/generic/geoMetadata` and not in a directory including the tag e.g. `ojs/plugins/generic/geoMetadata-1.0.0.0-beta`. 
+1. Activate the plugin in the OJS plug-in settings and continue with [Configuration](#configuration).
 
 ## Configuration
 
@@ -64,7 +65,7 @@ Once OJS has been installed, the plugin must be downloaded and installed.
 
    You have to specify your username for the GeoNames API, so that an alignment for the administrative units is possible.
 
-   1. Create an account on <https://www.geonames.org/login> and enable it by clicking the activiation link you get via email.
+   1. Create an account on <https://www.geonames.org/login> and enable it by clicking the activiation link you receive via email.
    1. Go to <https://www.geonames.org/manageaccount> and enable your account for free web services. 
    1. Enter the username and the GeoNames BaseURL in the settings (OJS > Dashboard > Website > Plugins > Installed Plugins > geoMetadata > blue arrow > Settings).
 
@@ -77,7 +78,7 @@ Once OJS has been installed, the plugin must be downloaded and installed.
 
       `{call_hook name="Templates::Issue::TOC::Main"}` 
       
-   - After your changes the file should look at this section like this:  
+   - With your adaptations, this section of the file should look like this::  
 
       _line 129_ `{/foreach}`
 
@@ -101,16 +102,18 @@ Once OJS has been installed, the plugin must be downloaded and installed.
 
    1. Add Navigation Menu Item _Map_ to _Primary Navigation Menu_. 
 
-      0. If the _Primary Navigation Menu_ is not available you have to create it. 
+      - If the _Primary Navigation Menu_ is available. 
+
+         1. _Blue Arrow_ next to _Primary Navigation Menu_ 
+         1. _Edit_ 
+         1. Place the Menu Item _Map_ at the place where the user should find it. You can move the item _Map_ from the _Unassigned Menu Items_ to the _Assigned Menu Items_. 
+         
+      - If the _Primary Navigation Menu_ is not available you have to create it. 
 
          1. _Add Menu_ 
          1. Title: _Primary Navigation Menu_ 
          1. Active Theme Navigation Areas: _primary_
-         1. Continue with step 3 of the following list and add any additional items you want to make available to the user. 
-
-      1. _Blue Arrow_ next to _Primary Navigation Menu_ 
-      1. _Edit_ 
-      1. Place the Menu Item _Map_ at the place where the user should find it. You can move the item _Map_ from the _Unassigned Menu Items_ to the _Assigned Menu Items_. 
+         1. Place all items the user should find in the menu including the item _Map_. You can move the items from the _Unassigned Menu Items_ to the _Assigned Menu Items_.  
 
 Further information on the geoJSON specification is available via a [wiki](https://github.com/tomniers/geoOJS/wiki/geoJSON-Specification). 
 

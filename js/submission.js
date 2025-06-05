@@ -419,26 +419,26 @@ function initAdminunits() {
                         }
 
                         if (inputTagIsValid === false && proofIfAllFeaturesAreInPolygon(geojson, administrativeUnitAuthorInput.bbox) === false) {
-                            alert('Your Input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
-                                ' is not valid! On the one hand you need to delete one or more of the tags which are already displayed, so that your input tag fits in the current hierarchy of administrative units, or adapt your input tag! On the other side you need to change the tag you want to add, so that it fits the geometric shape(s) in the map, or edit the geometric shape(s) in the map!');
+                            alert('Your input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
+                                ' is not valid! Your input tag does not match the hierarchy of administrative units already selected nor the geometries displayed on the map. Change input tag and/or already selected administrative units and/or geometries shown on map.');
                             return 'notValidTag';
                         }
                         if (inputTagIsValid === false) {
-                            alert('Your Input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
-                                ' is not valid! You need to delete one or more of the other tags which are already displayed, so that your input tag fits in the current hierarchy of administrative units, or adapt your input tag!');
+                            alert('Your input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
+                                ' is not valid! Your input tag does not match the hierarchy of administrative units already selected. Change input tag and/or already selected administrative units.');
                             return 'notValidTag';
                         }
                         if (proofIfAllFeaturesAreInPolygon(geojson, administrativeUnitAuthorInput.bbox) === false) {
-                            alert('Your Input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
-                                ' is not valid! You need to change the tag you want to add, so that it fits the geometric shape(s) in the map, or edit the geometric shape(s) in the map!');
+                            alert('Your input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
+                                ' is not valid! Your input tag does not match the geometries displayed on the map. Change input tag and/or geometries shown on map.');
                             return 'notValidTag';
                         }
                     }
                     else {
                         // In case no administrative unit is currently available, it must still be checked if the new input matches the geometric shapes in the map
                         if (proofIfAllFeaturesAreInPolygon(geojson, administrativeUnitAuthorInput.bbox) === false) {
-                            alert('Your Input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
-                                ' is not valid! You need to change the tag you want to add, so that it fits the geometric shape(s) in the map, or edit the geometric shape(s) in the map!');
+                            alert('Your input ' + JSON.stringify(input) + ' with the superior administrative units ' + JSON.stringify(administrativeUnitSuborder) +
+                                ' is not valid! Your input tag does not match the geometries displayed on the map. Change input tag and/or geometries shown on map.');
                             return 'notValidTag';
                         }
                     }
@@ -468,9 +468,10 @@ function initAdminunits() {
 
             displayBboxOfAdministrativeUnitWithLowestCommonDenominatorOfASetOfAdministrativeUnitsGivenInAGeojson(geojson);
 
-            notValidTag();
-
             return input;
+        },
+        afterTagAdded: function () {
+            notValidTag(); 
         }
     });
 
@@ -656,7 +657,6 @@ function proofIfAllFeaturesAreInPolygon(geojson, givenPolygon) {
             for (var k = 0; k < geojson.features[i].geometry.coordinates.length; k++) {
                 array.push([geojson.features[i].geometry.coordinates[k][1], geojson.features[i].geometry.coordinates[k][0]]);
             }
-            console.log(array);
             allFeaturesInPolygon.push(polygon.getBounds().contains(L.polyline(array).getBounds()));
         }
     }
@@ -1120,7 +1120,6 @@ function storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms(drawnItems) {
 
         // if an administrative unit exists, the lowest matching hierarchical level is proposed to the author in the div element
         if (administrativeUnitForAllFeatures[administrativeUnitForAllFeatures.length - 1] !== undefined) {
-
             /*
             The array with the administrative units added via the API geonames must be available before the tags are created,
             so that the preprocessTag function can find out whether the tag is created by a direct geonames query based on the input of a geometric shape,
@@ -1149,21 +1148,36 @@ function storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms(drawnItems) {
                 };
             }
 
+            /*
+            For some polygons (can be all types of geometric shapes) the administrative units bounding box suggested by geonames does not fit the polygon (i.e. the polygon is not within the administrative unit polygon). 
+            If the polygon is outside the administrative units bounding box, the administrative unit is deleted.
+            */ 
+            for (var i = 0; i < administrativeUnitForAllFeatures.length; i++) {
+                if (proofIfAllFeaturesAreInPolygon(geojson, administrativeUnitForAllFeatures[i].bbox) === false) { 
+                    administrativeUnitForAllFeatures.splice(i, 1);
+                    i--;
+                }
+            }
+
             // add administrative units to the geojson
             geojson.administrativeUnits = administrativeUnitForAllFeatures;
+
+            /*
+            The both functions updateAdministrativeUnits(administrativeUnitForAllFeatures); and updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson)); need to be called before the tags are created, 
+            otherwise the preprocessTag proofment whether the tag is created by a direct geonames query based on the input of a geometric shape, or by the direct textual input of a user wont work. 
+            */
+            // update administrative unit form field 
+            updateAdministrativeUnits(administrativeUnitForAllFeatures);
+
+            // update spatial properties form field
+            updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
 
             for (var i = 0; i < administrativeUnitForAllFeatures.length; i++) {
                 // create a tag for each administrativeUnit
                 $("#administrativeUnitInput").tagit("createTag", administrativeUnitForAllFeatures[i].name);
             }
-
-            updateAdministrativeUnits(administrativeUnitForAllFeatures);
-            
             highlightHTMLElement("administrativeUnitInput");
         }
-
-        // update spatial properties form field
-        updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
     }
     else {
         geojson.administrativeUnits = {};
@@ -1196,12 +1210,14 @@ function initDaterangepicker() {
         $('input[name="datetimes"]').daterangepicker({
             startDate: start,
             endDate: end,
-            locale: locale
+            locale: locale, 
+            showDropdowns: true
         });
     } else {
         $('input[name="datetimes"]').daterangepicker({
             autoUpdateInput: false,
-            locale: locale
+            locale: locale,
+            showDropdowns: true
         });
     }
 

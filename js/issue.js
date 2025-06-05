@@ -7,7 +7,8 @@
  * @brief Display spatio-temporal metadata in the issue view. 
  */
 
-var map = L.map('mapdiv');
+var mapView = "0, 0, 1".split(",");
+var map = L.map('mapdiv').setView([mapView[0], mapView[1]], mapView[2]);
 
 var osmlayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data: &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
@@ -82,7 +83,7 @@ var articleFeaturesMap = new Map();
 // load spatial data
 $(function () {
 
-    // load properties for each article from issue_map.tpl
+    // load properties for each article from issue_details.tpl
     var spatialInputs = $('.geoMetadata_data.spatial').toArray().map(input => {
         let geojson = JSON.parse(input.value);
         return (geojson);
@@ -92,54 +93,63 @@ $(function () {
     });
     var popupInputs = $('.geoMetadata_data.popup').toArray().map(input => {
         return (input.value);
-    });
-    //var tooltipInputs = $('.geoMetadata_data.tooltip').toArray().map(input => {
-    //    return(input.value);
-    //});
+    }); 
+    
+    // in case no article of the issue includes spatialInput, the map is hidden
+    var spatialInputsAvailable = false; 
 
     spatialInputs.forEach((spatialProperty, index) => {
         let articleId = articleIdInputs[index];
         var features = [];
-        let layer = L.geoJSON(spatialProperty, {
-            onEachFeature: (feature, layer) => {
-                layer.bindPopup(popupInputs[index]);
-                //layer.bindTooltip(tooltipInputs[index]);
-                layer.on({
-                    mouseover: (e) => {
-                        highlightFeature(e.target, feature);
-                        highlightArticle(feature.properties.articleId);
-                    },
-                    mouseout: (e) => {
-                        resetHighlightFeature(e.target, feature);
-                        resetHighlightArticle(feature.properties.articleId);
-                    }
-                });
-                feature.properties['articleId'] = articleId;
-                features.push(feature);
-            },
-            style: geoMetadata_mapLayerStyle
-        });
 
-        articleLocations.addLayer(layer);
-        map.fitBounds(articleLocations.getBounds());
-
-        // add event listener to article div for highlighting the related layer
-        articleFeaturesMap.set(articleId, features);
-        let articleDiv = $('#' + articleId).parent().closest('div');
-        articleDiv.hover(
-            (e) => {
-                let features = articleFeaturesMap.get(articleId);
-                features.forEach(f => {
-                    highlightFeature(layer, f);
-                })
-            },
-            (e) => {
-                let features = articleFeaturesMap.get(articleId);
-                features.forEach(f => {
-                    resetHighlightFeature(layer, f);
-                })
+        if(spatialProperty.features.length !== 0) {
+            spatialInputsAvailable = true;
+            let layer = L.geoJSON(spatialProperty, {
+                onEachFeature: (feature, layer) => {
+                    layer.bindPopup(popupInputs[index]);
+                    layer.on({
+                        mouseover: (e) => {
+                            highlightFeature(e.target, feature);
+                            highlightArticle(feature.properties.articleId);
+                        },
+                        mouseout: (e) => {
+                            resetHighlightFeature(e.target, feature);
+                            resetHighlightArticle(feature.properties.articleId);
+                        }
+                    });
+                    feature.properties['articleId'] = articleId;
+                    features.push(feature);
+                },
+                style: geoMetadata_mapLayerStyle
             });
+    
+            articleLocations.addLayer(layer);
+            map.fitBounds(articleLocations.getBounds());
+    
+            // add event listener to article div for highlighting the related layer
+            articleFeaturesMap.set(articleId, features);
+            let articleDiv = $('#' + articleId).parent().closest('div');
+            articleDiv.hover(
+                (e) => {
+                    let features = articleFeaturesMap.get(articleId);
+                    features.forEach(f => {
+                        highlightFeature(layer, f);
+                    })
+                },
+                (e) => {
+                    let features = articleFeaturesMap.get(articleId);
+                    features.forEach(f => {
+                        resetHighlightFeature(layer, f);
+                    })
+                }
+            );
+        }
     });
+
+    // in case no article of the issue includes spatialInput, the map is hidden
+    if (spatialInputsAvailable != true) {
+        $("#geoMetadata_issueMap").hide();
+    } 
 });
 
 /*

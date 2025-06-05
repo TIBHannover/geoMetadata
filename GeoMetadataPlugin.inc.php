@@ -1,12 +1,12 @@
 <?php
 /**
- * @file geoMetadata.inc.php
+ * @file GeoMetadataPlugin.inc.php
  *
  * Copyright (c) 2024 KOMET project, OPTIMETA project, Daniel Nüst, Tom Niers
  * Distributed under the GNU GPL v3. For full terms see the file dLICENSE.
  *
- * @class geoMetadata
- * @brief Plugin class for the OPTIMETA project's geo plugin.
+ * @class GeoMetadataPlugin
+ * @brief Plugin class for the geoMetadata Plugin.
  */
 
 const MAP_URL_PATH = 'map';
@@ -18,19 +18,19 @@ const GEOMETADATA_DB_FIELD_ADMINUNIT =    'geoMetadata::administrativeUnit';
 
 const GEOMETADATA_FORM_NAME = 'geoMetadata_PublicationForm';
 
-const GEOMETADATA_GEO_PLUGIN_PATH = __DIR__;
+const GEOMETADATA_PLUGIN_PATH = __DIR__;
 
-require_once (GEOMETADATA_GEO_PLUGIN_PATH . '/vendor/autoload.php');
+require_once (GEOMETADATA_PLUGIN_PATH . '/vendor/autoload.php');
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 
 import('plugins.generic.geoMetadata.classes.Components.Forms.PublicationForm');
 import('plugins.generic.geoMetadata.classes.Components.Forms.SettingsForm');
 
-use geoMetadata\Components\Forms\PublicationForm;
-use geoMetadata\Components\Forms\SettingsForm;
+use geoMetadata\classes\Components\Forms\PublicationForm;
+use geoMetadata\classes\Components\Forms\SettingsForm;
 
-class geoMetadata extends GenericPlugin
+class GeoMetadataPlugin extends GenericPlugin
 {
     protected $ojsVersion = '3.3.0.0';
 
@@ -94,8 +94,9 @@ class geoMetadata extends GenericPlugin
 			$urlMomentJS =                 $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/moment/moment.js';
 			$urlDaterangepickerJS =        $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/daterangepicker/daterangepicker.js';
 			$urlDaterangepickerCSS =       $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/daterangepicker/daterangepicker.css';
-			$urlLeafletControlGeocodeJS =  $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/leaflet-control-geocoder/dist/Control.Geocoder.min.js';
+			$urlLeafletControlGeocodeJS =  $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/leaflet-control-geocoder/dist/Control.Geocoder.js';
 			$urlLeafletControlGeocodeCSS = $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/leaflet-control-geocoder/dist/Control.Geocoder.css';
+			$urlFontAwesomeCSS =           $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lib/font-awesome/css/all.css';
 
 			// loading the leaflet scripts, source: https://leafletjs.com/examples/quick-start/
 			$templateMgr->addStyleSheet('leafletCSS', $urlLeafletCSS, array('contexts' => array('frontend', 'backend')));
@@ -113,6 +114,9 @@ class geoMetadata extends GenericPlugin
 			// loading leaflet control geocoder (search), source: https://github.com/perliedman/leaflet-control-geocoder 
 			$templateMgr->addJavaScript("leafletControlGeocodeJS", $urlLeafletControlGeocodeJS, array('contexts' => array('frontend', 'backend')));
 			$templateMgr->addStyleSheet("leafletControlGeocodeCSS", $urlLeafletControlGeocodeCSS, array('contexts' => array('frontend', 'backend')));
+
+			//loading font-awesome css, source: https://fontawesome.com/
+			$templateMgr->addStyleSheet("leafletFontAwesomeCSS", $urlFontAwesomeCSS, array('contexts' => array('frontend', 'backend')));
 
 			// plugins JS scripts and CSS
 			$templateMgr->assign('geoMetadata_submissionJS',      $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/submission.js');
@@ -361,7 +365,7 @@ class geoMetadata extends GenericPlugin
 	}
 
 	/**
-	 * Function which extends the issue TOC with a timeline and map view - needs the geoMetadataTheme plugin!
+	 * Function which extends the issue TOC with a timeline and map view 
 	 * @param hook Templates::Issue::TOC::Main
 	 */
 	public function extendIssueTocTemplate($hookName, $params)

@@ -7,7 +7,7 @@
  * @brief Show geospatial metadata and allow editing during publication phase.
  *}
 
-<link rel="stylesheet" href="{$pluginStylesheetURL}/geoMetadata.css" type="text/css" />
+<link rel="stylesheet" href="{$pluginStylesheetURL}/styles.css" type="text/css" />
 
 {* see templates/workflow/workflow.tpl for HTML structure, CSS classes, etc., used below *}
 
@@ -99,11 +99,8 @@
     <div>
         <pkp-form v-bind="components.{$smarty.const.GEOMETADATA_FORM_NAME}" @set="set"/>
     </div>
-
-    {*main js script, needs to be loaded last*}
-    <script src="{$geoMetadata_submissionJS}" type="text/javascript"></script>
     
-    {* fix Leaflet gray map issue when it is displayed later than page load *}
+    {* Fix Leaflet gray map issue when it is displayed later than page load. The script is included here and not in submission.js as submission.js is also used for submissionMetadataFormFields.tpl, which would throw errors with this function. *}
     <script type="text/javascript">
         // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
         // https://stackoverflow.com/a/16462443
@@ -113,6 +110,9 @@
                 setTimeout(function () {
                     //window.dispatchEvent(new Event('resize'));
                     map.invalidateSize();
+                    if (!jQuery.isEmptyObject(administrativeUnitsMap._layers)) {
+                        map.fitBounds(administrativeUnitsMap.getBounds());
+                    }
                 }, 100);
             });
             var target = document.querySelector('#timeLocation');
@@ -122,4 +122,6 @@
         });
     </script>
 
+    {*main js script, needs to be loaded last*}
+    <script src="{$geoMetadata_submissionJS}" type="text/javascript"></script>
 </tab>
