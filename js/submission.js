@@ -688,7 +688,7 @@ function notValidTag() {
 }
 
 /*
-functions which all called in a cascade of functions by the function called 'storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms'
+functions which are all called in a cascade of functions by the function called 'storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms'
 which is called on map change (draw:created, draw:edited, draw:deleted, search)
 */
 /**
@@ -1180,10 +1180,10 @@ function storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms(drawnItems) {
             }
             highlightHTMLElement("administrativeUnitInput");
         }
-    }
-    else {
-        geojson.administrativeUnits = {};
-        updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
+        else {
+            geojson.administrativeUnits = {};
+            updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
+        }
     }
 }
 
