@@ -27,7 +27,7 @@ msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.temporal"
 msgstr "Zeitliche Eigenschaften"
 
 msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.temporal.description.submission"
-msgstr "Definieren Sie die zeitlichen Eigenschaften des Artikelinhalts durch Angabe von Anfangs- und Enddatum. Die Eingabe ist sowohl über das Textfeld als auch über die Kalenderansicht möglich. Klicken Sie auf das Eingabefeld unter diesem Text, um die Kalenderansicht zu öffnen. Drücken Sie \"Übernehmen\", um die Kalendereinstellung zu speichern. Drücken Sie \"Löschen\", um die aktuellen Daten zu entfernen. Texteingaben müssen dem folgenden Format entsprechen und durch Klicken auf \"Anwenden\" bestätigt werden. Nutzen Sie bitte nicht die Enter-Taste. Bei manuellen Eingaben werden Anfang und Ende durch einen Bindestrich getrennt, der von Leerzeichen umgeben ist; Datumsangaben sind im Format \"JJJJ-MM-TT\" einzugeben, wobei \"JJJJ\" für Jahre, \"MM\" für Monate (mit einer führenden Null) und \"DD\" für Tage (mit einer führenden Null) steht."
+msgstr "Definieren Sie die zeitlichen Eigenschaften des Artikelinhalts durch Angabe von Anfangs- und Enddatum. Die Eingabe ist sowohl über das Textfeld als auch über die Kalenderansicht möglich. Klicken Sie auf das Eingabefeld unter diesem Text, um die Kalenderansicht zu öffnen. Drücken Sie \"Übernehmen\", um die Kalendereinstellung zu speichern. Drücken Sie \"Löschen\", um die aktuellen Daten zu entfernen. Texteingaben müssen dem folgenden Format entsprechen und durch Klicken auf \"Anwenden\" bestätigt werden. Nutzen Sie bitte nicht die Enter-Taste. Bei manuellen Eingaben werden Anfang und Ende durch einen Bindestrich getrennt, der von Leerzeichen umgeben ist; Datumsangaben sind im Format \"JJJJ-MM-TT\" einzugeben, wobei \"JJJJ\" für Jahre, \"MM\" für Monate (mit einer führenden Null) und \"DD\" für Tage (mit einer führenden Null) steht. Darüber hinaus werden Eingaben wie "XXXX" und "XXXX-DD" auch akzeptiert und in der Folge formatiert in "XXXX-01-01" oder "XXXX-DD-01"."
 
 msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.temporal.description.article"
 msgstr "Zeitliche Eigenschaften des Artikelinhalts, angegeben in Tagen."
@@ -78,10 +78,10 @@ msgid "plugins.generic.geoMetadata.settings.usernameGeonames.description"
 msgstr "Sie müssen Ihren Benutzernamen für die GeoNames API angeben, damit ein Abruf der Verwaltungseinheiten möglich ist: <a href=\"https://www.geonames.org/login\">https://www.geonames.org/login</a>."
 
 msgid "plugins.generic.geoMetadata.settings.baseurlGeonames"
-msgstr "Basis-URL von Geonames, um zwischen 'http' und 'https' zu wechseln."
+msgstr "Basis-URL von GeoNames, um zwischen 'http' und 'https' zu wechseln."
 
 msgid "plugins.generic.geoMetadata.settings.baseurlGeonames.description"
-msgstr "Geben Sie hier entweder <code>https://www.geonames.org</code> oder <code>http://api.geonames.org</code> ein in Abhängigkeit davon, ob Ihr OJS-Server unter HTTP oder HTTPS veröffentlicht ist."
+msgstr "Geben Sie hier entweder <code>https://www.geonames.org</code> oder <code>http://api.geonames.org</code> ein in Abhängigkeit davon, ob Ihr OJS-Server unter HTTP oder HTTPS veröffentlicht ist. Wenn Sie das Plugin lokal testen dann sollten Sie <code>http://api.geonames.org</code> nutzen."
 
 msgid "plugins.generic.geoMetadata.name"
 msgstr "geoMetadata Plugin"

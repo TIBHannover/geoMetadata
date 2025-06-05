@@ -27,7 +27,7 @@ msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.temporal"
 msgstr "Propiedades temporales"
 
 msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.temporal.description.submission"
-msgstr "Define las propiedades temporales del contenido de los articulos especificando las fechas de inicio y fin. La entrada es posible a traves del campo de texto asi como a traves de la vista de calendario. Pulse el campo de entrada debajo de este texto para abrir el calendario. Pulse \"Aplicar\" para guardar la configuración del calendario. Pulse \"Borrar\" para eliminar los datos actuales. La entrada de texto debe coincidir con el siguiente formato y confirmarse pulsando \"Aplicar\" (¡no Enter!): el inicio y el final se separan con un guión rodeado de espacios; las fechas se dan como \"AAAA-MM-DD\", donde \"AAAA\" significa años, \"MM\" meses (con un cero a la izquierda), y \"DD\" días (con un cero a la izquierda)."
+msgstr "Define las propiedades temporales del contenido de los articulos especificando las fechas de inicio y fin. La entrada es posible a traves del campo de texto asi como a traves de la vista de calendario. Pulse el campo de entrada debajo de este texto para abrir el calendario. Pulse \"Aplicar\" para guardar la configuración del calendario. Pulse \"Borrar\" para eliminar los datos actuales. La entrada de texto debe coincidir con el siguiente formato y confirmarse pulsando \"Aplicar\" (¡no Enter!): el inicio y el final se separan con un guión rodeado de espacios; las fechas se dan como \"AAAA-MM-DD\", donde \"AAAA\" significa años, \"MM\" meses (con un cero a la izquierda), y \"DD\" días (con un cero a la izquierda). Además, también se aceptan entradas de texto como "XXXX" y "XXXX-DD", que se formatearán como "XXXX-01-01" o "XXXX-DD-01"."
 
 msgid "plugins.generic.geoMetadata.geospatialmetadata.properties.temporal.description.article"
 msgstr "Propiedades temporales del contenido del artículo especificadas con una resolución de días."
@@ -75,10 +75,10 @@ msgid "plugins.generic.geoMetadata.settings.usernameGeonames.description"
 msgstr "Debe especificar su nombre de usuario para la API de GeoNames, de modo que sea posible una alineación para las unidades administrativas. Cree una cuenta en <a href=\"https://www.geonames.org/login\">https://www.geonames.org/login</a> e inserte el nombre de usuario aquí."
 
 msgid "plugins.generic.geoMetadata.settings.baseurlGeonames"
-msgstr "URL base de Geonames, use para cambiar entre 'http' y 'https'."
+msgstr "URL base de GeoNames, use para cambiar entre 'http' y 'https'."
 
 msgid "plugins.generic.geoMetadata.settings.baseurlGeonames.description"
-msgstr "Utilice uno de <code>https://www.geonames.org</code> o <code>http://api.geonames.org</code> dependiendo de si su servidor OJS está publicado en http o https."
+msgstr "Utilice uno de <code>https://www.geonames.org</code> o <code>http://api.geonames.org</code> dependiendo de si su servidor OJS está publicado en http o https. Si ejecutas el plugin localmente debes usar <code>http://api.geonames.org</code>."
 
 msgid "plugins.generic.geoMetadata.name"
 msgstr "geoMetadata Plugin"
