@@ -39,23 +39,23 @@ function disableGazzetter() {
 
 function checkGeonames() {
     if (baseurlGeonames === "") {
-        console.log(logPrefix + "No URL configured for Geonames API. Please configure the service URL in the plug-in settings.");
+        console.log(logPrefix + "No Base URL configured for GeoNames. Please configure the Base URL for GeoNames in the OJS plugin settings.");
         disableGazzetter();
     }
 
     if (usernameGeonames === "") {
-        console.log(logPrefix + "No username configured for Geonames API. Visit https://www.geonames.org/login, register and enter the username in the plug-in settings.");
+        console.log(logPrefix + "No username configured for GeoNames. Visit https://www.geonames.org/login, register and enter the username in the OJS plugin settings.");
         disableGazzetter();
     }
     else {
         var testRequest = ajaxRequestGeonamesPlaceName("Münster");
         if (testRequest === null) {
-            console.log(logPrefix + "Your username is not valid. Please check if it is correct in the plug-in settings or create a new account on https://www.geonames.org/login.");
+            console.log(logPrefix + "Your GeoNames username is not valid. Please check if it is correct in the OJS plugin settings or visit https://www.geonames.org/login, register and enter the username in the OJS plugin settings.");
             disableGazzetter();
         }
         else if (testRequest.status !== undefined) {
             if (testRequest.status.value === 19) {
-                console.log(logPrefix + "The limit of credits for your geonames account has been exceeded. Please use an other geonames account or wait until you got new credits!");
+                console.log(logPrefix + "The limit of credits for your GeoNames account has been exceeded. Please use an other GeoNames account or wait until you got new credits!");
                 disableGazzetter();
             }
         }
