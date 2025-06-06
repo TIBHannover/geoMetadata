@@ -168,7 +168,8 @@ class GeoMetadataPlugin extends GenericPlugin
 			$templateMgr->addHeader('dublinCoreSpatialCoverage', '<meta name="DC.SpatialCoverage" scheme="GeoJSON" content="' . htmlspecialchars(strip_tags($spatial)) . '" />');
 		}
 
-		if ($administrativeUnit = $publication->getData(GEOMETADATA_DB_FIELD_ADMINUNIT)) {
+		$administrativeUnit = $publication->getData(GEOMETADATA_DB_FIELD_ADMINUNIT);
+		if ($administrativeUnit !== "no data" && $administrativeUnit !== null) {
 			$administrativeUnitNames = array_map(function ($unit) {
 				return $unit->name;
 			}, json_decode($administrativeUnit));
@@ -209,7 +210,7 @@ class GeoMetadataPlugin extends GenericPlugin
 		}
 
 		$timePeriods = $publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS); 
-		if ($timePeriods != 'no data') {
+		if ($timePeriods !== 'no data' && $timePeriods !== null) {
 			// FIXME crazy use of explode makes more sense when we support multiple periods			
 			$begin = explode('..', explode('{', $timePeriods)[1])[0];
 			$end = explode('}', explode('..', explode('{', $timePeriods)[1])[1])[0];
@@ -528,15 +529,15 @@ class GeoMetadataPlugin extends GenericPlugin
 		$administrativeUnit = $_POST[GEOMETADATA_DB_FIELD_ADMINUNIT] ?? null;
 		
 		// null if there is no possibility to input data (metadata input before Schedule for Publication)
-		if ($spatialProperties !== null) {
+		if ($spatialProperties !== null && $spatialProperties !== "no data") {
 			$newPublication->setData(GEOMETADATA_DB_FIELD_SPATIAL, $spatialProperties);
 		}
 
-		if ($temporalProperties !== null && $temporalProperties !== "") {
+		if ($temporalProperties !== null && $temporalProperties !== "" && $temporalProperties !== "no data") {
 			$newPublication->setData(GEOMETADATA_DB_FIELD_TIME_PERIODS, $temporalProperties);
 		}
-
-		if ($administrativeUnit !== null) {
+		
+		if ($administrativeUnit !== null and $administrativeUnit !== "no data") {
 			$newPublication->setData(GEOMETADATA_DB_FIELD_ADMINUNIT, $administrativeUnit);
 
 			// turn admin units into string then save in Coverage field

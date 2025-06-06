@@ -42,7 +42,7 @@ L.control.layers(baseLayers, overlayMaps).addTo(map);
 $(function () {
     // load properties for each article from issue_map.tpl
     var data = JSON.parse($('.geoMetadata_data.publications')[0].value);
-
+    
     data.forEach((publication, index) => {
         let articleId = publication['id'];
         let spatialParsed = JSON.parse(publication['spatial']);
@@ -51,13 +51,11 @@ $(function () {
             let articleTitle = publication['title'];
             let articleAuthors = publication['authors'];
             let articleIssue = publication['issue'];
-            let articleAdministrativeUnit = publication['coverage'];
             let articleTemporal = publication ['temporal'];
-            let articleTemporalStart = articleTemporal.split('{')[1].split('..')[0];
-            let articleTemporalEnd = articleTemporal.split('{')[1].split('..')[1].split('}')[0];
+            let articleAdministrativeUnit = publication['coverage'];
 
             // popup content roughly based on issue_details.tpl
-            const popupTemplate = `<h2 class="title">
+            let popupTemplate = `<h2 class="title">
                 <a id="article-${articleId}" class="geoMetadata_journal_maplink" href="${geoMetadata_articleBaseUrl}/${articleId}">${articleTitle}</a>
                 </h2>
                 <br/>
@@ -66,17 +64,30 @@ $(function () {
                 </div>
                 <div class="authors">
                     ${articleIssue}
-                </div>
-                <br/>
+                </div>`
+
+            if (articleTemporal !== "no data" && articleTemporal !== null) {
+                let articleTemporalStart = articleTemporal.split('{')[1].split('..')[0];
+                let articleTemporalEnd = articleTemporal.split('{')[1].split('..')[1].split('}')[0];
+
+                let popupTemporal = `<br/>
                 <div class="authors">
                     <i class="fa-solid fa-calendar-days"></i>
                     <i>${articleTemporalStart} – ${articleTemporalEnd}</i>
-                </div>
-                <br/>
+                </div>`
+
+                popupTemplate = popupTemplate.concat(popupTemporal);
+            }
+
+            if (articleAdministrativeUnit !== "no data" && articleAdministrativeUnit !== null) {
+                let popupAdministrativeUnit = `<br/>
                 <div class="authors"> 
                     <i class="fa-solid fa-location-dot"></i>
                     <i>${articleAdministrativeUnit}</i>
                 </div>`
+
+                popupTemplate = popupTemplate.concat(popupAdministrativeUnit);
+            }
 
             let layer = L.geoJSON(spatialParsed, {
                 onEachFeature: (feature, layer) => {

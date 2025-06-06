@@ -1205,7 +1205,7 @@ function initDaterangepicker() {
         format: 'YYYY-MM-DD'
     };
 
-    if (timePeriods !== 'no data') {
+    if (timePeriods !== 'no data' && timePeriods !== '') {
         let start = timePeriods.split('{')[1].split('..')[0];
         let end = timePeriods.split('{')[1].split('..')[1].split('}')[0];
 
