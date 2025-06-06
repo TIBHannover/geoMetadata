@@ -81,7 +81,7 @@ msgid "plugins.generic.geoMetadata.settings.baseurlGeonames"
 msgstr "Basis-URL von GeoNames, um zwischen 'http' und 'https' zu wechseln."
 
 msgid "plugins.generic.geoMetadata.settings.baseurlGeonames.description"
-msgstr "Geben Sie hier entweder <code>https://www.geonames.org</code> oder <code>http://api.geonames.org</code> ein in Abhängigkeit davon, ob Ihr OJS-Server unter HTTP oder HTTPS veröffentlicht ist. Wenn Sie das Plugin lokal testen dann sollten Sie <code>http://api.geonames.org</code> nutzen."
+msgstr "Geben Sie hier in Abhängigkeit zu Ihrem Setup die passende GeoNames Base URL ein. Diese ist voraussichtlich eine der folgenden: <code>http://api.geonames.org</code>, <code>https://www.geonames.org</code>, oder <code>https://secure.geonames.org</code>. Wenn Sie das Plugin lokal testen sollten Sie <code>http://api.geonames.org</code> nutzen, der sichere und CORS-valide GeoNames endpoint ist <code>https://secure.geonames.org</code>. Weitere Informationen sind verfügbar unter <a href=\"https://www.geonames.org/export/web-services.html">https://www.geonames.org/export/web-services.html</a>."
 
 msgid "plugins.generic.geoMetadata.name"
 msgstr "geoMetadata Plugin"
