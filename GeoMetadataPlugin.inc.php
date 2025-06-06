@@ -287,7 +287,7 @@ class GeoMetadataPlugin extends GenericPlugin
 			$spatialProperties = 'no data';
 		}
 
-		if ($administrativeUnit === null || current($administrativeUnit) === '' || $administrativeUnit === '') {
+		if ($administrativeUnit === null || (is_array($administrativeUnit) && current($administrativeUnit) === '') || $administrativeUnit === '') {
 			$administrativeUnit = 'no data';
 		}
 
