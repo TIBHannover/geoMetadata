@@ -182,8 +182,10 @@ To debug, add `debugger;` to the code and make sure to have the developer tools 
 
 1. Run `composer update` and `composer install`
 1. Update the releaseVersion in the `version.xml` e.g. `<release>1.0.1.0-beta</release>`
+   - Create a corresponding commit and push it to GitHub 
 1. Add a git tag and push it to GitHub
    - `git tag -a vReleaseVersion -m "release vReleaseVersion"` e.g. `git tag -a v1.0.1.0-beta -m "release v1.0.1.0-beta"` 
+      - The tag is now connected to the beforehand pushed commit with the changed `version.xml`
    - `git push`
 1. Create a zip archive of the local files with the following command to include the required dependencies from `vendor/` and `js/lib/` but to exclude non-essential files:
 
