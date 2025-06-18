@@ -50,14 +50,35 @@ Once OJS has been installed, the plugin must be downloaded and installed.
 1. Clone [the code repository](https://github.com/TIBHannover/geoMetadata/) and save the contents into the directory `ojs/plugins/generic/geoMetadata` in your OJS installation.
 1. Checkout the desired OJS version of the geoMetadata code repository by selecting the corresponding branch e.g. `stable-3_3_0`.
 1. Run `composer install` in `ojs/plugins/generic/geoMetadata` to download JavaScript dependencies for the plugin using [Asset Packagist](https://asset-packagist.org/site/about).
-1. Activate the plugin in the OJS plug-in settings and continue with [Configuration](#configuration).
-
+1. Activate the plugin in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins) and continue with [Configuration](#configuration).
 
 ### Via Release
 See releases at <https://github.com/TIBHannover/geoMetadata/releases>. The release bundles contain plugin source code as well as the required JavaScript.
 
-1. Download the Source code (tar.gz) and save the contents into the directory `ojs/plugins/generic/geoMetadata` in your OJS installation. It is important to store the content in the directory `ojs/plugins/generic/geoMetadata` and not in a directory including the tag e.g. `ojs/plugins/generic/geoMetadata-1.0.0.0-beta`. 
-1. Activate the plugin in the OJS plug-in settings and continue with [Configuration](#configuration).
+1. Download the source code, you will find the source code in the assets of the corresponding release. The following two options are available. You must select one of them:
+   1. Manual installation via folder placement 
+      - Download the source code as `zip-archive` or `tar.gz-archive` and uncompress it.
+      - Save the contents into the directory `ojs/plugins/generic/geoMetadata` in your OJS installation. It is important to store the content in the directory `ojs/plugins/generic/geoMetadata` and not in a directory including the tag e.g. `ojs/plugins/generic/geoMetadata-1.0.0.0-beta`. 
+   1. Installation via upload 
+      - Download the source code as `zip-archive` or `tar.gz-archive`. Renaming is not required.
+      - Prerequisites 
+         - The upload limit in OJS is 2 MB by default. To upload the GeoMetadata plugin, you need to increase this limit in the used `php.ini`-file.
+            - If you do not know where the `php.ini` file is located, you can find it by creating an `info.php`-file in your server folder containing the following content: `echo "<?php phpinfo();" >`
+               - Open the `info.php`-file in a browser to check the location (property: `Loaded Configuration File`) of the `php.ini`-file.
+            - The following properties need to be adapted: 
+               - `post_max_size = 100M`
+               - `upload_max_filesize = 100M`
+            - To apply the changes in the `php.ini`-file, a restart of Apache and OJS is required. 
+         - If you want to upload the plugin as `tar.gz-archive` you need to define the `tar`-path in the OJS configuration file (`config.inc.php`). 
+            - code sequence in the `config.inc.php`: 
+               ```
+               ; tar (used in backup plugin, translation packaging)
+               tar = /bin/tar
+               ```
+            - If you are not aware of the `tar`-path on your system you can find it out by using the following command in the terminal: `which tar`.  
+      - Use the button `Upload a New Plugin` in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins). 
+      - Select the `zip-archive` or `tar.gz-archive` for upload and click the `Save`-button.
+1. Activate the plugin in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins) and continue with [Configuration](#configuration).
 
 ## Configuration
 
@@ -160,8 +181,10 @@ To debug, add `debugger;` to the code and make sure to have the developer tools 
 ## Create a release
 
 1. Run `composer update` and `composer install`
-1. Update the release version in `version.xml`
+1. Update the releaseVersion in the `version.xml` e.g. `<release>1.0.1.0-beta</release>`
 1. Add a git tag and push it to GitHub
+   - `git tag -a releaseVersion -m "release releaseVersion"`
+   - `git push`
 1. Create a zip archive of the local files with the following command to include the required dependencies from `vendor/` and `js/lib/` but to exclude non-essential files:
 
    ```bash
