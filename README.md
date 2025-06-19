@@ -53,31 +53,40 @@ Once OJS has been installed, the plugin must be downloaded and installed.
 1. Activate the plugin in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins) and continue with [Configuration](#configuration).
 
 ### Via Release
-See releases at <https://github.com/TIBHannover/geoMetadata/releases>. The release bundles contain plugin source code as well as the required JavaScript.
+See releases at <https://github.com/TIBHannover/geoMetadata/releases>. 
+In the GitHub Release View you will find 4 archives in the assets of the corresponding release:  
 
-1. Download the source code, you will find the source code in the assets of the corresponding release. The following two options are available. You must select one of them:
-   1. Manual installation via folder placement 
-      - Download the source code as `zip-archive` or `tar.gz-archive` and uncompress it.
-      - Save the contents into the directory `ojs/plugins/generic/geoMetadata` in your OJS installation. It is important to store the content in the directory `ojs/plugins/generic/geoMetadata` and not in a directory including the tag e.g. `ojs/plugins/generic/geoMetadata-1.0.0.0-beta`. 
-   1. Installation via upload 
-      - Download the source code as `zip-archive` or `tar.gz-archive`. Renaming is not required.
-      - Prerequisites 
-         - The upload limit in OJS is 2 MB by default. To upload the GeoMetadata plugin, you need to increase this limit in the used `php.ini`-file.
-            - If you do not know where the `php.ini` file is located, you can find it by creating an `info.php`-file in your server folder containing the following content: `echo "<?php phpinfo();" >`
-               - Open the `info.php`-file in a browser to check the location (property: `Loaded Configuration File`) of the `php.ini`-file.
-            - The following properties need to be adapted: 
-               - `post_max_size = 100M`
-               - `upload_max_filesize = 100M`
-            - To apply the changes in the `php.ini`-file, a restart of Apache and OJS is required. 
-         - If you want to upload the plugin as `tar.gz-archive` you need to define the `tar`-path in the OJS configuration file (`config.inc.php`). 
-            - code sequence in the `config.inc.php`: 
-               ```
-               ; tar (used in backup plugin, translation packaging)
-               tar = /bin/tar
-               ```
-            - If you are not aware of the `tar`-path on your system you can find it out by using the following command in the terminal: `which tar`.  
-      - Use the button `Upload a New Plugin` in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins). 
-      - Select the `zip-archive` or `tar.gz-archive` for upload and click the `Save`-button.
+- The `geoMetadata.tar.gz` and `geoMetadata.zip` archive contain the plugin's source code, along with the necessary JavaScript dependencies. No further installation via composer is required, the plugin is ready to use.
+- `Source code (zip)` and `Source code (tar.gz)` contain only the plugin source code. Further installation via composer is required (See [Step 3. From Source](#from-source)). 
+
+We recommend downloading either the `geoMetadata.tar.gz` or the `geoMetadata.zip` archive, which include the JavaScript dependencies. The following guidelines will guide you through the installation process using these archives. There are two options available:
+
+#### Installation via Upload 
+1. Download as `zip-archive` or `tar.gz-archive`. Renaming is not required.
+1. Use the button `Upload a New Plugin` in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins). 
+1. Select the `zip-archive` or `tar.gz-archive` for upload and click the `Save`-button.
+1. Activate the plugin in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins) and continue with [Configuration](#configuration).
+
+_Troubleshooting `File size error.` during Installation via upload_ 
+- The upload limit in OJS is 2 MB by default. To upload the geoMetadata plugin, you need to increase this limit in the used `php.ini`-file.
+   - If you do not know where the `php.ini` file is located, you can find it by creating an `info.php`-file in your server folder containing the following content: `echo "<?php phpinfo();" >`
+      - Open the `info.php`-file in a browser to check the location (property: `Loaded Configuration File`) of the `php.ini`-file.
+   - The following properties need to be adapted: 
+      - `post_max_size = 100M`
+      - `upload_max_filesize = 100M`
+   - To apply the changes in the `php.ini`-file, a restart of Apache and OJS is required. 
+- If you want to upload the plugin as `tar.gz-archive` you need to define the `tar`-path in the OJS configuration file (`config.inc.php`). 
+   - code sequence in the `config.inc.php`: 
+      ```
+      ; tar (used in backup plugin, translation packaging)
+      tar = /bin/tar
+      ```
+   - If you are not aware of the `tar`-path on your system you can find it out by using the following command in the terminal: `which tar`.  
+
+#### Installation via Drag and Drop 
+1. Download as `zip`-archive or `tar.gz`-archive (you can chose) and uncompress it.
+1. Save the contents into the directory `ojs/plugins/generic/geoMetadata` in your OJS installation. 
+   - It is important to store the content in the directory `ojs/plugins/generic/geoMetadata` and not in a directory including the tag e.g. `ojs/plugins/generic/geoMetadata-1.0.0.0-beta`. 
 1. Activate the plugin in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins) and continue with [Configuration](#configuration).
 
 ## Configuration
@@ -144,7 +153,7 @@ All help is welcome: asking questions, providing documentation, testing, or even
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md).
 By participating in this project you agree to abide by its terms.
 
-## Notes about accuracy
+## Notes About Accuracy
 The spatial metadata is saved in GeoJSON format using the EPSG:4326 coordinate reference system (CRS) and the underlying dynamic WGS84 datum.
 This means that even the same coordinates can point to different locations on Earth over time, as the so called "epoch" is not saved.
 However, this only leads to an uncertainty of about +/- 2 m, which is generally _no problem at all_ for the use case of global dataset discovery.
@@ -152,7 +161,7 @@ However, this only leads to an uncertainty of about +/- 2 m, which is generally 
 ## Testing
 Tests are run with [Cypress](https://www.cypress.io/), for which dependencies are installed with npm using the `package.json`.
 
-### Running Cypress locally
+### Running Cypress Locally
 
 ```bash
 # see also Cypress' system dependencies at https://docs.cypress.io/guides/getting-started/installing-cypress#Advanced-Installation
@@ -171,14 +180,14 @@ npm run cy_run
 
 To debug, add `debugger;` to the code and make sure to have the developer tools open in the browser windows started by Cypress.
 
-### Writing tests
+### Writing Tests
 
 1. Start docker-compose configuration (see above)
 1. Start Cypress (see above)
 1. Write tests, run them in Cypress
 1. If you need a clean start (= empty database) for a test, stop the docker-compose configuration, delete it (`down --volume`) and restart it
 
-## Create a release
+## Create a Release
 
 1. Run `composer update` and `composer install`
 1. Update the releaseVersion in the `version.xml` e.g. `<release>1.0.1.0-beta</release>`
@@ -186,15 +195,30 @@ To debug, add `debugger;` to the code and make sure to have the developer tools 
 1. Add a git tag and push it to GitHub
    - `git tag -a vReleaseVersion -m "release vReleaseVersion"` e.g. `git tag -a v1.0.1.0-beta -m "release v1.0.1.0-beta"` 
       - The tag is now connected to the beforehand pushed commit with the changed `version.xml`
-   - `git push`
-1. Create a zip archive of the local files with the following command to include the required dependencies from `vendor/` and `js/lib/` but to exclude non-essential files:
-
-   ```bash
-   rm geoMetadata.zip && zip -r geoMetadata.zip ./ --exclude '*.git*' --exclude '*.github/*' --exclude 'node_modules/*' --exclude '*cypress/*' --exclude '*.gitignore*' --exclude '*.npmignore*' --exclude '*messages.mo*' --exclude '*cypress.config.js*' --exclude '*CONDUCT.md*' --exclude '*screenshots/*'
-   ```
-
-1. Create a new release on GitHub using the tag just created, with a fitting title, description and, if need be, the `pre-release` box checked
-1. Upload the archive to the release on GitHub
+   - `git push origin tag vReleaseVersion` e.g. `git push origin tag v1.0.1.0-beta`
+1. Create a `zip` and `tar.gz` archive of the local repository including the required dependencies from `vendor/` and `js/lib/` but excluding exclude non-essential files. 
+   - `zip`-archive 
+      ```bash
+      zip -r geoMetadata.zip geoMetadata --exclude '*.git*' --exclude '*.github/*' --exclude 'node_modules/*' --exclude '*cypress/*' --exclude '*.gitignore*' --exclude '*.npmignore*' --exclude '*messages.mo*' --exclude '*cypress.config.js*' --exclude '*CONDUCT.md*' --exclude '*screenshots/*'
+      ```
+   - `tar.gz`-archive  
+      ```bash
+      tar -czf geoMetadata.tar.gz \
+          --exclude='*.git*' \
+          --exclude='*.github/*' \
+          --exclude='node_modules/*' \
+          --exclude='*cypress/*' \
+          --exclude='*.gitignore*' \
+          --exclude='*.npmignore*' \
+          --exclude='*messages.mo*' \
+          --exclude='*cypress.config.js*' \
+          --exclude='*CONDUCT.md*' \
+          --exclude='*screenshots/*' \
+         geoMetadata
+      ```
+1. Create a new [release](https://github.com/TIBHannover/geoMetadata/releases) on GitHub using the tag just created, with a fitting title, description and, if necessary, check the `pre-release` box
+1. Upload the both archives as binaries to the release on GitHub
+1. Publish release 
 
 Later release workflows will include usage of the PKP CLI tool, see <https://docs.pkp.sfu.ca/dev/plugin-guide/en/release>.
 
