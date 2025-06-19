@@ -67,7 +67,7 @@ We recommend downloading either the `geoMetadata.tar.gz` or the `geoMetadata.zip
 1. Select the `zip`-archive or `tar.gz`-archive for upload and click the `Save`-button.
 1. Activate the plugin in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins) and continue with [Configuration](#configuration).
 
-_Troubleshooting `File size error.` during Installation via upload_ 
+_Troubleshooting_
 - The upload limit in OJS is 2 MB by default. To upload the geoMetadata plugin, you need to increase this limit in the used `php.ini`-file.
    - If you do not know where the `php.ini` file is located, you can find it by creating an `info.php`-file in your server folder containing the following content: `echo "<?php phpinfo();" >`
       - Open the `info.php`-file in a browser to check the location (property: `Loaded Configuration File`) of the `php.ini`-file.
