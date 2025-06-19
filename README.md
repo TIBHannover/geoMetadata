@@ -84,7 +84,7 @@ _Troubleshooting `File size error.` during Installation via upload_
    - If you are not aware of the `tar`-path on your system you can find it out by using the following command in the terminal: `which tar`.  
 
 #### Installation via Drag and Drop 
-1. Download as `zip`-archive or `tar.gz`-archive (you can chose) and uncompress it.
+1. Download as `zip`-archive or `tar.gz`-archive and uncompress it.
 1. Save the contents into the directory `ojs/plugins/generic/geoMetadata` in your OJS installation. 
    - It is important to store the content in the directory `ojs/plugins/generic/geoMetadata` and not in a directory including the tag e.g. `ojs/plugins/generic/geoMetadata-1.0.0.0-beta`. 
 1. Activate the plugin in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins) and continue with [Configuration](#configuration).
