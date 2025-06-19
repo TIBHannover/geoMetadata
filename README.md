@@ -62,9 +62,9 @@ In the GitHub Release View you will find 4 archives in the assets of the corresp
 We recommend downloading either the `geoMetadata.tar.gz` or the `geoMetadata.zip` archive, which include the JavaScript dependencies. The following guidelines will guide you through the installation process using these archives. There are two options available:
 
 #### Installation via Upload 
-1. Download as `zip-archive` or `tar.gz-archive`. Renaming is not required.
+1. Download as `zip`-archive or `tar.gz`-archive. Renaming is not required.
 1. Use the button `Upload a New Plugin` in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins). 
-1. Select the `zip-archive` or `tar.gz-archive` for upload and click the `Save`-button.
+1. Select the `zip`-archive or `tar.gz`-archive for upload and click the `Save`-button.
 1. Activate the plugin in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins) and continue with [Configuration](#configuration).
 
 _Troubleshooting `File size error.` during Installation via upload_ 
@@ -75,7 +75,7 @@ _Troubleshooting `File size error.` during Installation via upload_
       - `post_max_size = 100M`
       - `upload_max_filesize = 100M`
    - To apply the changes in the `php.ini`-file, a restart of Apache and OJS is required. 
-- If you want to upload the plugin as `tar.gz-archive` you need to define the `tar`-path in the OJS configuration file (`config.inc.php`). 
+- If you want to upload the plugin as `tar.gz`-archive you need to define the `tar`-path in the OJS configuration file (`config.inc.php`). 
    - code sequence in the `config.inc.php`: 
       ```
       ; tar (used in backup plugin, translation packaging)
