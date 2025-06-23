@@ -27,7 +27,7 @@ const geoMetadata_articleBaseUrl = '{if $journal}{url journal=$journal->getPath(
 <link rel="stylesheet" href="{$pluginStylesheetURL}styles.css" type="text/css" />
 
 <input type="text" class="geoMetadata_data publications" name="publications"
-    style="height: 0px; width: 0px; visibility: hidden;" value='{$publications}'>
+    style="height: 0px; width: 0px; visibility: hidden;" value='{$publications|escape:'html'}'>
 
 <div class="page page_about_publishing_system">
 	{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="plugins.generic.geoMetadata.journal.breadcrump"}
