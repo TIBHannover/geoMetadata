@@ -58,9 +58,9 @@ const geoMetadata_adminLayerName = '{translate key="plugins.generic.geoMetadata.
         <input type="text" id="geoMetadata_temporal" name="{$smarty.const.GEOMETADATA_DB_FIELD_TIME_PERIODS}"
             style="height: 0px; width: 0px; visibility: hidden;" value='{${$smarty.const.GEOMETADATA_DB_FIELD_TIME_PERIODS}}' />
         <input type="text" id="geoMetadata_spatial" name="{$smarty.const.GEOMETADATA_DB_FIELD_SPATIAL}"
-            style="height: 0px; width: 0px; visibility: hidden;" value='{${$smarty.const.GEOMETADATA_DB_FIELD_SPATIAL}}' />
+            style="height: 0px; width: 0px; visibility: hidden;" value='{${$smarty.const.GEOMETADATA_DB_FIELD_SPATIAL}|escape:'html'}' />
         <input type="text" id="geoMetadata_administrativeUnit" name="{$smarty.const.GEOMETADATA_DB_FIELD_ADMINUNIT}"
-            style="height: 0px; width: 0px; visibility: hidden;" value='{${$smarty.const.GEOMETADATA_DB_FIELD_ADMINUNIT}}' />
+            style="height: 0px; width: 0px; visibility: hidden;" value='{${$smarty.const.GEOMETADATA_DB_FIELD_ADMINUNIT}|escape:'html'}' />
     </section>
 
 </div>
