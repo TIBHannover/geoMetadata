@@ -36,7 +36,7 @@ var overlayMaps = {
     [geoMetadata_layerName]: articleLocations,
 };
 
-// add layerControl to the map to the map 
+// add layerControl to the map 
 L.control.layers(baseLayers, overlayMaps).addTo(map);
 
 const iconStyle = L.icon({
@@ -60,10 +60,6 @@ function highlightFeature(layer, feature) {
     }
 }
 
-function highlightArticle(id) {
-    $('#' + id).parent().closest('div').addClass('geoMetadata_title_hover');
-}
-
 function resetHighlightFeature(layer, feature) {
     if (feature && feature.geometry.type === "Point" && layer.options.icon) {
         layer.setIcon(iconStyle);
@@ -74,11 +70,30 @@ function resetHighlightFeature(layer, feature) {
     }
 }
 
+// highlight all features for an article
+function highlightArticleFeatures(articleId) {
+    let layers = articleLayersMap.get(articleId) || [];
+    layers.forEach(layer => {
+        highlightFeature(layer, layer.feature);
+    });
+}
+
+function resetHighlightArticleFeatures(articleId) {
+    let layers = articleLayersMap.get(articleId) || [];
+    layers.forEach(layer => {
+        resetHighlightFeature(layer, layer.feature);
+    });
+}
+
+function highlightArticle(id) {
+    $('#' + id).parent().closest('div').addClass('geoMetadata_title_hover');
+}
+
 function resetHighlightArticle(id) {
     $('#' + id).parent().closest('div').removeClass('geoMetadata_title_hover');
 }
 
-var articleFeaturesMap = new Map();
+var articleLayersMap = new Map();
 
 // load spatial data
 $(function () {
@@ -104,20 +119,30 @@ $(function () {
 
         if(spatialProperty.features.length !== 0) {
             spatialInputsAvailable = true;
+            
+            // Array to store all layers for this article
+            if (!articleLayersMap.has(articleId)) {
+                articleLayersMap.set(articleId, []);
+            }
+
             let layer = L.geoJSON(spatialProperty, {
                 onEachFeature: (feature, layer) => {
                     layer.bindPopup(popupInputs[index]);
+                    feature.properties['articleId'] = articleId;
+
+                    // Store layer reference for this article
+                    articleLayersMap.get(articleId).push(layer);
+
                     layer.on({
                         mouseover: (e) => {
-                            highlightFeature(e.target, feature);
+                            highlightArticleFeatures(articleId);
                             highlightArticle(feature.properties.articleId);
                         },
                         mouseout: (e) => {
-                            resetHighlightFeature(e.target, feature);
+                            resetHighlightArticleFeatures(articleId);
                             resetHighlightArticle(feature.properties.articleId);
                         }
                     });
-                    feature.properties['articleId'] = articleId;
                     features.push(feature);
                 },
                 style: geoMetadata_mapLayerStyle
@@ -127,20 +152,13 @@ $(function () {
             map.fitBounds(articleLocations.getBounds());
     
             // add event listener to article div for highlighting the related layer
-            articleFeaturesMap.set(articleId, features);
             let articleDiv = $('#' + articleId).parent().closest('div');
             articleDiv.hover(
                 (e) => {
-                    let features = articleFeaturesMap.get(articleId);
-                    features.forEach(f => {
-                        highlightFeature(layer, f);
-                    })
+                    highlightArticleFeatures(articleId);
                 },
                 (e) => {
-                    let features = articleFeaturesMap.get(articleId);
-                    features.forEach(f => {
-                        resetHighlightFeature(layer, f);
-                    })
+                    resetHighlightArticleFeatures(articleId);
                 }
             );
         }
