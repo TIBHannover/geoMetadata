@@ -1185,6 +1185,13 @@ function storeCreatedGeoJSONAndAdministrativeUnitInHiddenForms(drawnItems) {
             updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
         }
     }
+    else {
+        // empty spatialProperties and administrativeUnit when "Clear All" is used 
+        geojson.features = [];
+        geojson.administrativeUnits = {};
+        updateVueElement('textarea[name="geoMetadata::spatialProperties"]', JSON.stringify(geojson));
+        updateVueElement('textarea[name="geoMetadata::administrativeUnit"]', null);
+    }
 }
 
 /**

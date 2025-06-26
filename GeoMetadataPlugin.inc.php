@@ -169,7 +169,7 @@ class GeoMetadataPlugin extends GenericPlugin
 		}
 
 		$administrativeUnit = $publication->getData(GEOMETADATA_DB_FIELD_ADMINUNIT);
-		if ($administrativeUnit !== "no data" && $administrativeUnit !== null) {
+		if ($administrativeUnit !== "no data" && $administrativeUnit !== null && $administrativeUnit !== "") {
 			$administrativeUnitNames = array_map(function ($unit) {
 				return $unit->name;
 			}, json_decode($administrativeUnit));
@@ -528,26 +528,31 @@ class GeoMetadataPlugin extends GenericPlugin
 		$spatialProperties =  $_POST[GEOMETADATA_DB_FIELD_SPATIAL] ?? null;
 		$administrativeUnit = $_POST[GEOMETADATA_DB_FIELD_ADMINUNIT] ?? null;
 		
-		// null if there is no possibility to input data (metadata input before Schedule for Publication)
-		if ($spatialProperties !== null && $spatialProperties !== "no data") {
+		// "no data" can not be excluded for the following 3 clauses - if the user had created data and it was already stored in the database but then decides to remove it again, the database needs to be updated triggered by "no data". 
+		if ($spatialProperties !== null) {
 			$newPublication->setData(GEOMETADATA_DB_FIELD_SPATIAL, $spatialProperties);
 		}
 
-		if ($temporalProperties !== null && $temporalProperties !== "" && $temporalProperties !== "no data") {
+		if ($temporalProperties !== null && $temporalProperties !== "") {
 			$newPublication->setData(GEOMETADATA_DB_FIELD_TIME_PERIODS, $temporalProperties);
 		}
 		
-		if ($administrativeUnit !== null and $administrativeUnit !== "no data") {
+		if ($administrativeUnit !== null) {
 			$newPublication->setData(GEOMETADATA_DB_FIELD_ADMINUNIT, $administrativeUnit);
 
-			// turn admin units into string then save in Coverage field
-			$administrativeUnitNames = array_map(function ($unit) {
-				return $unit->name;
-			}, json_decode($administrativeUnit));
-			$administrativeUnitNames = implode(', ', $administrativeUnitNames);
+			$journal = Application::get()->getRequest()->getJournal(); 
 
-			$journal = Application::get()->getRequest()->getJournal();
-			$newPublication->setData('coverage', $administrativeUnitNames, $journal->getPrimaryLocale());
+			if ($administrativeUnit !== "no data") {
+				// turn admin units into string then save in Coverage field
+				$administrativeUnitNames = array_map(function ($unit) {
+					return $unit->name;
+				}, json_decode($administrativeUnit));
+				$administrativeUnitNames = implode(', ', $administrativeUnitNames);
+
+				$newPublication->setData('coverage', $administrativeUnitNames, $journal->getPrimaryLocale());
+			} else {
+				$newPublication->setData('coverage', "no data", $journal->getPrimaryLocale());
+			}
 		}
 	}
 
