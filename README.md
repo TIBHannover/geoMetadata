@@ -8,6 +8,7 @@
 </div>
 
 # geoMetadata Plugin
+
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8198983.svg)](https://doi.org/10.5281/zenodo.8198983)
 
 The geoMetadata Plugin (formerly known as OJS Geo Plugin or OPTIMETA Geo Plugin) offers a novel way to capture and provide geospatial properties of research articles in [Open Journal Systems (OJS)](https://pkp.sfu.ca/ojs/).
@@ -17,6 +18,7 @@ The KOMET team develops further plugins like the [citationManager](https://githu
 Visit the [KOMET project website](https://projects.tib.eu/komet/output/) for a full overview of the project output.
 
 ## Functionality  
+
 Authors can either search for a location and accept the suggested bounding box or manually create one or more suitable geometric shape(s) on a map.
 If authors enter geometries, a gazetteer is used to suggest a matching administrative unit’s name to the author.
 This allows the plugin to store geospatial data in two forms: as text, using an administrative unit or standardised geographical norm data, and as geospatial coordinates in GeoJSON format.
@@ -38,13 +40,16 @@ In addition, the information is also added to the HTML source code of article’
 </div>
 
 ## Publications 
-- A first prototype of the geoMetadata Plugin was developed under the name *geoOJS* by Tom Niers for the BSc. thesis [Geospatial Metadata for Discovery in Scholarly Publishing](http://nbn-resolving.de/urn:nbn:de:hbz:6-69029469735); the work was [presented at The Munin Conference on Scholarly Publishing, 2020](https://doi.org/10.7557/5.5590), see [recording](https://youtu.be/-Lc9AjHq_AY).
+
+A first prototype of the geoMetadata Plugin was developed under the name *geoOJS* by Tom Niers for the BSc. thesis [Geospatial Metadata for Discovery in Scholarly Publishing](http://nbn-resolving.de/urn:nbn:de:hbz:6-69029469735); the work was [presented at The Munin Conference on Scholarly Publishing, 2020](https://doi.org/10.7557/5.5590), see [recording](https://youtu.be/-Lc9AjHq_AY).
 
 ## Download & Installation
+
 You can download OJS via the [PKP Software Download Section](https://pkp.sfu.ca/software/ojs/download/). 
 A detailed [GetStarted Guide](GetStarted.md) for installing OJS is available. 
 
 ### From Source
+
 Once OJS has been installed, the plugin must be downloaded and installed.
 
 1. Clone [the code repository](https://github.com/TIBHannover/geoMetadata/) and save the contents into the directory `ojs/plugins/generic/geoMetadata` in your OJS installation.
@@ -53,6 +58,7 @@ Once OJS has been installed, the plugin must be downloaded and installed.
 1. Activate the plugin in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins) and continue with [Configuration](#configuration).
 
 ### Via Release
+
 See releases at <https://github.com/TIBHannover/geoMetadata/releases>. 
 In the GitHub Release View you will find 4 archives in the assets of the corresponding release:  
 
@@ -62,12 +68,14 @@ In the GitHub Release View you will find 4 archives in the assets of the corresp
 We recommend downloading either the `geoMetadata.tar.gz` or the `geoMetadata.zip` archive, which include the JavaScript dependencies. The following guidelines will guide you through the installation process using these archives. There are two options available:
 
 #### Installation via Upload 
+
 1. Download as `zip`-archive or `tar.gz`-archive. Renaming is not required.
 1. Use the button `Upload a New Plugin` in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins). 
 1. Select the `zip`-archive or `tar.gz`-archive for upload and click the `Save`-button.
 1. Activate the plugin in the OJS plugin settings (OJS > Dashboard > Website > Plugins > Installed Plugins) and continue with [Configuration](#configuration).
 
-_Troubleshooting_
+##### Troubleshooting Installation via Uploading a Release
+
 - The upload limit in OJS is 2 MB by default. To upload the geoMetadata plugin, you need to increase this limit in the used `php.ini`-file.
    - If you do not know where the `php.ini` file is located, you can find it by creating an `info.php`-file in your server folder containing the following content: `echo "<?php phpinfo();" >`
       - Open the `info.php`-file in a browser to check the location (property: `Loaded Configuration File`) of the `php.ini`-file.
@@ -77,13 +85,14 @@ _Troubleshooting_
    - To apply the changes in the `php.ini`-file, a restart of Apache and OJS is required. 
 - If you want to upload the plugin as `tar.gz`-archive you need to define the `tar`-path in the OJS configuration file (`config.inc.php`). 
    - code sequence in the `config.inc.php`: 
-      ```
+      ```bash
       ; tar (used in backup plugin, translation packaging)
       tar = /bin/tar
       ```
    - If you are not aware of the `tar`-path on your system you can find it out by using the following command in the terminal: `which tar`.  
 
 #### Installation via Drag and Drop 
+
 1. Download as `zip`-archive or `tar.gz`-archive and uncompress it.
 1. Save the contents into the directory `ojs/plugins/generic/geoMetadata` in your OJS installation. 
    - It is important to store the content in the directory `ojs/plugins/generic/geoMetadata` and not in a directory including the tag e.g. `ojs/plugins/generic/geoMetadata-1.0.0.0-beta`. 
@@ -91,74 +100,79 @@ _Troubleshooting_
 
 ## Configuration
 
-1. Configure **GeoNames**
+### 1. Configure **GeoNames**
 
-   You have to specify your username for the GeoNames API, so that an alignment for the administrative units is possible.
+You have to specify your username for the GeoNames API, so that an alignment for the administrative units is possible.
 
-   1. Create an account on <https://www.geonames.org/login> and enable it by clicking the activiation link you receive via email.
-   1. Go to <https://www.geonames.org/manageaccount> and enable your account for free web services. 
-   1. Enter the username and the GeoNames BaseURL in the settings (OJS > Dashboard > Website > Plugins > Installed Plugins > geoMetadata > blue arrow > Settings).
+1. Create an account on <https://www.geonames.org/login> and enable it by clicking the activiation link you receive via email.
+1. Go to <https://www.geonames.org/manageaccount> and enable your account for free web services. 
+1. Enter the username and the GeoNames BaseURL in the settings (OJS > Dashboard > Website > Plugins > Installed Plugins > geoMetadata > blue arrow > Settings).
 
-1. Configure **Issue TOC** 
+### 2. Configure **Issue TOC** 
 
-   The plugin displays geospatial information for each article included in an issue on a map on the issue page. 
-   To enable this feature, you need to change a line of code in the main OJS code. 
+The plugin displays geospatial information for each article included in an issue on a map on the issue page. 
+To enable this feature, you need to change a line of code in the main OJS code. 
 
-   - You need to add the following line of code to the [issue_toc.tpl](https://github.com/pkp/ojs/blob/bad437e0ef240afb2370c0548e55fb18716fd278/templates/frontend/objects/issue_toc.tpl) in [line 130](https://github.com/pkp/ojs/blob/bad437e0ef240afb2370c0548e55fb18716fd278/templates/frontend/objects/issue_toc.tpl#L130): 
+You need to add the following line of code to the [issue_toc.tpl](https://github.com/pkp/ojs/blob/bad437e0ef240afb2370c0548e55fb18716fd278/templates/frontend/objects/issue_toc.tpl) in [line 130](https://github.com/pkp/ojs/blob/bad437e0ef240afb2370c0548e55fb18716fd278/templates/frontend/objects/issue_toc.tpl#L130): 
 
-      `{call_hook name="Templates::Issue::TOC::Main"}` 
-      
-   - With your adaptations, this section of the file should look like this::  
+```php
+{call_hook name="Templates::Issue::TOC::Main"}
+```
 
-      _line 129_ `{/foreach}`
+With your adaptations, this section of the file should look like this: 
 
-      _line 130_ `{call_hook name="Templates::Issue::TOC::Main"}`
+```php
+# line 129
+`{/foreach}`
 
-      _line 131_ `</div><!-- .sections -->`
+# line 130
+{call_hook name="Templates::Issue::TOC::Main"}
+
+# line 131
+`</div><!-- .sections -->
+```
    
-1. Configure **Journal Map**
+### 3. Configure Journal Map
 
-   The plugin displays geospatial information for each article included in a journal on a map. This map is available via `journalURL/map` e.g. `https://examplePublisher/index.php/exampleJournal/map`. 
+The plugin displays geospatial information for each article included in a journal on a map.
+This map is available via the URL `<journal URL>/map`, e.g., `https://example-publisher.org/index.php/exampleJournal/map`.
    
-   This map is available via the URL, but you could also provide the option for users of your journal to access the map by clicking on a button in the _Primary Navigation Menu_. To do this, you need to carry out the following steps. 
+This map is always available via the URL, but you can carry out the following steps to make it accessible to users with a button in the _Primary Navigation Menu_.
 
-   1. Enter the corresponding menu (OJS > Dashboard > Website > Setup > Navigation).
-   1. Add the Navigation Menu Item _Map_.
-
-      1. _Add Item_ 
-      1. Title: _Map_ 
-      1. Navigation Menu Type: _Remote URL_  
-      1. URL: _journalURL/map_  
-
-   1. Add Navigation Menu Item _Map_ to _Primary Navigation Menu_. 
-
-      - If the _Primary Navigation Menu_ is available. 
-
-         1. _Blue Arrow_ next to _Primary Navigation Menu_ 
-         1. _Edit_ 
-         1. Place the Menu Item _Map_ at the place where the user should find it. You can move the item _Map_ from the _Unassigned Menu Items_ to the _Assigned Menu Items_. 
-         
-      - If the _Primary Navigation Menu_ is not available you have to create it. 
-
-         1. _Add Menu_ 
-         1. Title: _Primary Navigation Menu_ 
-         1. Active Theme Navigation Areas: _primary_
-         1. Place all items the user should find in the menu including the item _Map_. You can move the items from the _Unassigned Menu Items_ to the _Assigned Menu Items_.  
+1. Enter the corresponding menu (OJS > Dashboard > Website > Setup > Navigation).
+1. Add the Navigation Menu Item _Map_.
+   1. _Add Item_ 
+   1. Title: _Map_ 
+   1. Navigation Menu Type: _Remote URL_  
+   1. URL: _journalURL/map_  
+1. Add Navigation Menu Item _Map_ to _Primary Navigation Menu_. 
+   - If the _Primary Navigation Menu_ is available. 
+      1. _Blue Arrow_ next to _Primary Navigation Menu_ 
+      1. _Edit_ 
+      1. Place the Menu Item _Map_ at the place where the user should find it. You can move the item _Map_ from the _Unassigned Menu Items_ to the _Assigned Menu Items_. 
+   - If the _Primary Navigation Menu_ is not available you have to create it. 
+      1. _Add Menu_ 
+      1. Title: _Primary Navigation Menu_ 
+      1. Active Theme Navigation Areas: _primary_
+      1. Place all items the user should find in the menu including the item _Map_. You can move the items from the _Unassigned Menu Items_ to the _Assigned Menu Items_.  
 
 Further information on the geoJSON specification is available via a [wiki](https://github.com/tomniers/geoOJS/wiki/geoJSON-Specification). 
 
 ## Contribute
+
 All help is welcome: asking questions, providing documentation, testing, or even development.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md).
 By participating in this project you agree to abide by its terms.
 
 ## Notes About Accuracy
+
 The spatial metadata is saved in GeoJSON format using the EPSG:4326 coordinate reference system (CRS) and the underlying dynamic WGS84 datum.
 This means that even the same coordinates can point to different locations on Earth over time, as the so called "epoch" is not saved.
 However, this only leads to an uncertainty of about +/- 2 m, which is generally _no problem at all_ for the use case of global dataset discovery.
 
 ## Testing
+
 Tests are run with [Cypress](https://www.cypress.io/), for which dependencies are installed with npm using the `package.json`.
 
 ### Running Cypress Locally
