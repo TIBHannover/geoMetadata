@@ -122,14 +122,9 @@ You need to add the following line of code to the [issue_toc.tpl](https://github
 With your adaptations, this section of the file should look like this: 
 
 ```php
-# line 129
-`{/foreach}`
-
-# line 130
-{call_hook name="Templates::Issue::TOC::Main"}
-
-# line 131
-`</div><!-- .sections -->
+{/foreach}                                     # line 129
+{call_hook name="Templates::Issue::TOC::Main"} # line 130
+</div><!-- .sections -->                       # line 131
 ```
    
 ### 3. Configure Journal Map
