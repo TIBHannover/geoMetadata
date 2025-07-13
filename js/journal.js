@@ -44,7 +44,7 @@ $(function () {
     var data = JSON.parse($('.geoMetadata_data.publications')[0].value);
     
     data.forEach((publication, index) => {
-        let articleId = publication['id'];
+        let submissionId = publication['submissionId'];
         
         if (publication['spatial'] != null) {
             let spatialParsed = JSON.parse(publication['spatial']);
@@ -58,7 +58,7 @@ $(function () {
 
                 // popup content roughly based on issue_details.tpl
                 let popupTemplate = `<h2 class="title">
-                    <a id="article-${articleId}" class="geoMetadata_journal_maplink" href="${geoMetadata_articleBaseUrl}/${articleId}">${articleTitle}</a>
+                    <a id="submission-${submissionId}" class="geoMetadata_journal_maplink" href="${geoMetadata_articleBaseUrl}/${submissionId}">${articleTitle}</a>
                     </h2>
                     <br/>
                     <div class="authors">
@@ -96,7 +96,7 @@ $(function () {
                         layer.bindPopup(`${popupTemplate}`);
                     },
                     style: geoMetadata_mapLayerStyle,
-                    articleId: articleId
+                    submissionId: submissionId
                 });
                 articleLocations.addLayer(layer);
                 map.fitBounds(articleLocations.getBounds());
