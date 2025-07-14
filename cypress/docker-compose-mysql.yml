@@ -30,7 +30,6 @@ services:
         volumes:
             - ./logs:/var/log/apache2
             - ../:/var/www/html/plugins/generic/geoMetadata
-            - ../../optimetaGeoTheme:/var/www/html/plugins/themes/optimetaGeoTheme
         depends_on:
             - db
         networks:
