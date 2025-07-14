@@ -53,14 +53,14 @@
         -  Install the different PHP versions as different OJS versions require different PHP versions. 
 - Composer needs to be installed 
     - `brew install composer`
-- MYSQL needs to be installed 
+- MYSQL/MariaDB needs to be installed 
     - Installation
-        - `brew install mysql` 
+        - `brew install mysql/mariadb` 
     - GetStarted MySQL for ojs
         - Handling  
-            - start `brew services start mysql` 
-            - stop `brew services stop mysql`
-            - restart `brew services restart mysql`
+            - start `brew services start mysql/mariadb` 
+            - stop `brew services stop mysql/mariadb`
+            - restart `brew services restart mysql/mariadb`
             - open as root `sudo mysql -u root` 
             - exit `exit`
         - Initialisation
