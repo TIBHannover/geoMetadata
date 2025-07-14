@@ -100,8 +100,13 @@ $(function () {
 
     // load properties for each article from issue_details.tpl
     var spatialInputs = $('.geoMetadata_data.spatial').toArray().map(input => {
-        let geojson = JSON.parse(input.value);
-        return (geojson);
+        if (input.value === "no data") {
+            return { features: [] };
+        }
+        else {
+            let geojson = JSON.parse(input.value);
+            return (geojson);
+        }
     });
     var articleIdInputs = $('.geoMetadata_data.articleId').toArray().map(input => {
         return (input.value);

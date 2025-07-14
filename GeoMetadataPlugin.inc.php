@@ -270,13 +270,18 @@ class GeoMetadataPlugin extends GenericPlugin
 		Data is loaded from the database, passed as template variable to the 'submissionMetadataFormFiels.tpl' 
 	 	and requested from there in the 'submission.js' to display coordinates in a map, the date and coverage information if available.
 		*/
-		$publicationDao = DAORegistry::getDAO('PublicationDAO');
+		$submissionDao = Application::getSubmissionDAO();
 		$submissionId = $request->getUserVar('submissionId');
-		$publication = $publicationDao->getById($submissionId);
+		$submission = $submissionDao->getById($submissionId);
+		$publication = null;
 
-		$timePeriods = $publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS);
-		$spatialProperties = $publication->getData(GEOMETADATA_DB_FIELD_SPATIAL);
-		$administrativeUnit = $publication->getData(GEOMETADATA_DB_FIELD_ADMINUNIT);
+		if ($submission) {
+			$publication = $submission->getCurrentPublication();
+
+			$timePeriods = $publication->getData(GEOMETADATA_DB_FIELD_TIME_PERIODS);
+			$spatialProperties = $publication->getData(GEOMETADATA_DB_FIELD_SPATIAL);
+			$administrativeUnit = $publication->getData(GEOMETADATA_DB_FIELD_ADMINUNIT);
+		}
 
 		// for the case that no data is available 
 		if ($timePeriods === null) {

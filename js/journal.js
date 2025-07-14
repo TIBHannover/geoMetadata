@@ -44,60 +44,63 @@ $(function () {
     var data = JSON.parse($('.geoMetadata_data.publications')[0].value);
     
     data.forEach((publication, index) => {
-        let articleId = publication['id'];
-        let spatialParsed = JSON.parse(publication['spatial']);
+        let submissionId = publication['submissionId'];
+        
+        if (publication['spatial'] != null) {
+            let spatialParsed = JSON.parse(publication['spatial']);
 
-        if(spatialParsed.features.length !== 0) {
-            let articleTitle = publication['title'];
-            let articleAuthors = publication['authors'];
-            let articleIssue = publication['issue'];
-            let articleTemporal = publication ['temporal'];
-            let articleAdministrativeUnit = publication['coverage'];
+            if(spatialParsed.features.length !== 0) {
+                let articleTitle = publication['title'];
+                let articleAuthors = publication['authors'];
+                let articleIssue = publication['issue'];
+                let articleTemporal = publication ['temporal'];
+                let articleAdministrativeUnit = publication['coverage'];
 
-            // popup content roughly based on issue_details.tpl
-            let popupTemplate = `<h2 class="title">
-                <a id="article-${articleId}" class="geoMetadata_journal_maplink" href="${geoMetadata_articleBaseUrl}/${articleId}">${articleTitle}</a>
-                </h2>
-                <br/>
-                <div class="authors">
-                    ${articleAuthors}
-                </div>
-                <div class="authors">
-                    ${articleIssue}
-                </div>`
+                // popup content roughly based on issue_details.tpl
+                let popupTemplate = `<h2 class="title">
+                    <a id="submission-${submissionId}" class="geoMetadata_journal_maplink" href="${geoMetadata_articleBaseUrl}/${submissionId}">${articleTitle}</a>
+                    </h2>
+                    <br/>
+                    <div class="authors">
+                        ${articleAuthors}
+                    </div>
+                    <div class="authors">
+                        ${articleIssue}
+                    </div>`
 
-            if (articleTemporal !== "no data" && articleTemporal !== null) {
-                let articleTemporalStart = articleTemporal.split('{')[1].split('..')[0];
-                let articleTemporalEnd = articleTemporal.split('{')[1].split('..')[1].split('}')[0];
+                if (articleTemporal !== "no data" && articleTemporal !== null) {
+                    let articleTemporalStart = articleTemporal.split('{')[1].split('..')[0];
+                    let articleTemporalEnd = articleTemporal.split('{')[1].split('..')[1].split('}')[0];
 
-                let popupTemporal = `<br/>
-                <div class="authors">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    <i>${articleTemporalStart} – ${articleTemporalEnd}</i>
-                </div>`
+                    let popupTemporal = `<br/>
+                    <div class="authors">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <i>${articleTemporalStart} – ${articleTemporalEnd}</i>
+                    </div>`
 
-                popupTemplate = popupTemplate.concat(popupTemporal);
+                    popupTemplate = popupTemplate.concat(popupTemporal);
+                }
+
+                if (articleAdministrativeUnit !== "no data" && articleAdministrativeUnit !== null) {
+                    let popupAdministrativeUnit = `<br/>
+                    <div class="authors"> 
+                        <i class="fa-solid fa-location-dot"></i>
+                        <i>${articleAdministrativeUnit}</i>
+                    </div>`
+
+                    popupTemplate = popupTemplate.concat(popupAdministrativeUnit);
+                }
+
+                let layer = L.geoJSON(spatialParsed, {
+                    onEachFeature: (feature, layer) => {
+                        layer.bindPopup(`${popupTemplate}`);
+                    },
+                    style: geoMetadata_mapLayerStyle,
+                    submissionId: submissionId
+                });
+                articleLocations.addLayer(layer);
+                map.fitBounds(articleLocations.getBounds());
             }
-
-            if (articleAdministrativeUnit !== "no data" && articleAdministrativeUnit !== null) {
-                let popupAdministrativeUnit = `<br/>
-                <div class="authors"> 
-                    <i class="fa-solid fa-location-dot"></i>
-                    <i>${articleAdministrativeUnit}</i>
-                </div>`
-
-                popupTemplate = popupTemplate.concat(popupAdministrativeUnit);
-            }
-
-            let layer = L.geoJSON(spatialParsed, {
-                onEachFeature: (feature, layer) => {
-                    layer.bindPopup(`${popupTemplate}`);
-                },
-                style: geoMetadata_mapLayerStyle,
-                articleId: articleId
-            });
-            articleLocations.addLayer(layer);
-            map.fitBounds(articleLocations.getBounds());
         }
         // TODO load temporal properties and add them to a timeline
     });

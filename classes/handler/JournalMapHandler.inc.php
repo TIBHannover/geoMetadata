@@ -54,7 +54,8 @@ class JournalMapHandler extends Handler
             }
             
             $publicationsGeodata[$id] = [
-                'id' => $publication->getData('id'),
+                'publicationId' => $publication->getData('id'),
+                'submissionId' => $publication->getData('submissionId'),
                 'title' => strip_tags($publication->getLocalizedData('title')),
                 'spatial' => $publication->getData($plugin->dbFields['spatial']),
                 'temporal' => $publication->getData($plugin->dbFields['temporal']),
