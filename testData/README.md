@@ -28,6 +28,11 @@
 - Create directory `/stable-3_3_0-geoMetadata`
 - Export a dump from your current used OJS database and create a `database.sql`  
     - `mysqldump -u root ojs_dump > /stable-3_3_0-geoMetadata/database.sql` 
+- Prepare the OJS instance for demonstration purposes
+    - Include demo content 
+    - Delete all credentials (e.g. plugin settings)
+    - Only the admin should be able to create new accounts (`User & Roles` -> `Site Access Options` -> `User Registration` -> `The Journal Manager will register all user accounts. Editors or Section Editors may register user accounts for reviewers.`)
+    - einstellen dass nur admin nutzer erstellen kann 
 - Copy the content of your ojs files directory into `/stable-3_3_0-geoMetadata/folder`. This directory shall include directories like `journals`, `scheduledTaskLogs`, `usageStats`. 
 - Copy the content of your `ojs/public` folder into `/stable-3_3_0-geoMetadata/public`
 - Copy the `ojs/config.inc.php` into `/stable-3_3_0-geoMetadata/config.inc.php` 

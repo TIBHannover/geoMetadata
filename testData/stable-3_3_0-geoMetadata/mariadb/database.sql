@@ -6135,6 +6135,7 @@ INSERT INTO `journal_settings` VALUES
 (1,'','copyrightYearBasis','issue',NULL),
 (1,'','defaultReviewMode','2',NULL),
 (1,'','disableSubmissions','0',NULL),
+(1,'','disableUserReg','1',NULL),
 (1,'','emailSignature','<br/>\n________________________________________________________________________<br/>\n<a href=\"http://localhost/index.php/publicknowledge\">Journal of Public Knowledge</a>',NULL),
 (1,'','enableOai','1',NULL),
 (1,'','itemsPerPage','25',NULL),
@@ -6149,6 +6150,8 @@ INSERT INTO `journal_settings` VALUES
 (1,'','publicationFee','0',NULL),
 (1,'','publisherInstitution','Public Knowledge Project',NULL),
 (1,'','purchaseArticleFee','0',NULL),
+(1,'','restrictArticleAccess','0',NULL),
+(1,'','restrictSiteAccess','0',NULL),
 (1,'','supportedFormLocales','[\"en_US\",\"fr_CA\"]',NULL),
 (1,'','supportedLocales','[\"en_US\",\"fr_CA\"]',NULL),
 (1,'','supportedSubmissionLocales','[\"en_US\",\"fr_CA\"]',NULL),
@@ -6180,6 +6183,7 @@ INSERT INTO `journal_settings` VALUES
 (2,'','copyrightYearBasis','issue',NULL),
 (2,'','defaultReviewMode','2',NULL),
 (2,'','disableSubmissions','0',NULL),
+(2,'','disableUserReg','1',NULL),
 (2,'','emailSignature','<br/>\n________________________________________________________________________<br/>\n<a href=\"http://localhost:8000/index.php/gmdj\">geoMetadata Demo Journal</a>',NULL),
 (2,'','enableOai','1',NULL),
 (2,'','itemsPerPage','25',NULL),
@@ -6190,6 +6194,8 @@ INSERT INTO `journal_settings` VALUES
 (2,'','numWeeksPerReview','4',NULL),
 (2,'','publicationFee','0',NULL),
 (2,'','purchaseArticleFee','0',NULL),
+(2,'','restrictArticleAccess','0',NULL),
+(2,'','restrictSiteAccess','0',NULL),
 (2,'','supportedFormLocales','[\"en_US\"]',NULL),
 (2,'','supportedLocales','[\"en_US\"]',NULL),
 (2,'','supportedSubmissionLocales','[\"en_US\"]',NULL),
@@ -8484,6 +8490,7 @@ LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `sessions` VALUES
+('23cbe7835d3ae6c10aaffaec9d47da8d',NULL,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',1752562531,1752562664,0,'csrf|a:2:{s:9:\"timestamp\";i:1752562664;s:5:\"token\";s:32:\"3408582901fc9a6a3eba4db72cc52ea4\";}username|s:5:\"admin\";','localhost'),
 ('d2fcce5ae619ae2ba478a889e4b7b195',1,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',1752506213,1752506227,1,'csrf|a:2:{s:9:\"timestamp\";i:1752506227;s:5:\"token\";s:32:\"20b28270c3f80b3cb00bf7278fce0fa1\";}userId|i:1;username|s:5:\"admin\";','localhost'),
 ('e2044d94525543973a281d060feb60c0',1,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',1752486068,1752503335,1,'csrf|a:2:{s:9:\"timestamp\";i:1752503335;s:5:\"token\";s:32:\"eb973a38b3602d20e8b44923a9856438\";}userId|i:1;username|s:5:\"admin\";','localhost');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
@@ -14842,7 +14849,7 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `users` VALUES
-(1,'admin','$2y$10$3XqZDByjPz309JIyuyhtnuuzM/tNNwEkbxM5LlmjoeMKNISlu2vfy','komet@mailinator.com','','','',NULL,'','',NULL,NULL,'2025-07-11 05:35:20',NULL,'2025-07-14 15:16:58',0,0,NULL,0,NULL,1),
+(1,'admin','$2y$10$3XqZDByjPz309JIyuyhtnuuzM/tNNwEkbxM5LlmjoeMKNISlu2vfy','komet@mailinator.com','','','',NULL,'','',NULL,NULL,'2025-07-11 05:35:20',NULL,'2025-07-15 06:55:42',0,0,NULL,0,NULL,1),
 (2,'rvaca','$2y$10$PWAHUCPDhL7OTyd.fZtt/.kpzQo4cvdhhsp0rOXw/Gr1SEnRcR3WS','rvaca@mailinator.com','','','',NULL,'MX','',NULL,NULL,'2025-07-11 05:36:07',NULL,'2025-07-11 05:37:51',0,NULL,NULL,0,NULL,1),
 (3,'dbarnes','$2y$10$c1m7OyXZJiPHnAqJjlmPYOEOte3iikqQgbw3fH64JAlbumbSmIWRG','barnes@mailinator.com','','','',NULL,'AU','',NULL,NULL,'2025-07-11 05:36:12',NULL,'2025-07-11 05:47:31',0,0,NULL,0,NULL,1),
 (4,'dbuskins','$2y$10$qm43/BJX1eEHM6bwAKcrXewrZCYC561kRwSXX6pJB8pc14S8SW3Ha','buskins@mailinator.com','','','',NULL,'US','',NULL,NULL,'2025-07-11 05:36:17',NULL,'2025-07-11 05:36:17',0,0,NULL,0,NULL,1),
@@ -14975,4 +14982,4 @@ commit;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-07-14 17:17:15
+-- Dump completed on 2025-07-15  8:59:56
