@@ -1184,7 +1184,7 @@ CREATE TABLE `controlled_vocab_entries` (
   `seq` double(8,2) DEFAULT NULL,
   PRIMARY KEY (`controlled_vocab_entry_id`),
   KEY `controlled_vocab_entries_cv_id` (`controlled_vocab_id`,`seq`)
-) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1253,7 +1253,7 @@ INSERT INTO `controlled_vocab_entries` VALUES
 (114,152,1.00),
 (112,157,1.00),
 (139,162,1.00),
-(138,167,1.00),
+(142,167,1.00),
 (137,172,1.00),
 (136,197,1.00),
 (135,202,1.00),
@@ -1349,8 +1349,8 @@ INSERT INTO `controlled_vocab_entry_settings` VALUES
 (135,'en_US','submissionKeyword','TIB','string'),
 (136,'en_US','submissionKeyword','JOSIS','string'),
 (137,'en_US','submissionKeyword','heiJOURNALS','string'),
-(138,'en_US','submissionKeyword','UNIMS e-Journals','string'),
-(139,'en_US','submissionKeyword','EarthArXiv','string');
+(139,'en_US','submissionKeyword','EarthArXiv','string'),
+(142,'en_US','submissionKeyword','UNIMS e-Journals','string');
 /*!40000 ALTER TABLE `controlled_vocab_entry_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -1661,7 +1661,7 @@ CREATE TABLE `data_object_tombstone_oai_set_objects` (
   `assoc_id` bigint NOT NULL,
   PRIMARY KEY (`object_id`),
   KEY `data_object_tombstone_oai_set_objects_tombstone_id` (`tombstone_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1720,7 +1720,7 @@ CREATE TABLE `data_object_tombstones` (
   `oai_identifier` varchar(255) NOT NULL,
   PRIMARY KEY (`tombstone_id`),
   KEY `data_object_tombstones_data_object_id` (`data_object_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2346,7 +2346,7 @@ CREATE TABLE `event_log` (
   `is_translated` smallint DEFAULT NULL,
   PRIMARY KEY (`log_id`),
   KEY `event_log_assoc` (`assoc_type`,`assoc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=712 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=715 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3036,7 +3036,10 @@ INSERT INTO `event_log` VALUES
 (708,1048585,39,1,'2025-07-14 14:20:01',268435462,'publication.event.published',0),
 (709,1048585,34,1,'2025-07-14 14:20:01',268435462,'publication.event.published',0),
 (710,1048585,33,1,'2025-07-14 14:20:01',268435462,'publication.event.published',0),
-(711,1048585,32,1,'2025-07-14 14:20:01',268435462,'publication.event.published',0);
+(711,1048585,32,1,'2025-07-14 14:20:01',268435462,'publication.event.published',0),
+(712,1048585,33,1,'2025-08-13 08:41:28',268435463,'publication.event.unpublished',0),
+(713,1048585,33,1,'2025-08-13 08:42:38',268435458,'submission.event.general.metadataUpdated',0),
+(714,1048585,33,1,'2025-08-13 08:42:45',268435462,'publication.event.published',0);
 /*!40000 ALTER TABLE `event_log` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -6784,6 +6787,14 @@ CREATE TABLE `notification_settings` (
 LOCK TABLES `notification_settings` WRITE;
 /*!40000 ALTER TABLE `notification_settings` DISABLE KEYS */;
 set autocommit=0;
+INSERT INTO `notification_settings` VALUES
+(573,'','contents','This is a kind reminder for you to check your journal\'s health through the editorial report.','string'),
+(574,'','contents','This is a kind reminder for you to check your journal\'s health through the editorial report.','string'),
+(575,'','contents','This is a kind reminder for you to check your journal\'s health through the editorial report.','string'),
+(576,'','contents','This is a kind reminder for you to check your journal\'s health through the editorial report.','string'),
+(577,'','contents','This is a kind reminder for you to check your journal\'s health through the editorial report.','string'),
+(578,'','contents','This is a kind reminder for you to check your journal\'s health through the editorial report.','string'),
+(579,'','contents','This is a kind reminder for you to check your journal\'s health through the editorial report.','string');
 /*!40000 ALTER TABLE `notification_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -6878,7 +6889,7 @@ CREATE TABLE `notifications` (
   KEY `notifications_context_id` (`context_id`,`level`),
   KEY `notifications_assoc` (`assoc_type`,`assoc_id`),
   KEY `notifications_user_id_level` (`user_id`,`level`)
-) ENGINE=InnoDB AUTO_INCREMENT=573 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=580 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7158,7 +7169,14 @@ INSERT INTO `notifications` VALUES
 (557,2,1,2,16777251,'2025-07-14 14:17:45','2025-07-14 14:17:45',1048585,34),
 (558,2,1,2,16777251,'2025-07-14 14:18:27','2025-07-14 14:18:27',1048585,39),
 (559,2,1,2,16777251,'2025-07-14 14:19:00','2025-07-14 14:19:00',1048585,40),
-(560,2,1,2,16777251,'2025-07-14 14:19:31','2025-07-14 14:19:31',1048585,41);
+(560,2,1,2,16777251,'2025-07-14 14:19:31','2025-07-14 14:19:31',1048585,41),
+(573,1,1,3,16777258,'2025-08-13 08:40:56',NULL,0,0),
+(574,1,2,3,16777258,'2025-08-13 08:40:56',NULL,0,0),
+(575,1,3,3,16777258,'2025-08-13 08:40:56',NULL,0,0),
+(576,1,5,3,16777258,'2025-08-13 08:40:56',NULL,0,0),
+(577,1,4,3,16777258,'2025-08-13 08:40:56',NULL,0,0),
+(578,1,6,3,16777258,'2025-08-13 08:40:56',NULL,0,0),
+(579,2,1,3,16777258,'2025-08-13 08:40:56',NULL,0,0);
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -7763,13 +7781,13 @@ INSERT INTO `publication_settings` VALUES
 (33,'en_US','title','Survival of the brightest: pIRIR dating of volcanic sediments in Sulawesi, Indonesia, using micro-aliquots of K-rich feldspar	'),
 (34,'','categoryIds','[]'),
 (34,'','copyrightYear','2025'),
-(34,'','geoMetadata::administrativeUnit','[{\"name\":\"Europe\",\"geonameId\":6255148,\"provenance\":{\"description\":\"Administrative unit created by user (accepting the suggestion of the Geonames API, which was created on basis of a textual input).\",\"id\":21},\"bbox\":{\"east\":41.73303985595703,\"south\":27.6377894797159,\"north\":80.76416015625,\"west\":-24.532675386662543},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\"]}]'),
-(34,'','geoMetadata::spatialProperties','{\"type\":\"FeatureCollection\",\"features\":[],\"administrativeUnits\":[{\"name\":\"Europe\",\"geonameId\":6255148,\"provenance\":{\"description\":\"Administrative unit created by user (accepting the suggestion of the Geonames API, which was created on basis of a textual input).\",\"id\":21},\"bbox\":{\"east\":41.73303985595703,\"south\":27.6377894797159,\"north\":80.76416015625,\"west\":-24.532675386662543},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\"]}],\"temporalProperties\":{\"timePeriods\":[],\"provenance\":{\"description\":\"not available\",\"id\":\"not available\"}}}'),
-(34,'','geoMetadata::timePeriods','no data'),
+(34,'','geoMetadata::administrativeUnit','[{\"name\":\"Earth\",\"geonameId\":6295630,\"bbox\":\"not available\",\"administrativeUnitSuborder\":[\"Earth\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Europe\",\"geonameId\":6255148,\"bbox\":{\"east\":41.73303985595703,\"south\":27.6377894797159,\"north\":80.76416015625,\"west\":-24.532675386662543},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}}]'),
+(34,'','geoMetadata::spatialProperties','{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"provenance\":{\"description\":\"geometric shape created by user (drawing)\",\"id\":11}},\"geometry\":{\"type\":\"LineString\",\"coordinates\":[[8.356475830078127,49.65029270174143],[6.671447753906251,49.78569757629149],[5.884552001953126,48.68597418988793],[6.197662353515625,48.64606680622687],[7.586059570312501,47.57837853860192],[9.177703857421877,47.65660048985082],[9.989318847656252,48.40823770414508],[10.86822509765625,48.36081156428019],[12.076721191406252,49.00995159747052],[8.258972167968752,50.01568168937738]]}},{\"type\":\"Feature\",\"properties\":{\"provenance\":{\"description\":\"geometric shape created by user (drawing)\",\"id\":11}},\"geometry\":{\"type\":\"LineString\",\"coordinates\":[[8.219146728515627,50.00288451160003],[8.040618896484377,49.99935365599503],[8.836441040039064,51.774000954131346],[11.664733886718752,52.14444515792554],[9.685821533203127,50.630735556512526],[8.190307617187502,49.86100531802301]]}}],\"administrativeUnits\":[{\"name\":\"Earth\",\"geonameId\":6295630,\"bbox\":\"not available\",\"administrativeUnitSuborder\":[\"Earth\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Europe\",\"geonameId\":6255148,\"bbox\":{\"east\":41.73303985595703,\"south\":27.6377894797159,\"north\":80.76416015625,\"west\":-24.532675386662543},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}}],\"temporalProperties\":{\"timePeriods\":[\"1065-01-01..1065-12-31\"],\"provenance\":{\"description\":\"temporal properties created by user\",\"id\":31}}}'),
+(34,'','geoMetadata::timePeriods','{1065-01-01..1065-12-31}'),
 (34,'','issueId','4'),
 (34,'en_US','abstract','<p>Die Hauptstadt und das Land gehören für moderne Menschen untrennbar zusammen. Eines geht ohne das andere nicht. Bereits in der Grundschule lernen wir die entsprechenden Begriffspaare auswendig. In Hauptstädten wird Politik gemacht, sie sind die Schaltzentrale ihres Landes und der Ort, an dem das Parlament, viele wichtige Ministerien sowie ausländische Konsulate und Botschaften zu finden sind; meistens in einem eigenen Regierungsviertel. Für uns ist die Hauptstadt heute selbstverständlich ein Synonym für das Zentrum der Macht und für diejenigen, die politische Entscheidungen treffen. Demnach „entscheidet Berlin“, man fragt, „was Washington eigentlich denkt“, „welche Zusicherungen Moskau gemacht hat“ und was „Peking dazu sagt“.</p>'),
 (34,'en_US','copyrightHolder','geoMetadata Demo Journal'),
-(34,'en_US','coverage','Europe'),
+(34,'en_US','coverage','Earth, Europe'),
 (34,'en_US','prefix',''),
 (34,'en_US','subtitle',''),
 (34,'en_US','title','Herrschaft vom Pferderücken – Reisekönigtum zur Zeit Heinrichs IV.	'),
@@ -7893,7 +7911,7 @@ INSERT INTO `publications` VALUES
 (31,0,'2025-07-14','2025-07-14 13:13:11',NULL,69,3,0.00,30,3,NULL,1),
 (32,0,'2025-07-14','2025-07-14 13:12:42',NULL,76,3,0.00,31,3,NULL,1),
 (33,0,'2025-07-14','2025-07-14 14:20:01',NULL,83,3,0.00,32,3,NULL,1),
-(34,0,'2025-07-14','2025-07-14 14:20:01',NULL,91,3,0.00,33,3,NULL,1),
+(34,0,'2025-07-14','2025-08-13 08:42:45',NULL,91,3,0.00,33,3,NULL,1),
 (35,0,'2025-07-14','2025-07-14 14:20:01',NULL,93,3,0.00,34,3,NULL,1),
 (40,0,'2025-07-14','2025-07-14 14:20:01',NULL,104,3,0.00,39,3,NULL,1),
 (41,0,'2025-07-14','2025-07-14 14:20:01',NULL,107,3,0.00,40,3,NULL,1),
@@ -8360,13 +8378,13 @@ LOCK TABLES `scheduled_tasks` WRITE;
 /*!40000 ALTER TABLE `scheduled_tasks` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `scheduled_tasks` VALUES
-('classes.tasks.SubscriptionExpiryReminder','2025-07-11 05:35:23'),
-('lib.pkp.classes.task.ReviewReminder','2025-07-14 09:41:08'),
-('lib.pkp.classes.task.StatisticsReport','2025-07-11 05:35:23'),
-('plugins.generic.usageStats.UsageStatsLoader','2025-07-14 09:41:08'),
-('plugins.importexport.crossref.CrossrefInfoSender','2025-07-14 09:41:08'),
-('plugins.importexport.datacite.DataciteInfoSender','2025-07-14 09:41:08'),
-('plugins.importexport.doaj.DOAJInfoSender','2025-07-14 09:41:08');
+('classes.tasks.SubscriptionExpiryReminder','2025-08-13 08:40:56'),
+('lib.pkp.classes.task.ReviewReminder','2025-08-13 08:40:56'),
+('lib.pkp.classes.task.StatisticsReport','2025-08-13 08:40:56'),
+('plugins.generic.usageStats.UsageStatsLoader','2025-08-13 08:40:56'),
+('plugins.importexport.crossref.CrossrefInfoSender','2025-08-13 08:40:56'),
+('plugins.importexport.datacite.DataciteInfoSender','2025-08-13 08:40:56'),
+('plugins.importexport.doaj.DOAJInfoSender','2025-08-13 08:40:56');
 /*!40000 ALTER TABLE `scheduled_tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -8490,9 +8508,9 @@ LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `sessions` VALUES
-('23cbe7835d3ae6c10aaffaec9d47da8d',NULL,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',1752562531,1752562664,0,'csrf|a:2:{s:9:\"timestamp\";i:1752562664;s:5:\"token\";s:32:\"3408582901fc9a6a3eba4db72cc52ea4\";}username|s:5:\"admin\";','localhost'),
 ('d2fcce5ae619ae2ba478a889e4b7b195',1,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',1752506213,1752506227,1,'csrf|a:2:{s:9:\"timestamp\";i:1752506227;s:5:\"token\";s:32:\"20b28270c3f80b3cb00bf7278fce0fa1\";}userId|i:1;username|s:5:\"admin\";','localhost'),
-('e2044d94525543973a281d060feb60c0',1,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',1752486068,1752503335,1,'csrf|a:2:{s:9:\"timestamp\";i:1752503335;s:5:\"token\";s:32:\"eb973a38b3602d20e8b44923a9856438\";}userId|i:1;username|s:5:\"admin\";','localhost');
+('e2044d94525543973a281d060feb60c0',1,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',1752486068,1752503335,1,'csrf|a:2:{s:9:\"timestamp\";i:1752503335;s:5:\"token\";s:32:\"eb973a38b3602d20e8b44923a9856438\";}userId|i:1;username|s:5:\"admin\";','localhost'),
+('t6tm593s3jc0h3nhshi507tq7b',1,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',1755074456,1755074589,1,'csrf|a:2:{s:9:\"timestamp\";i:1755074589;s:5:\"token\";s:32:\"27c259e12edb0e1d2152c2575c2a2d6f\";}userId|i:1;username|s:5:\"admin\";','localhost');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -11127,6 +11145,7 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (160,164,0),
 (168,164,0),
 (184,164,0),
+(192,164,0),
 (49,165,0),
 (49,166,1),
 (49,167,2),
@@ -11165,22 +11184,22 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (57,183,30),
 (57,183,48),
 (59,183,15),
-(171,183,2),
-(171,183,36),
-(171,183,48),
-(171,183,70),
-(171,183,90),
+(187,183,2),
+(187,183,36),
+(187,183,48),
+(187,183,70),
+(187,183,90),
 (51,184,4),
 (51,185,5),
 (51,185,43),
 (51,185,83),
 (51,185,91),
 (59,185,13),
-(171,185,0),
-(171,185,22),
-(171,185,32),
-(171,185,59),
-(171,185,73),
+(187,185,0),
+(187,185,22),
+(187,185,32),
+(187,185,59),
+(187,185,73),
 (51,186,6),
 (51,186,26),
 (51,187,7),
@@ -11196,9 +11215,9 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (59,191,4),
 (59,191,29),
 (97,191,2),
-(171,191,18),
-(171,191,37),
-(171,191,68),
+(187,191,18),
+(187,191,37),
+(187,191,68),
 (51,192,13),
 (51,193,14),
 (51,193,115),
@@ -11233,10 +11252,10 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (51,202,31),
 (51,203,32),
 (51,204,33),
-(171,204,38),
+(187,204,38),
 (51,205,34),
 (51,206,35),
-(171,206,42),
+(187,206,42),
 (51,207,37),
 (51,208,39),
 (51,209,40),
@@ -11259,10 +11278,10 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (51,218,54),
 (51,218,79),
 (51,219,55),
-(171,219,31),
-(171,219,51),
+(187,219,31),
+(187,219,51),
 (51,220,56),
-(171,220,16),
+(187,220,16),
 (51,221,57),
 (51,222,58),
 (51,223,59),
@@ -11287,17 +11306,17 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (51,240,87),
 (51,241,88),
 (59,241,28),
-(171,241,58),
+(187,241,58),
 (51,242,89),
 (51,243,90),
-(171,243,30),
+(187,243,30),
 (51,244,93),
 (51,245,94),
 (51,246,95),
 (51,247,102),
 (51,248,103),
 (51,249,104),
-(170,249,4),
+(186,249,4),
 (51,250,105),
 (51,251,107),
 (51,252,108),
@@ -11309,9 +11328,9 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (51,256,116),
 (51,257,117),
 (53,258,0),
-(173,258,0),
+(189,258,0),
 (53,259,1),
-(173,259,1),
+(189,259,1),
 (56,260,1),
 (179,260,49),
 (56,261,2),
@@ -11338,10 +11357,10 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (57,269,46),
 (57,269,53),
 (161,269,3),
-(171,269,6),
-(171,269,56),
-(171,269,65),
-(171,269,71),
+(187,269,6),
+(187,269,56),
+(187,269,65),
+(187,269,71),
 (57,270,5),
 (57,270,29),
 (57,270,47),
@@ -11446,7 +11465,7 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (136,326,1),
 (144,326,1),
 (152,326,1),
-(176,326,0),
+(192,326,1),
 (64,327,2),
 (80,327,3),
 (96,327,3),
@@ -12240,7 +12259,7 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (105,714,4),
 (145,714,4),
 (145,714,17),
-(171,714,79),
+(187,714,79),
 (105,715,5),
 (105,716,7),
 (105,717,8),
@@ -13042,7 +13061,7 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (147,1157,22),
 (147,1157,45),
 (147,1157,93),
-(171,1157,4),
+(187,1157,4),
 (146,1158,7),
 (147,1158,8),
 (147,1158,34),
@@ -13283,82 +13302,82 @@ INSERT INTO `submission_search_object_keywords` VALUES
 (163,1322,61),
 (163,1323,63),
 (163,1324,64),
-(169,1325,0),
-(169,1326,1),
-(170,1327,0),
-(170,1328,1),
-(170,1329,2),
-(170,1330,3),
-(170,1331,5),
-(170,1332,6),
-(171,1333,1),
-(171,1333,60),
-(171,1334,3),
-(171,1334,14),
-(171,1334,40),
-(171,1334,66),
-(171,1335,5),
-(171,1336,7),
-(171,1337,8),
-(171,1338,9),
-(171,1339,10),
-(171,1340,11),
-(171,1341,12),
-(171,1342,13),
-(171,1343,15),
-(171,1344,17),
-(171,1345,19),
-(171,1346,20),
-(171,1347,21),
-(171,1348,23),
-(171,1349,24),
-(171,1350,25),
-(171,1351,26),
-(171,1352,27),
-(171,1353,28),
-(171,1354,29),
-(171,1354,88),
-(171,1355,33),
-(171,1356,34),
-(171,1357,35),
-(171,1358,39),
-(171,1359,41),
-(171,1360,43),
-(171,1361,44),
-(171,1362,45),
-(171,1363,46),
-(171,1364,47),
-(171,1365,49),
-(171,1366,50),
-(171,1367,52),
-(171,1368,53),
-(171,1369,54),
-(171,1370,55),
-(171,1371,57),
-(171,1372,61),
-(171,1373,62),
-(171,1374,63),
-(171,1375,64),
-(171,1376,67),
-(171,1377,69),
-(171,1378,72),
-(171,1379,74),
-(171,1380,75),
-(171,1381,76),
-(171,1382,77),
-(171,1383,78),
-(171,1384,80),
-(171,1385,81),
-(171,1386,82),
-(171,1387,83),
-(171,1388,84),
-(171,1389,85),
-(171,1390,86),
-(171,1391,87),
-(171,1392,89),
-(171,1393,91),
-(171,1394,92),
-(171,1395,93),
+(185,1325,0),
+(185,1326,1),
+(186,1327,0),
+(186,1328,1),
+(186,1329,2),
+(186,1330,3),
+(186,1331,5),
+(186,1332,6),
+(187,1333,1),
+(187,1333,60),
+(187,1334,3),
+(187,1334,14),
+(187,1334,40),
+(187,1334,66),
+(187,1335,5),
+(187,1336,7),
+(187,1337,8),
+(187,1338,9),
+(187,1339,10),
+(187,1340,11),
+(187,1341,12),
+(187,1342,13),
+(187,1343,15),
+(187,1344,17),
+(187,1345,19),
+(187,1346,20),
+(187,1347,21),
+(187,1348,23),
+(187,1349,24),
+(187,1350,25),
+(187,1351,26),
+(187,1352,27),
+(187,1353,28),
+(187,1354,29),
+(187,1354,88),
+(187,1355,33),
+(187,1356,34),
+(187,1357,35),
+(187,1358,39),
+(187,1359,41),
+(187,1360,43),
+(187,1361,44),
+(187,1362,45),
+(187,1363,46),
+(187,1364,47),
+(187,1365,49),
+(187,1366,50),
+(187,1367,52),
+(187,1368,53),
+(187,1369,54),
+(187,1370,55),
+(187,1371,57),
+(187,1372,61),
+(187,1373,62),
+(187,1374,63),
+(187,1375,64),
+(187,1376,67),
+(187,1377,69),
+(187,1378,72),
+(187,1379,74),
+(187,1380,75),
+(187,1381,76),
+(187,1382,77),
+(187,1383,78),
+(187,1384,80),
+(187,1385,81),
+(187,1386,82),
+(187,1387,83),
+(187,1388,84),
+(187,1389,85),
+(187,1390,86),
+(187,1391,87),
+(187,1392,89),
+(187,1393,91),
+(187,1394,92),
+(187,1395,93),
 (177,1396,0),
 (177,1397,1),
 (177,1398,2),
@@ -13505,7 +13524,7 @@ CREATE TABLE `submission_search_objects` (
   `assoc_id` bigint DEFAULT NULL COMMENT 'Optional ID of an associated record (e.g., a file_id)',
   PRIMARY KEY (`object_id`),
   KEY `submission_search_object_submission` (`submission_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=185 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -13660,14 +13679,6 @@ INSERT INTO `submission_search_objects` VALUES
 (166,34,8,0),
 (167,34,32,0),
 (168,34,64,0),
-(169,33,1,0),
-(170,33,2,0),
-(171,33,4,0),
-(172,33,16,0),
-(173,33,17,0),
-(174,33,8,0),
-(175,33,32,0),
-(176,33,64,0),
 (177,32,1,0),
 (178,32,2,0),
 (179,32,4,0),
@@ -13675,7 +13686,15 @@ INSERT INTO `submission_search_objects` VALUES
 (181,32,17,0),
 (182,32,8,0),
 (183,32,32,0),
-(184,32,64,0);
+(184,32,64,0),
+(185,33,1,0),
+(186,33,2,0),
+(187,33,4,0),
+(188,33,16,0),
+(189,33,17,0),
+(190,33,8,0),
+(191,33,32,0),
+(192,33,64,0);
 /*!40000 ALTER TABLE `submission_search_objects` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -13806,7 +13825,7 @@ INSERT INTO `submissions` VALUES
 (30,2,31,'2025-07-14 13:13:11','2025-07-14 12:53:51','2025-07-14 12:53:51',4,'en_US',3,0,0),
 (31,2,32,'2025-07-14 13:12:42','2025-07-14 13:03:30','2025-07-14 13:03:30',4,'en_US',3,0,0),
 (32,2,33,'2025-07-14 14:20:01','2025-07-14 13:19:54','2025-07-14 13:19:54',4,'en_US',3,0,0),
-(33,2,34,'2025-07-14 14:20:01','2025-07-14 13:21:49','2025-07-14 13:21:49',4,'en_US',3,0,0),
+(33,2,34,'2025-08-13 08:42:45','2025-07-14 13:21:49','2025-07-14 13:21:49',4,'en_US',3,0,0),
 (34,2,35,'2025-07-14 14:20:01','2025-07-14 13:31:15','2025-07-14 13:31:15',4,'en_US',3,0,0),
 (39,2,40,'2025-07-14 14:20:01','2025-07-14 13:59:31','2025-07-14 13:59:31',4,'en_US',3,0,0),
 (40,2,41,'2025-07-14 14:20:01','2025-07-14 14:08:01','2025-07-14 14:08:01',4,'en_US',3,0,0),
@@ -14849,7 +14868,7 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `users` VALUES
-(1,'admin','$2y$10$3XqZDByjPz309JIyuyhtnuuzM/tNNwEkbxM5LlmjoeMKNISlu2vfy','komet@mailinator.com','','','',NULL,'','',NULL,NULL,'2025-07-11 05:35:20',NULL,'2025-07-15 06:55:42',0,0,NULL,0,NULL,1),
+(1,'admin','$2y$10$3XqZDByjPz309JIyuyhtnuuzM/tNNwEkbxM5LlmjoeMKNISlu2vfy','komet@mailinator.com','','','',NULL,'','',NULL,NULL,'2025-07-11 05:35:20',NULL,'2025-08-13 08:41:03',0,NULL,NULL,0,NULL,1),
 (2,'rvaca','$2y$10$PWAHUCPDhL7OTyd.fZtt/.kpzQo4cvdhhsp0rOXw/Gr1SEnRcR3WS','rvaca@mailinator.com','','','',NULL,'MX','',NULL,NULL,'2025-07-11 05:36:07',NULL,'2025-07-11 05:37:51',0,NULL,NULL,0,NULL,1),
 (3,'dbarnes','$2y$10$c1m7OyXZJiPHnAqJjlmPYOEOte3iikqQgbw3fH64JAlbumbSmIWRG','barnes@mailinator.com','','','',NULL,'AU','',NULL,NULL,'2025-07-11 05:36:12',NULL,'2025-07-11 05:47:31',0,0,NULL,0,NULL,1),
 (4,'dbuskins','$2y$10$qm43/BJX1eEHM6bwAKcrXewrZCYC561kRwSXX6pJB8pc14S8SW3Ha','buskins@mailinator.com','','','',NULL,'US','',NULL,NULL,'2025-07-11 05:36:17',NULL,'2025-07-11 05:36:17',0,0,NULL,0,NULL,1),
@@ -14982,4 +15001,4 @@ commit;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-07-15  8:59:56
+-- Dump completed on 2025-08-13 10:47:58
