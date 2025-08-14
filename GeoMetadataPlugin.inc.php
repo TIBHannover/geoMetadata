@@ -172,7 +172,7 @@ class GeoMetadataPlugin extends GenericPlugin
 		if ($administrativeUnit !== "no data" && $administrativeUnit !== null && $administrativeUnit !== "") {
 			$administrativeUnitNames = array_map(function ($unit) {
 				return $unit->name;
-			}, json_decode($administrativeUnit));
+			}, json_decode($administrativeUnit) ?? []);
 			$administrativeUnitNames = implode(', ', $administrativeUnitNames);
 
 			$lowestAdministrativeUnitName = null;
@@ -527,7 +527,6 @@ class GeoMetadataPlugin extends GenericPlugin
 	function editPublication(string $hookname, array $params)
 	{
 		$newPublication = $params[0];
-		$params = $params[2];
 
 		$temporalProperties = $_POST[GEOMETADATA_DB_FIELD_TIME_PERIODS] ?? null;
 		$spatialProperties =  $_POST[GEOMETADATA_DB_FIELD_SPATIAL] ?? null;
@@ -551,7 +550,7 @@ class GeoMetadataPlugin extends GenericPlugin
 				// turn admin units into string then save in Coverage field
 				$administrativeUnitNames = array_map(function ($unit) {
 					return $unit->name;
-				}, json_decode($administrativeUnit));
+				}, json_decode($administrativeUnit) ?? []);
 				$administrativeUnitNames = implode(', ', $administrativeUnitNames);
 
 				$newPublication->setData('coverage', $administrativeUnitNames, $journal->getPrimaryLocale());
