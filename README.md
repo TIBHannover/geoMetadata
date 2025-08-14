@@ -1,7 +1,4 @@
 <div>
-<a href="https://projects.tib.eu/optimeta/en/">
-<img src="https://projects.tib.eu/fileadmin/_processed_/e/8/csm_Optimeta_Logo_web_98c26141b1.png" alt="Alt-Text" title="OPTIMETA Logo" width="40%" align="middle"/>
-</a>
 <a href="https://projects.tib.eu/komet/en/">
 <img src="https://projects.tib.eu/fileadmin/data/komet/img/Logo_Komet_RZ.png" alt="Alt-Text" title="KOMET Logo" width="20%" align="middle">
 </a>
