@@ -32,7 +32,7 @@
 - Create directory `/stable-3_3_0-geoMetadata/mariadb`
 - Export a dump from your current used OJS database and create a `database.sql`  
     - `mysqldump -u root ojs_dump > /stable-3_3_0-geoMetadata/mariadb/database.sql` 
-- Copy the content of your ojs files directory into `/stable-3_3_0-geoMetadata/mariadb/folder`. This directory shall include directories like `journals`, `scheduledTaskLogs`, `usageStats`. 
+- Copy the content of your ojs files directory into `/stable-3_3_0-geoMetadata/mariadb/files`. This directory shall include directories like `journals`, `scheduledTaskLogs`, `usageStats`. 
 - Copy the content of your `ojs/public` folder into `/stable-3_3_0-geoMetadata/mariadb/public`
 - Copy the `ojs/config.inc.php` into `/stable-3_3_0-geoMetadata/mariadb/config.inc.php` 
 - Delete any not required content, especially logs (have a look at [stable-3_3_0-geoMetadata](stable-3_3_0-geoMetadata) to see which files and directories are required). 
