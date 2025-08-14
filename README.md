@@ -208,7 +208,7 @@ To debug, add `debugger;` to the code and make sure to have the developer tools 
 1. Create a `zip` and `tar.gz` archive of the local repository including the required dependencies from `vendor/` and `js/lib/` but excluding exclude non-essential files. 
    - `zip`-archive 
       ```bash
-      zip -r geoMetadata.zip geoMetadata --exclude '*.git*' --exclude '*.github/*' --exclude 'node_modules/*' --exclude '*cypress/*' --exclude '*.gitignore*' --exclude '*.npmignore*' --exclude '*messages.mo*' --exclude '*cypress.config.js*' --exclude '*CONDUCT.md*' --exclude '*screenshots/*'
+      zip -r geoMetadata.zip geoMetadata --exclude '*.git*' --exclude '*.github/*' --exclude 'node_modules/*' --exclude '*cypress/*' --exclude '*.gitignore*' --exclude '*.npmignore*' --exclude '*messages.mo*' --exclude '*cypress.config.js*' --exclude '*CONDUCT.md*' --exclude '*docs/*' --exclude '*testData/*'
       ```
    - `tar.gz`-archive  
       ```bash
@@ -222,7 +222,8 @@ To debug, add `debugger;` to the code and make sure to have the developer tools 
           --exclude='*messages.mo*' \
           --exclude='*cypress.config.js*' \
           --exclude='*CONDUCT.md*' \
-          --exclude='*screenshots/*' \
+          --exclude='*docs/*' \
+          --exclude='*testData/*' \
          geoMetadata
       ```
 1. Create a new [release](https://github.com/TIBHannover/geoMetadata/releases) on GitHub using the tag just created, with a fitting title, description and, if necessary, check the `pre-release` box
