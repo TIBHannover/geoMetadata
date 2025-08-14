@@ -895,7 +895,21 @@ INSERT INTO `author_settings` VALUES
 (115,'en_US','biography',''),
 (115,'en_US','familyName','Weber'),
 (115,'en_US','givenName','Peter'),
-(115,'en_US','preferredPublicName','');
+(115,'en_US','preferredPublicName',''),
+(116,'','country',''),
+(116,'','orcid',''),
+(116,'','url',''),
+(116,'en_US','affiliation',''),
+(116,'en_US','biography',''),
+(116,'en_US','familyName','admin'),
+(116,'en_US','givenName','admin'),
+(117,'','country',''),
+(117,'','orcid',''),
+(117,'','url',''),
+(117,'en_US','affiliation',''),
+(117,'en_US','biography',''),
+(117,'en_US','familyName','Tobler'),
+(117,'en_US','givenName','Waldo ');
 /*!40000 ALTER TABLE `author_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -916,7 +930,7 @@ CREATE TABLE `authors` (
   `user_group_id` bigint DEFAULT NULL,
   PRIMARY KEY (`author_id`),
   KEY `authors_publication_id` (`publication_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1017,7 +1031,9 @@ INSERT INTO `authors` VALUES
 (112,'komet@mailinator.com',1,42,1.00,31),
 (113,'komet@mailinator.com',1,42,2.00,31),
 (114,'komet@mailinator.com',1,42,3.00,31),
-(115,'komet@mailinator.com',1,42,4.00,31);
+(115,'komet@mailinator.com',1,42,4.00,31),
+(116,'komet@mailinator.com',1,43,0.00,19),
+(117,'tobler@mailinator.com',1,44,0.00,31);
 /*!40000 ALTER TABLE `authors` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -1184,7 +1200,7 @@ CREATE TABLE `controlled_vocab_entries` (
   `seq` double(8,2) DEFAULT NULL,
   PRIMARY KEY (`controlled_vocab_entry_id`),
   KEY `controlled_vocab_entries_cv_id` (`controlled_vocab_id`,`seq`)
-) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1257,7 +1273,8 @@ INSERT INTO `controlled_vocab_entries` VALUES
 (137,172,1.00),
 (136,197,1.00),
 (135,202,1.00),
-(134,207,1.00);
+(134,207,1.00),
+(143,217,1.00);
 /*!40000 ALTER TABLE `controlled_vocab_entries` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -1350,7 +1367,8 @@ INSERT INTO `controlled_vocab_entry_settings` VALUES
 (136,'en_US','submissionKeyword','JOSIS','string'),
 (137,'en_US','submissionKeyword','heiJOURNALS','string'),
 (139,'en_US','submissionKeyword','EarthArXiv','string'),
-(142,'en_US','submissionKeyword','UNIMS e-Journals','string');
+(142,'en_US','submissionKeyword','UNIMS e-Journals','string'),
+(143,'en_US','submissionKeyword','Volcanica','string');
 /*!40000 ALTER TABLE `controlled_vocab_entry_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -1369,7 +1387,7 @@ CREATE TABLE `controlled_vocabs` (
   `assoc_id` bigint NOT NULL DEFAULT '0',
   PRIMARY KEY (`controlled_vocab_id`),
   UNIQUE KEY `controlled_vocab_symbolic` (`symbolic`,`assoc_type`,`assoc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=222 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1423,6 +1441,8 @@ INSERT INTO `controlled_vocabs` VALUES
 (201,'submissionAgency',1048588,40),
 (206,'submissionAgency',1048588,41),
 (211,'submissionAgency',1048588,42),
+(216,'submissionAgency',1048588,43),
+(221,'submissionAgency',1048588,44),
 (4,'submissionDiscipline',1048588,1),
 (9,'submissionDiscipline',1048588,2),
 (14,'submissionDiscipline',1048588,3),
@@ -1465,6 +1485,8 @@ INSERT INTO `controlled_vocabs` VALUES
 (199,'submissionDiscipline',1048588,40),
 (204,'submissionDiscipline',1048588,41),
 (209,'submissionDiscipline',1048588,42),
+(214,'submissionDiscipline',1048588,43),
+(219,'submissionDiscipline',1048588,44),
 (2,'submissionKeyword',1048588,1),
 (7,'submissionKeyword',1048588,2),
 (12,'submissionKeyword',1048588,3),
@@ -1507,6 +1529,8 @@ INSERT INTO `controlled_vocabs` VALUES
 (197,'submissionKeyword',1048588,40),
 (202,'submissionKeyword',1048588,41),
 (207,'submissionKeyword',1048588,42),
+(212,'submissionKeyword',1048588,43),
+(217,'submissionKeyword',1048588,44),
 (5,'submissionLanguage',1048588,1),
 (10,'submissionLanguage',1048588,2),
 (15,'submissionLanguage',1048588,3),
@@ -1549,6 +1573,8 @@ INSERT INTO `controlled_vocabs` VALUES
 (200,'submissionLanguage',1048588,40),
 (205,'submissionLanguage',1048588,41),
 (210,'submissionLanguage',1048588,42),
+(215,'submissionLanguage',1048588,43),
+(220,'submissionLanguage',1048588,44),
 (3,'submissionSubject',1048588,1),
 (8,'submissionSubject',1048588,2),
 (13,'submissionSubject',1048588,3),
@@ -1590,7 +1616,9 @@ INSERT INTO `controlled_vocabs` VALUES
 (193,'submissionSubject',1048588,39),
 (198,'submissionSubject',1048588,40),
 (203,'submissionSubject',1048588,41),
-(208,'submissionSubject',1048588,42);
+(208,'submissionSubject',1048588,42),
+(213,'submissionSubject',1048588,43),
+(218,'submissionSubject',1048588,44);
 /*!40000 ALTER TABLE `controlled_vocabs` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -2346,7 +2374,7 @@ CREATE TABLE `event_log` (
   `is_translated` smallint DEFAULT NULL,
   PRIMARY KEY (`log_id`),
   KEY `event_log_assoc` (`assoc_type`,`assoc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=715 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=730 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3039,7 +3067,22 @@ INSERT INTO `event_log` VALUES
 (711,1048585,32,1,'2025-07-14 14:20:01',268435462,'publication.event.published',0),
 (712,1048585,33,1,'2025-08-13 08:41:28',268435463,'publication.event.unpublished',0),
 (713,1048585,33,1,'2025-08-13 08:42:38',268435458,'submission.event.general.metadataUpdated',0),
-(714,1048585,33,1,'2025-08-13 08:42:45',268435462,'publication.event.published',0);
+(714,1048585,33,1,'2025-08-13 08:42:45',268435462,'publication.event.published',0),
+(715,1048585,42,1,'2025-08-14 07:26:38',268435458,'submission.event.general.metadataUpdated',0),
+(716,515,85,1,'2025-08-14 07:26:45',1342177281,'submission.event.fileUploaded',0),
+(717,1048585,42,1,'2025-08-14 07:26:45',1342177288,'submission.event.fileRevised',0),
+(718,515,85,1,'2025-08-14 07:26:46',1342177296,'submission.event.fileEdited',0),
+(719,1048585,42,1,'2025-08-14 07:26:46',1342177296,'submission.event.fileEdited',0),
+(720,1048585,42,1,'2025-08-14 07:28:05',268435458,'submission.event.general.metadataUpdated',0),
+(721,1048585,42,1,'2025-08-14 07:28:07',268435457,'submission.event.submissionSubmitted',0),
+(722,1048585,42,1,'2025-08-14 07:28:28',268435459,'submission.event.participantAdded',0),
+(723,1048585,42,1,'2025-08-14 07:28:49',268435458,'submission.event.general.metadataUpdated',0),
+(724,1048585,43,36,'2025-08-14 07:29:46',268435458,'submission.event.general.metadataUpdated',0),
+(725,515,86,36,'2025-08-14 07:29:50',1342177281,'submission.event.fileUploaded',0),
+(726,1048585,43,36,'2025-08-14 07:29:50',1342177288,'submission.event.fileRevised',0),
+(727,515,86,36,'2025-08-14 07:29:51',1342177296,'submission.event.fileEdited',0),
+(728,1048585,43,36,'2025-08-14 07:29:51',1342177296,'submission.event.fileEdited',0),
+(729,1048585,43,36,'2025-08-14 07:33:55',268435458,'submission.event.general.metadataUpdated',0);
 /*!40000 ALTER TABLE `event_log` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -5445,7 +5488,66 @@ INSERT INTO `event_log_settings` VALUES
 (703,'sourceSubmissionFileId',NULL,'string'),
 (703,'submissionFileId','84','int'),
 (703,'submissionId','41','int'),
-(703,'username','admin','string');
+(703,'username','admin','string'),
+(716,'fileId','62','int'),
+(716,'fileStage','2','int'),
+(716,'originalFileName','article.pdf','string'),
+(716,'sourceSubmissionFileId',NULL,'string'),
+(716,'submissionFileId','85','int'),
+(716,'submissionId','42','int'),
+(716,'username','admin','string'),
+(717,'fileId','62','int'),
+(717,'fileStage','2','int'),
+(717,'name','article.pdf','string'),
+(717,'submissionFileId','85','int'),
+(717,'submissionId','42','int'),
+(717,'username','admin','string'),
+(718,'fileId','62','int'),
+(718,'fileStage','2','int'),
+(718,'originalFileName','article.pdf','string'),
+(718,'sourceSubmissionFileId',NULL,'string'),
+(718,'submissionFileId','85','int'),
+(718,'submissionId','42','int'),
+(718,'username','admin','string'),
+(719,'fileId','62','int'),
+(719,'fileStage','2','int'),
+(719,'name','article.pdf','string'),
+(719,'originalFileName','article.pdf','string'),
+(719,'sourceSubmissionFileId',NULL,'string'),
+(719,'submissionFileId','85','int'),
+(719,'submissionId','42','int'),
+(719,'username','admin','string'),
+(722,'name','Waldo  Tobler','string'),
+(722,'userGroupName','Author','string'),
+(722,'username','tobler','string'),
+(725,'fileId','63','int'),
+(725,'fileStage','2','int'),
+(725,'originalFileName','article.pdf','string'),
+(725,'sourceSubmissionFileId',NULL,'string'),
+(725,'submissionFileId','86','int'),
+(725,'submissionId','43','int'),
+(725,'username','tobler','string'),
+(726,'fileId','63','int'),
+(726,'fileStage','2','int'),
+(726,'name','article.pdf','string'),
+(726,'submissionFileId','86','int'),
+(726,'submissionId','43','int'),
+(726,'username','tobler','string'),
+(727,'fileId','63','int'),
+(727,'fileStage','2','int'),
+(727,'originalFileName','article.pdf','string'),
+(727,'sourceSubmissionFileId',NULL,'string'),
+(727,'submissionFileId','86','int'),
+(727,'submissionId','43','int'),
+(727,'username','tobler','string'),
+(728,'fileId','63','int'),
+(728,'fileStage','2','int'),
+(728,'name','article.pdf','string'),
+(728,'originalFileName','article.pdf','string'),
+(728,'sourceSubmissionFileId',NULL,'string'),
+(728,'submissionFileId','86','int'),
+(728,'submissionId','43','int'),
+(728,'username','tobler','string');
 /*!40000 ALTER TABLE `event_log_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -5462,7 +5564,7 @@ CREATE TABLE `files` (
   `path` varchar(255) NOT NULL,
   `mimetype` varchar(255) NOT NULL,
   PRIMARY KEY (`file_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5529,7 +5631,9 @@ INSERT INTO `files` VALUES
 (58,'journals/2/articles/34/687511980a7e3.pdf','application/pdf'),
 (59,'journals/2/articles/39/687511c04c55b.pdf','application/pdf'),
 (60,'journals/2/articles/40/687511e10b0f4.pdf','application/pdf'),
-(61,'journals/2/articles/41/687512016ac1d.pdf','application/pdf');
+(61,'journals/2/articles/41/687512016ac1d.pdf','application/pdf'),
+(62,'journals/2/articles/42/689d8fb5032d7.pdf','application/pdf'),
+(63,'journals/2/articles/43/689d906eea217.pdf','application/pdf');
 /*!40000 ALTER TABLE `files` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -6889,7 +6993,7 @@ CREATE TABLE `notifications` (
   KEY `notifications_context_id` (`context_id`,`level`),
   KEY `notifications_assoc` (`assoc_type`,`assoc_id`),
   KEY `notifications_user_id_level` (`user_id`,`level`)
-) ENGINE=InnoDB AUTO_INCREMENT=580 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=590 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7176,7 +7280,11 @@ INSERT INTO `notifications` VALUES
 (576,1,5,3,16777258,'2025-08-13 08:40:56',NULL,0,0),
 (577,1,4,3,16777258,'2025-08-13 08:40:56',NULL,0,0),
 (578,1,6,3,16777258,'2025-08-13 08:40:56',NULL,0,0),
-(579,2,1,3,16777258,'2025-08-13 08:40:56',NULL,0,0);
+(579,2,1,3,16777258,'2025-08-13 08:40:56',NULL,0,0),
+(580,2,1,2,16777217,'2025-08-14 07:28:07',NULL,1048585,42),
+(582,2,1,2,16777217,'2025-08-14 07:28:07',NULL,1048585,42),
+(584,2,0,2,16777243,'2025-08-14 07:28:07',NULL,1048585,42),
+(585,2,0,2,16777245,'2025-08-14 07:28:07',NULL,1048585,42);
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -7838,7 +7946,25 @@ INSERT INTO `publication_settings` VALUES
 (42,'en_US','coverage','Earth, Europe, Federal Republic of Germany, Nordrhein-Westfalen'),
 (42,'en_US','prefix',''),
 (42,'en_US','subtitle',''),
-(42,'en_US','title','The Digitalization of Local Owner-Operated Retail Outlets: How environmental and organizational factors drive the use of digital tools and applications');
+(42,'en_US','title','The Digitalization of Local Owner-Operated Retail Outlets: How environmental and organizational factors drive the use of digital tools and applications'),
+(43,'','categoryIds','[]'),
+(43,'','geoMetadata::administrativeUnit','[{\"name\":\"Earth\",\"geonameId\":6295630,\"bbox\":\"not available\",\"administrativeUnitSuborder\":[\"Earth\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Europe\",\"geonameId\":6255148,\"bbox\":{\"east\":41.73303985595703,\"south\":27.6377894797159,\"north\":80.76416015625,\"west\":-24.532675386662543},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Portuguese Republic\",\"geonameId\":2264397,\"bbox\":{\"east\":-6.18915930748288,\"south\":30.030283523608002,\"north\":42.154311127408,\"west\":-31.2688154080396},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\",\"Portuguese Republic\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}}]'),
+(43,'','geoMetadata::spatialProperties','{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"provenance\":{\"description\":\"geometric shape created by user (accepting the suggestion of the leaflet-control-geocoder)\",\"id\":13}},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-7.0327437,40.3806077],[-7.0327437,40.7009638],[-7.467313,40.7009638],[-7.467313,40.3806077],[-7.0327437,40.3806077]]]}}],\"administrativeUnits\":[{\"name\":\"Earth\",\"geonameId\":6295630,\"bbox\":\"not available\",\"administrativeUnitSuborder\":[\"Earth\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Europe\",\"geonameId\":6255148,\"bbox\":{\"east\":41.73303985595703,\"south\":27.6377894797159,\"north\":80.76416015625,\"west\":-24.532675386662543},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Portuguese Republic\",\"geonameId\":2264397,\"bbox\":{\"east\":-6.18915930748288,\"south\":30.030283523608002,\"north\":42.154311127408,\"west\":-31.2688154080396},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\",\"Portuguese Republic\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}}],\"temporalProperties\":{\"timePeriods\":[\"{1919-01-01..2011-12-31}\"],\"provenance\":{\"description\":\"temporal properties created by user\",\"id\":31}}}'),
+(43,'','geoMetadata::timePeriods','{1919-01-01..2011-12-31}'),
+(43,'en_US','abstract','<p>A historical center can be defined as the oldest part of a city where a significant part of the building stock dates back to the early stages of urban growth. Historical centers often contain special urban fabrics with unique, historic, social and cultural identity. Owing to this, they have been subject to special urban planning interventions in order not only to protect the existing urban fabric and its originality, but also to revert depopulation and built deterioration processes aiming to make these old centers attractive and functional again. However, in the inter-urban domain, there is a deficit of spatial planning research, and the delimitation of historical centers is a topic that has been under explored. This paper describes a morphological approach for delimiting the historical center of Guarda, Portugal. Methodologically, the work uses building stock-age data from eight periods between &lt;1919 to 2011 and is supported by both statistical and spatial analysis. Statistically, the urban evolution of the city was analyzed through threshold values and five novel building indexes. Spatially, the work involved disaggregated GIS analysis to map the evolution of built-up areas and to identify the consolidated urban areas. A sensitivity analysis was also performed to assess the influence of some parameters on the obtained boundary. Results indicated that the historical center of Guarda was consolidated in the 1960s and, since then, has been relatively unchanged. The obtained boundary shows a suitable spatial adjustment considering the consolidated urban area and the official boundary included in the Urban Rehabilitation Area.</p>'),
+(43,'en_US','coverage','Earth, Europe, Portuguese Republic'),
+(43,'en_US','prefix',''),
+(43,'en_US','subtitle',''),
+(43,'en_US','title','A quantitative spatial methodology for delimiting historical centers - an application in Guarda, Portugal'),
+(44,'','categoryIds','[]'),
+(44,'','geoMetadata::administrativeUnit','[{\"name\":\"Earth\",\"geonameId\":6295630,\"bbox\":\"not available\",\"administrativeUnitSuborder\":[\"Earth\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Europe\",\"geonameId\":6255148,\"bbox\":{\"east\":41.73303985595703,\"south\":27.6377894797159,\"north\":80.76416015625,\"west\":-24.532675386662543},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Hellenic Republic\",\"geonameId\":390903,\"bbox\":{\"east\":29.642984894413,\"south\":34.8020663391466,\"north\":41.7484999849641,\"west\":19.3736035624134},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\",\"Hellenic Republic\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"South Aegean\",\"geonameId\":6697808,\"bbox\":{\"east\":29.64298489441297,\"south\":35.33989500925812,\"north\":37.99954083494794,\"west\":24.100595978710178},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\",\"Hellenic Republic\",\"South Aegean\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Nomos Kykladon\",\"geonameId\":259819,\"bbox\":{\"east\":26.08588446222794,\"south\":36.2205594127803,\"north\":37.99867865841338,\"west\":24.101057126983136},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\",\"Hellenic Republic\",\"South Aegean\",\"Nomos Kykladon\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Dimos Santorini\",\"geonameId\":8133832,\"bbox\":{\"east\":25.4874318385987,\"south\":36.22034525472416,\"north\":36.48160858507285,\"west\":25.195682331393087},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\",\"Hellenic Republic\",\"South Aegean\",\"Nomos Kykladon\",\"Dimos Santorini\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}}]'),
+(44,'','geoMetadata::spatialProperties','{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"provenance\":{\"description\":\"geometric shape created by user (drawing)\",\"id\":11}},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[25.38678646087647,36.40021455895616],[25.386099815368656,36.39917828607655],[25.38876056671143,36.39627664850297],[25.392794609069824,36.3941348941407],[25.39700031280518,36.39399671441337],[25.398459434509277,36.39669117478878],[25.40575504302979,36.39620756057374],[25.406527519226078,36.40297788574666],[25.40944576263428,36.402770639645865],[25.410904884338382,36.409609469119225],[25.407299995422367,36.41223431449862],[25.40421009063721,36.411060052529294],[25.403008460998535,36.41251060885287],[25.399489402771,36.4132704132598],[25.396142005920414,36.41306319461315],[25.393309593200684,36.41216524075647],[25.391850471496586,36.41368484889469],[25.391936302185062,36.41610234602736],[25.3899621963501,36.4156879232913],[25.388073921203613,36.412096166952956],[25.386958122253418,36.40836609035226],[25.386185646057132,36.405810193726765],[25.385928153991703,36.40297788574666],[25.387301445007324,36.40256339299235],[25.388588905334476,36.40118173451024],[25.38678646087647,36.40021455895616]]]}}],\"administrativeUnits\":[{\"name\":\"Earth\",\"geonameId\":6295630,\"bbox\":\"not available\",\"administrativeUnitSuborder\":[\"Earth\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Europe\",\"geonameId\":6255148,\"bbox\":{\"east\":41.73303985595703,\"south\":27.6377894797159,\"north\":80.76416015625,\"west\":-24.532675386662543},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Hellenic Republic\",\"geonameId\":390903,\"bbox\":{\"east\":29.642984894413,\"south\":34.8020663391466,\"north\":41.7484999849641,\"west\":19.3736035624134},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\",\"Hellenic Republic\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"South Aegean\",\"geonameId\":6697808,\"bbox\":{\"east\":29.64298489441297,\"south\":35.33989500925812,\"north\":37.99954083494794,\"west\":24.100595978710178},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\",\"Hellenic Republic\",\"South Aegean\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Nomos Kykladon\",\"geonameId\":259819,\"bbox\":{\"east\":26.08588446222794,\"south\":36.2205594127803,\"north\":37.99867865841338,\"west\":24.101057126983136},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\",\"Hellenic Republic\",\"South Aegean\",\"Nomos Kykladon\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}},{\"name\":\"Dimos Santorini\",\"geonameId\":8133832,\"bbox\":{\"east\":25.4874318385987,\"south\":36.22034525472416,\"north\":36.48160858507285,\"west\":25.195682331393087},\"administrativeUnitSuborder\":[\"Earth\",\"Europe\",\"Hellenic Republic\",\"South Aegean\",\"Nomos Kykladon\",\"Dimos Santorini\"],\"provenance\":{\"description\":\"administrative unit created by user (accepting the suggestion of the geonames API , which was created on basis of a geometric shape input)\",\"id\":23}}],\"temporalProperties\":{\"timePeriods\":[\"{2004-08-09..2004-09-06}\"],\"provenance\":{\"description\":\"temporal properties created by user\",\"id\":31}}}'),
+(44,'','geoMetadata::timePeriods','{2004-08-09..2004-09-06}'),
+(44,'en_US','abstract','<p>Plutonic xenoliths from volcanic arcs provide unique insights into transcrustal magmatic systems in subduction zone settings. At Santorini volcano in the Central Aegean Volcanic Arc (Greece), plutonic xenoliths occur throughout a sequence of lavas and pyroclastic rocks erupted within the last ~360 ka. They are mineralogically variable, ranging from troctolites to olivine gabbros, gabbros, gabbronorites, and diorites. Thermobarometric calculations based on mineral and melt inclusion compositions indicate equilibration over a range of temperatures (1100 to 750 °C) at shallow to mid-crustal depths (P &lt;400 MPa), but there is no evidence for crystallisation at lower crustal depths. Oxygen isotope data of mineral separates and calculated δ<sup>18</sup>O melt values are in line with extensive closed-system fractional crystallisation at magmatic temperatures, without a requirement for extensive assimilation of the subvolcanic continental basement. The xenolith minerals compositionally overlap with phenocrysts from the volcanic rocks, but they also contain evidence for the presence of highly evolved melt compositions in the form of melt inclusions with extremely silica-rich compositions (up to 82 wt.% SiO<sub>2</sub>) and high enrichments of incompatible trace elements coupled with increasing negative Eu anomalies in clinopyroxenes. Since these characteristics correlate systematically with differentiation indices and rock type, they are interpreted to reflect melt evolution via fractional crystallisation as the dominant differentiation process with no significant role of reactive porous flow. These observations highlight that trapped melt fractions can influence mineral compositional variations in the plutonic xenoliths, and in turn the mineral compositions demonstrate a melt compositional variability not preserved in the volcanic rock record.</p>'),
+(44,'en_US','coverage','Earth, Europe, Hellenic Republic, South Aegean, Nomos Kykladon, Dimos Santorini'),
+(44,'en_US','prefix',''),
+(44,'en_US','subtitle',''),
+(44,'en_US','title','A record of magmatic differentiation in plutonic xenoliths from Santorini (Greece)');
 /*!40000 ALTER TABLE `publication_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -7867,7 +7993,7 @@ CREATE TABLE `publications` (
   KEY `publications_submission_id` (`submission_id`),
   KEY `publications_section_id` (`section_id`),
   KEY `publications_url_path` (`url_path`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7915,7 +8041,9 @@ INSERT INTO `publications` VALUES
 (35,0,'2025-07-14','2025-07-14 14:20:01',NULL,93,3,0.00,34,3,NULL,1),
 (40,0,'2025-07-14','2025-07-14 14:20:01',NULL,104,3,0.00,39,3,NULL,1),
 (41,0,'2025-07-14','2025-07-14 14:20:01',NULL,107,3,0.00,40,3,NULL,1),
-(42,0,'2025-07-14','2025-07-14 14:20:01',NULL,111,3,0.00,41,3,NULL,1);
+(42,0,'2025-07-14','2025-07-14 14:20:01',NULL,111,3,0.00,41,3,NULL,1),
+(43,0,NULL,'2025-08-14 07:28:49',NULL,116,3,0.00,42,1,NULL,1),
+(44,0,NULL,'2025-08-14 07:33:55',NULL,117,3,0.00,43,1,NULL,1);
 /*!40000 ALTER TABLE `publications` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -8508,6 +8636,7 @@ LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `sessions` VALUES
+('5n3rq93gjc5c1n43skpu8dad8s',NULL,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',1755156201,1755156910,0,'csrf|a:2:{s:9:\"timestamp\";i:1755156910;s:5:\"token\";s:32:\"f626274c7a84b6e07bb0a3d64b4f106d\";}username|s:6:\"tobler\";','localhost'),
 ('d2fcce5ae619ae2ba478a889e4b7b195',1,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',1752506213,1752506227,1,'csrf|a:2:{s:9:\"timestamp\";i:1752506227;s:5:\"token\";s:32:\"20b28270c3f80b3cb00bf7278fce0fa1\";}userId|i:1;username|s:5:\"admin\";','localhost'),
 ('e2044d94525543973a281d060feb60c0',1,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',1752486068,1752503335,1,'csrf|a:2:{s:9:\"timestamp\";i:1752503335;s:5:\"token\";s:32:\"eb973a38b3602d20e8b44923a9856438\";}userId|i:1;username|s:5:\"admin\";','localhost'),
 ('t6tm593s3jc0h3nhshi507tq7b',1,'::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',1755074456,1755074589,1,'csrf|a:2:{s:9:\"timestamp\";i:1755074589;s:5:\"token\";s:32:\"27c259e12edb0e1d2152c2575c2a2d6f\";}userId|i:1;username|s:5:\"admin\";','localhost');
@@ -8596,7 +8725,7 @@ CREATE TABLE `stage_assignments` (
   KEY `stage_assignments_submission_id` (`submission_id`),
   KEY `stage_assignments_user_group_id` (`user_group_id`),
   KEY `stage_assignments_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8756,7 +8885,12 @@ INSERT INTO `stage_assignments` VALUES
 (155,40,26,1,'2025-07-14 14:08:01',0,0),
 (156,41,19,1,'2025-07-14 14:09:20',0,1),
 (157,41,20,1,'2025-07-14 14:14:59',0,1),
-(158,41,26,1,'2025-07-14 14:14:59',0,0);
+(158,41,26,1,'2025-07-14 14:14:59',0,0),
+(159,42,19,1,'2025-08-14 07:26:38',0,1),
+(160,42,20,1,'2025-08-14 07:28:07',0,1),
+(161,42,26,1,'2025-08-14 07:28:07',0,0),
+(162,42,31,36,'2025-08-14 07:28:28',0,1),
+(163,43,31,36,'2025-08-14 07:29:46',0,0);
 /*!40000 ALTER TABLE `stage_assignments` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -8908,7 +9042,7 @@ CREATE TABLE `submission_file_revisions` (
   KEY `submission_file_revisions_file_id_foreign` (`file_id`),
   CONSTRAINT `submission_file_revisions_file_id_foreign` FOREIGN KEY (`file_id`) REFERENCES `files` (`file_id`),
   CONSTRAINT `submission_file_revisions_submission_file_id_foreign` FOREIGN KEY (`submission_file_id`) REFERENCES `submission_files` (`submission_file_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8998,7 +9132,9 @@ INSERT INTO `submission_file_revisions` VALUES
 (81,81,54),
 (82,82,60),
 (83,83,55),
-(84,84,61);
+(84,84,61),
+(85,85,62),
+(86,86,63);
 /*!40000 ALTER TABLE `submission_file_revisions` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -9110,7 +9246,9 @@ INSERT INTO `submission_file_settings` VALUES
 (81,'en_US','name','article.pdf','string'),
 (82,'en_US','name','article.pdf','string'),
 (83,'en_US','name','article.pdf','string'),
-(84,'en_US','name','article.pdf','string');
+(84,'en_US','name','article.pdf','string'),
+(85,'en_US','name','article.pdf','string'),
+(86,'en_US','name','article.pdf','string');
 /*!40000 ALTER TABLE `submission_file_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -9142,7 +9280,7 @@ CREATE TABLE `submission_files` (
   KEY `submission_files_stage_assoc` (`file_stage`,`assoc_type`,`assoc_id`),
   KEY `submission_files_file_id_foreign` (`file_id`),
   CONSTRAINT `submission_files_file_id_foreign` FOREIGN KEY (`file_id`) REFERENCES `files` (`file_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -9232,7 +9370,9 @@ INSERT INTO `submission_files` VALUES
 (81,40,54,71,13,6,NULL,NULL,NULL,'2025-07-14 14:19:00','2025-07-14 14:19:00',1,NULL,NULL),
 (82,40,60,NULL,13,10,NULL,NULL,NULL,'2025-07-14 14:19:13','2025-07-14 14:19:14',1,521,20),
 (83,41,55,72,13,6,NULL,NULL,NULL,'2025-07-14 14:19:31','2025-07-14 14:19:31',1,NULL,NULL),
-(84,41,61,NULL,13,10,NULL,NULL,NULL,'2025-07-14 14:19:45','2025-07-14 14:19:46',1,521,21);
+(84,41,61,NULL,13,10,NULL,NULL,NULL,'2025-07-14 14:19:45','2025-07-14 14:19:46',1,521,21),
+(85,42,62,NULL,13,2,NULL,NULL,NULL,'2025-08-14 07:26:45','2025-08-14 07:26:46',1,NULL,NULL),
+(86,43,63,NULL,13,2,NULL,NULL,NULL,'2025-08-14 07:29:50','2025-08-14 07:29:51',36,NULL,NULL);
 /*!40000 ALTER TABLE `submission_files` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -13782,7 +13922,7 @@ CREATE TABLE `submissions` (
   PRIMARY KEY (`submission_id`),
   KEY `submissions_context_id` (`context_id`),
   KEY `submissions_publication_id` (`current_publication_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -13829,7 +13969,9 @@ INSERT INTO `submissions` VALUES
 (34,2,35,'2025-07-14 14:20:01','2025-07-14 13:31:15','2025-07-14 13:31:15',4,'en_US',3,0,0),
 (39,2,40,'2025-07-14 14:20:01','2025-07-14 13:59:31','2025-07-14 13:59:31',4,'en_US',3,0,0),
 (40,2,41,'2025-07-14 14:20:01','2025-07-14 14:08:01','2025-07-14 14:08:01',4,'en_US',3,0,0),
-(41,2,42,'2025-07-14 14:20:01','2025-07-14 14:14:59','2025-07-14 14:14:59',4,'en_US',3,0,0);
+(41,2,42,'2025-07-14 14:20:01','2025-07-14 14:14:59','2025-07-14 14:14:59',4,'en_US',3,0,0),
+(42,2,43,'2025-08-14 07:28:49','2025-08-14 07:28:07','2025-08-14 07:28:07',1,'en_US',1,0,0),
+(43,2,44,'2025-08-14 07:33:55',NULL,'2025-08-14 07:33:55',1,'en_US',1,4,0);
 /*!40000 ALTER TABLE `submissions` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -14720,7 +14862,14 @@ INSERT INTO `user_settings` VALUES
 (34,'en_US','givenName',0,0,'Valerie','string'),
 (35,'en_US','affiliation',0,0,'CUNY','string'),
 (35,'en_US','familyName',0,0,'Woods','string'),
-(35,'en_US','givenName',0,0,'Zita','string');
+(35,'en_US','givenName',0,0,'Zita','string'),
+(36,'','orcid',0,0,'','string'),
+(36,'en_US','affiliation',0,0,'','string'),
+(36,'en_US','biography',0,0,'','string'),
+(36,'en_US','familyName',0,0,'Tobler','string'),
+(36,'en_US','givenName',0,0,'Waldo ','string'),
+(36,'en_US','preferredPublicName',0,0,'','string'),
+(36,'en_US','signature',0,0,'','string');
 /*!40000 ALTER TABLE `user_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -14817,8 +14966,10 @@ INSERT INTO `user_user_groups` VALUES
 (29,1),
 (30,1),
 (31,1),
+(31,36),
 (32,1),
 (33,1),
+(33,36),
 (34,1),
 (35,1);
 /*!40000 ALTER TABLE `user_user_groups` ENABLE KEYS */;
@@ -14857,7 +15008,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `users_username` (`username`),
   UNIQUE KEY `users_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -14868,7 +15019,7 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `users` VALUES
-(1,'admin','$2y$10$3XqZDByjPz309JIyuyhtnuuzM/tNNwEkbxM5LlmjoeMKNISlu2vfy','komet@mailinator.com','','','',NULL,'','',NULL,NULL,'2025-07-11 05:35:20',NULL,'2025-08-13 08:41:03',0,NULL,NULL,0,NULL,1),
+(1,'admin','$2y$10$3XqZDByjPz309JIyuyhtnuuzM/tNNwEkbxM5LlmjoeMKNISlu2vfy','komet@mailinator.com','','','',NULL,'','',NULL,NULL,'2025-07-11 05:35:20',NULL,'2025-08-14 07:34:04',0,NULL,NULL,0,NULL,1),
 (2,'rvaca','$2y$10$PWAHUCPDhL7OTyd.fZtt/.kpzQo4cvdhhsp0rOXw/Gr1SEnRcR3WS','rvaca@mailinator.com','','','',NULL,'MX','',NULL,NULL,'2025-07-11 05:36:07',NULL,'2025-07-11 05:37:51',0,NULL,NULL,0,NULL,1),
 (3,'dbarnes','$2y$10$c1m7OyXZJiPHnAqJjlmPYOEOte3iikqQgbw3fH64JAlbumbSmIWRG','barnes@mailinator.com','','','',NULL,'AU','',NULL,NULL,'2025-07-11 05:36:12',NULL,'2025-07-11 05:47:31',0,0,NULL,0,NULL,1),
 (4,'dbuskins','$2y$10$qm43/BJX1eEHM6bwAKcrXewrZCYC561kRwSXX6pJB8pc14S8SW3Ha','buskins@mailinator.com','','','',NULL,'US','',NULL,NULL,'2025-07-11 05:36:17',NULL,'2025-07-11 05:36:17',0,0,NULL,0,NULL,1),
@@ -14902,7 +15053,8 @@ INSERT INTO `users` VALUES
 (32,'rrossi','$2y$10$KylzDPFzZ/7KYU3IBOTnDu9t4S.dRcQ5/E7eIBE3j5nBaUaFShSf6','rrossi@mailinator.com',NULL,NULL,NULL,NULL,'ES','',NULL,NULL,'2025-07-11 05:45:51',NULL,'2025-07-11 05:45:51',0,NULL,NULL,0,NULL,1),
 (33,'vkarbasizaed','$2y$10$ia9rgdYYiVOizq6KANPLKOA4UY5y05WP9SvmTQmS1fNmsUt7Nt81S','vkarbasizaed@mailinator.com',NULL,NULL,NULL,NULL,'IR','',NULL,NULL,'2025-07-11 05:46:00',NULL,'2025-07-11 05:46:00',0,NULL,NULL,0,NULL,1),
 (34,'vwilliamson','$2y$10$bKSXMmOwoqOBhNmscG.rvuSUxdcDrx0b7Q81u9sdl8YTwJTwXBbUy','vwilliamson@mailinator.com',NULL,NULL,NULL,NULL,'CA','',NULL,NULL,'2025-07-11 05:47:13',NULL,'2025-07-11 05:47:13',0,NULL,NULL,0,NULL,1),
-(35,'zwoods','$2y$10$bH7wX3AXfD6ZjzCPuu.BWe1gZjNRbIRDtJc4tWWOCpIXmsy76chFe','zwoods@mailinator.com',NULL,NULL,NULL,NULL,'US','',NULL,NULL,'2025-07-11 05:47:25',NULL,'2025-07-11 05:47:25',0,NULL,NULL,0,NULL,1);
+(35,'zwoods','$2y$10$bH7wX3AXfD6ZjzCPuu.BWe1gZjNRbIRDtJc4tWWOCpIXmsy76chFe','zwoods@mailinator.com',NULL,NULL,NULL,NULL,'US','',NULL,NULL,'2025-07-11 05:47:25',NULL,'2025-07-11 05:47:25',0,NULL,NULL,0,NULL,1),
+(36,'tobler','$2y$10$9G92XB7GUifQ.T2TdI44Y.uFXO9Lumi4Vdc/dT6mj5AOaMbap40fC','tobler@mailinator.com','','','',NULL,'','',NULL,NULL,'2025-08-14 07:25:53',NULL,'2025-08-14 07:34:35',0,0,NULL,0,NULL,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -15001,4 +15153,4 @@ commit;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-08-13 10:47:58
+-- Dump completed on 2025-08-14  9:37:59
